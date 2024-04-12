@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="RightDeath" duration="200" totalFrame="1" loop="false">
+        <Frame x="3" y="108" w="15" h="23"></Frame>
+        <Frame x="20" y="113" w="15" h="23"></Frame>
+        <Frame x="44" y="108" w="15" h="23"></Frame>
+        <Frame x="61" y="121" w="32" h="23"></Frame>
+    </Animation>
+     <Animation name="LeftDeath" duration="200" totalFrame="1" loop="false">
+        <Frame x="235" y="315" w="15" h="23"></Frame>
+        <Frame x="211" y="320" w="15" h="23"></Frame>
+        <Frame x="194" y="315" w="15" h="23"></Frame>
+        <Frame x="161" y="328" w="32" h="23"></Frame>
+    </Animation>
+    <Animation name="RightSwimming" duration="200" totalFrame="1" loop="false">
+        <Frame x="131" y="116" w="16" h="15"></Frame>
+    </Animation>
+    <Animation name="LeftSwimming" duration="200" totalFrame="1" loop="false">
+        <Frame x="109" y="323" w="16" h="15"></Frame>
+    </Animation>
+      <Animation name="LeftSwimming90" duration="200" totalFrame="1" loop="false">
+        <Frame x="67" y="311" w="16" h="27"></Frame>
+    </Animation>
+    <Animation name="LeftSwimming0" duration="200" totalFrame="1" loop="false">
+         <Frame x="37" y="321" w="25" h="16"></Frame>
+    </Animation>
+    <Animation name="LeftSwimming45" duration="200" totalFrame="1" loop="false">
+        <Frame x="86" y="321" w="19" h="17"></Frame>
+    </Animation>
+    <Animation name="RightSwimming90" duration="200" totalFrame="1" loop="false">
+        <Frame x="170" y="104" w="16" h="27"></Frame>
+    </Animation>
+    <Animation name="RightSwimming0" duration="200" totalFrame="1" loop="false">
+         <Frame x="192" y="114" w="25" h="16"></Frame>
+    </Animation>
+    <Animation name="RightSwimming45" duration="200" totalFrame="1" loop="false">
+        <Frame x="149" y="114" w="19" h="17"></Frame>
+    </Animation>
+ <Animation name="RightFalling0" duration="200" totalFrame="4" loop="true">
+        <Frame x="118" y="45" w="16" h="20"></Frame>
+        <Frame x="136" y="49" w="16" h="20"></Frame>
+        <Frame x="157" y="45" w="16" h="20"></Frame>
+        <Frame x="175" y="48" w="16" h="20"></Frame>
+    </Animation>
+     <Animation name="LeftFalling0" duration="200" totalFrame="4" loop="true">
+        <Frame x="120" y="252" w="16" h="20"></Frame>
+        <Frame x="99" y="256" w="16" h="20"></Frame>
+        <Frame x="81" y="252" w="16" h="20"></Frame>
+        <Frame x="60" y="255" w="16" h="20"></Frame>
+    </Animation>
+
+    <Animation name="RightJumping0" duration="200" totalFrame="4" loop="true">
+        <Frame x="118" y="45" w="16" h="20"></Frame>
+        <Frame x="136" y="49" w="16" h="20"></Frame>
+        <Frame x="157" y="45" w="16" h="20"></Frame>
+        <Frame x="175" y="48" w="16" h="20"></Frame>
+    </Animation>
+     <Animation name="LeftJumping0" duration="200" totalFrame="4" loop="true">
+        <Frame x="120" y="252" w="16" h="20"></Frame>
+        <Frame x="99" y="256" w="16" h="20"></Frame>
+        <Frame x="81" y="252" w="16" h="20"></Frame>
+        <Frame x="60" y="255" w="16" h="20"></Frame>
+    </Animation>
+    <Animation name="RightLaying0" duration="200" totalFrame="1" loop="false">
+        <Frame x="84" y="49" w="32" h="16"></Frame>
+    </Animation>
+    <Animation name="LeftLaying0" duration="200" totalFrame="1" loop="false">
+        <Frame x="138" y="256" w="32" h="16"></Frame>
+    </Animation>
+    <Animation name="RightRunning0" duration="200" totalFrame="6" loop="true">
+        <Frame x="3" y="68" w="19" h="34"></Frame>
+        <Frame x="25" y="68" w="16" h="34"></Frame>
+        <Frame x="43" y="68" w="18" h="34"></Frame>
+        <Frame x="63" y="68" w="20" h="34"></Frame>
+        <Frame x="85" y="68" w="16" h="34"></Frame>
+        <Frame x="103" y="68" w="19" h="34"></Frame>
+    </Animation>
+    <Animation name="LeftRunning0" duration="200" totalFrame="6" loop="true">
+        <Frame x="230" y="275" w="21" h="34"></Frame>
+        <Frame x="212" y="275" w="17" h="34"></Frame>
+        <Frame x="192" y="275" w="19" h="34"></Frame>
+        <Frame x="170" y="275" w="21" h="34"></Frame>
+        <Frame x="153" y="275" w="16" h="34"></Frame>
+        <Frame x="132" y="275" w="19" h="34"></Frame>
+    </Animation>
+	<Animation name="RightRunningShooting0" duration="200" totalFrame="3" loop="true">
+		<Frame x="156" y="190" w="25" h="34"></Frame>
+		<Frame x="185" y="190" w="23" h="34"></Frame>
+		<Frame x="211" y="190" w="25" h="34"></Frame>
+	</Animation>
+	<Animation name="LeftRunningShooting0" duration="200" totalFrame="3" loop="true">
+		<Frame x="73" y="397" w="25" h="34"></Frame>
+		<Frame x="46" y="397" w="23" h="34"></Frame>
+		<Frame x="18" y="397" w="25" h="34"></Frame>
+	</Animation>
+	<Animation name="RightRunning45" duration="200" totalFrame="3" loop="true">
+		<Frame x="124" y="68" w="20" h="34"></Frame>
+		<Frame x="146" y="68" w="16" h="34"></Frame>
+		<Frame x="164" y="68" w="19" h="34"></Frame>
+	</Animation>
+	<Animation name="RightRunning315" duration="200" totalFrame="3" loop="true">
+		<Frame x="185" y="68" w="21" h="34"></Frame>
+		<Frame x="208" y="68" w="20" h="34"></Frame>
+		<Frame x="230" y="68" w="21" h="34"></Frame>
+	</Animation>
+	<Animation name="LeftRunning45" duration="200" totalFrame="3" loop="true">
+		<Frame x="110" y="274" w="20" h="34"></Frame>
+		<Frame x="92" y="274" w="16" h="34"></Frame>
+		<Frame x="71" y="274" w="19" h="34"></Frame>
+	</Animation>
+	<Animation name="LeftRunning315" duration="200" totalFrame="3" loop="true">
+		<Frame x="48" y="274" w="21" h="34"></Frame>
+		<Frame x="26" y="274" w="20" h="34"></Frame>
+		<Frame x="3" y="274" w="21" h="34"></Frame>
+	</Animation>
+    <Animation name="RightStanding0" duration="200" totalFrame="1" loop="false">
+        <Frame x="2" y="31" w="23" h="34"></Frame>
+    </Animation>
+    <Animation name="RightStanding90" duration="200" totalFrame="1" loop="false">
+        <Frame x="68" y="21" w="14" h="44"></Frame>
+    </Animation>
+    <Animation name="LeftStanding0" duration="200" totalFrame="1" loop="false">
+        <Frame x="228" y="238" w="24" h="34"></Frame>
+    </Animation>
+    <Animation name="LeftStanding90" duration="200" totalFrame="1" loop="false">
+        <Frame x="171" y="228" w="15" h="44"></Frame>
+    </Animation>
+</Animations>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+	<Animation name="LeftRunning" duration="200" totalFrame="6" loop="true">
+		<Frame x="90" y="0" w="16" h="32"></Frame>
+		<Frame x="72" y="0" w="16" h="32"></Frame>
+		<Frame x="54" y="0" w="16" h="32"></Frame>
+		<Frame x="37" y="0" w="16" h="32"></Frame>
+		<Frame x="19" y="0" w="16" h="32"></Frame>
+		<Frame x="0" y="0" w="16" h="32"></Frame>
+	</Animation>
+	<Animation name="RightRunning" duration="200" totalFrame="6" loop="true">
+		<Frame x="122" y="33" w="16" h="32"></Frame>
+		<Frame x="140" y="33" w="16" h="32"></Frame>
+		<Frame x="158" y="34" w="16" h="32"></Frame>
+		<Frame x="176" y="33" w="16" h="32"></Frame>
+		<Frame x="193" y="33" w="16" h="32"></Frame>
+		<Frame x="212" y="33" w="16" h="32"></Frame>
+	</Animation>
+    <Animation name="LeftJumping" duration="200" totalFrame="1" loop="false">
+		<Frame x="108" y="4" w="16" h="28"></Frame>
+	</Animation>
+	<Animation name="RightJumping" duration="200" totalFrame="1" loop="false">
+		<Frame x="104" y="37" w="16" h="28"></Frame>
+	</Animation>
+	<Animation name="LeftShooting" duration="200" totalFrame="1" loop="false">
+		<Frame x="126" y="0" w="24" h="32"></Frame>
+	</Animation>
+	<Animation name="RightShooting" duration="200" totalFrame="1" loop="false">
+		<Frame x="78" y="33" w="24" h="32"></Frame>
+	</Animation>
+	<Animation name="LeftLaying" duration="200" totalFrame="1" loop="false">
+		<Frame x="178" y="18" w="32" h="14"></Frame>
+	</Animation>
+	<Animation name="RightLaying" duration="200" totalFrame="1" loop="false">
+		<Frame x="18" y="51" w="32" h="14"></Frame>
+	</Animation>
+	<Animation name="LeftDead" duration="200" totalFrame="1" loop="false">
+		<Frame x="108" y="4" w="16" h="28"></Frame>
+	</Animation>
+	<Animation name="RightDead" duration="200" totalFrame="1" loop="false">
+		<Frame x="104" y="37" w="16" h="28"></Frame>
+	</Animation>
+</Animations>

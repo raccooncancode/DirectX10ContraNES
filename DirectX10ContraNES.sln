@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectX10ContraNES", "DirectX10ContraNES\DirectX10ContraNES.vcxproj", "{2B018C05-16C4-4670-A7A5-03B33766BE50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Debug|x64.ActiveCfg = Debug|x64
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Debug|x64.Build.0 = Debug|x64
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Debug|x86.ActiveCfg = Debug|Win32
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Debug|x86.Build.0 = Debug|Win32
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Release|x64.ActiveCfg = Release|x64
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Release|x64.Build.0 = Release|x64
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Release|x86.ActiveCfg = Release|Win32
+		{2B018C05-16C4-4670-A7A5-03B33766BE50}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A2D2CD6-39E5-4799-8BD3-9C55BC6C4AE3}
+	EndGlobalSection
+EndGlobal

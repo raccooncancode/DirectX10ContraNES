@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="FrameWork Files">
+      <UniqueIdentifier>{e70e77f0-e43f-4419-8a3a-2cd0f22eb5b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Utils">
+      <UniqueIdentifier>{f6fec6af-ff4c-48f8-9d8b-a0f5ba4ec5d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject">
+      <UniqueIdentifier>{fc24421d-0718-4236-8f45-df637d47fa18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Player">
+      <UniqueIdentifier>{a0aeb9fa-dd1c-4d95-bae9-e894986f1408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy">
+      <UniqueIdentifier>{e9c56af2-6acb-4b26-8e38-366ef4018f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Bullet">
+      <UniqueIdentifier>{b9119bd9-0bdd-4dff-b183-a3f9cd8cf242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Flatform">
+      <UniqueIdentifier>{439cd373-072e-4d9f-b596-b8b454bbe872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Abstracts">
+      <UniqueIdentifier>{5abf4ede-01b6-4a7e-b21c-6ef992a73122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Enums">
+      <UniqueIdentifier>{90166f4f-1a62-4440-988c-d67fa163cc6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Player\State">
+      <UniqueIdentifier>{9631b2dd-bde3-43c3-b055-ee87c5b0de58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Player\Animation">
+      <UniqueIdentifier>{8886adcd-27af-459c-909a-048a5e594c94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Support Libs">
+      <UniqueIdentifier>{fd8d8212-b183-4556-967e-9e742ef811e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Manager">
+      <UniqueIdentifier>{e51e2ef1-1cee-48ed-8e70-4e1ffee56a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Interfaces">
+      <UniqueIdentifier>{bdd47933-6204-4de7-b013-41d4527b1325}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Map">
+      <UniqueIdentifier>{2379c808-b165-49e6-9f92-1ebf96ed1c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Scenes">
+      <UniqueIdentifier>{6d2ea8e8-19ef-4d74-8d30-cc9c3076d57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Shader">
+      <UniqueIdentifier>{d28d1297-434a-448a-b6fb-21ab608b3f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\Binary Tree">
+      <UniqueIdentifier>{657f4893-e14a-4736-bdaa-821e2f84801c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\FriendlyObject">
+      <UniqueIdentifier>{497b4b84-f52d-476d-a38c-963255c1a8ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Soldier">
+      <UniqueIdentifier>{f939e5a5-6631-4718-94ae-e07a20830269}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RectF.cpp">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Bill.cpp">
+      <Filter>FrameWork Files\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>FrameWork Files\Support Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>FrameWork Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>FrameWork Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>FrameWork Files\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="BillAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Player\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="BillStandingState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BillRunningState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BillLayingState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BillJumpingState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BTree.cpp">
+      <Filter>FrameWork Files\Binary Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="BillFallingState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>FrameWork Files\GameObject\Flatform</Filter>
+    </ClCompile>
+    <ClCompile Include="BillSwimmingState.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BillDead.cpp">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SoldierAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RectF.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Bill.h">
+      <Filter>FrameWork Files\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectEnum.h">
+      <Filter>FrameWork Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>FrameWork Files\Support Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAnimation.h">
+      <Filter>FrameWork Files\Abstracts</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="IControlable.h">
+      <Filter>FrameWork Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>FrameWork Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>FrameWork Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>FrameWork Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroScene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>FrameWork Files\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="BillAnimation.h">
+      <Filter>FrameWork Files\GameObject\Player\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="BillState.h">
+      <Filter>FrameWork Files\GameObject\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>FrameWork Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BTree.h">
+      <Filter>FrameWork Files\Binary Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>FrameWork Files\Binary Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>FrameWork Files\Abstracts</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>FrameWork Files\Abstracts</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>FrameWork Files\GameObject\Flatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>FrameWork Files\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="FBullet.h">
+      <Filter>FrameWork Files\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>FrameWork Files\GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="SoldierAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="SoldierState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

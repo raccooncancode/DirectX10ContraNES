@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+    <Animation name="LeftShooting180" duration="200" totalFrame="1" loop="false">
+		<Frame x="117" y="52" w="24" h="32"></Frame>
+	</Animation>
+	<Animation name="LeftShooting135" duration="200" totalFrame="1" loop="false">
+		<Frame x="72" y="1" w="18" h="38"></Frame>
+	</Animation>
+	<Animation name="LeftShooting225" duration="200" totalFrame="1" loop="false">
+		<Frame x="92" y="8" w="24" h="31"></Frame>
+	</Animation>
+	<Animation name="LeftHiding" duration="200" totalFrame="1" loop="false">
+		<Frame x="153" y="23" w="24" h="16"></Frame>
+	</Animation>
+	<Animation name="RightShooting0" duration="200" totalFrame="1" loop="false">
+		<Frame x="0" y="7" w="24" h="32"></Frame>
+	</Animation>
+	<Animation name="RightShooting45" duration="200" totalFrame="1" loop="false">
+		<Frame x="105" y="46" w="18" h="38"></Frame>
+	</Animation>
+	<Animation name="RightShooting315" duration="200" totalFrame="1" loop="false">
+		<Frame x="79" y="53" w="24" h="31"></Frame>
+	</Animation>
+	<Animation name="RightHiding" duration="200" totalFrame="1" loop="false">
+		<Frame x="18" y="68" w="24" h="16"></Frame>
+	</Animation>
+	<Animation name="LeftDead" duration="200" totalFrame="1" loop="false">
+		<Frame x="117" y="52" w="24" h="32"></Frame>
+	</Animation>
+	<Animation name="RightDead" duration="200" totalFrame="1" loop="false">
+		<Frame x="0" y="7" w="24" h="32"></Frame>
+	</Animation>
+</Animations>

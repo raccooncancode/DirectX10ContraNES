@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+    <Animation name="GunClose" duration="200" totalFrame="1" loop="false">
+		<Frame x="3" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunOpen" duration="200" totalFrame="1" loop="false">
+		<Frame x="41" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate90" duration="200" totalFrame="1" loop="false">
+		<Frame x="79" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate180" duration="200" totalFrame="1" loop="false">
+		<Frame x="117" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate135" duration="200" totalFrame="1" loop="false">
+		<Frame x="155" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate45" duration="200" totalFrame="1" loop="false">
+		<Frame x="193" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate0" duration="200" totalFrame="1" loop="false">
+		<Frame x="231" y="3" w="32" h="32"></Frame>
+	</Animation>
+	 <Animation name="GunRotate315" duration="200" totalFrame="1" loop="false">
+		<Frame x="269" y="3" w="32" h="32"></Frame>
+	</Animation>
+	<Animation name="GunRotate270" duration="200" totalFrame="1" loop="false">
+		<Frame x="307" y="3" w="32" h="32"></Frame>
+	</Animation>
+	<Animation name="GunRotate225" duration="200" totalFrame="1" loop="false">
+		<Frame x="345" y="3" w="32" h="32"></Frame>
+	</Animation>
+</Animations>
