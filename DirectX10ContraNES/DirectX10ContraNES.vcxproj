@@ -188,6 +188,9 @@
     <ClInclude Include="GameAnimation.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="Sniper.h" />
+    <ClInclude Include="SniperAnimation.h" />
+    <ClInclude Include="SniperState.h" />
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="SoldierAnimation.h" />
     <ClInclude Include="SoldierState.h" />

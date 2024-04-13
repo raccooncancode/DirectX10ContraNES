@@ -73,8 +73,12 @@ void BTree::Retrieve(Nodeptr root, std::vector<GameObject*>& returnObjects,Bound
 					isExist = true;
 				}
 			}
-			if(!isExist)
-				returnObjects.push_back(*i);//all objects are stored in leaf node so don't need to check if parent node has any object
+			if (!isExist)
+			{
+				if (!(*i)->isDeleted) {
+					returnObjects.push_back(*i);//all objects are stored in leaf node so don't need to check if parent node has any object
+				}
+			}
 		}
 		if (root->left != NULL && source->IsOverlap(root->left->bound)) {
 			Retrieve(root->left, returnObjects,source);

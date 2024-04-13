@@ -25,18 +25,28 @@ public:
 		this->objectBound->y += vy * dt * sin(this->angle);
 	}
 	virtual void OnCollisionWith(CollisionEvent* e, float dt) {
-		
-	}
-	virtual void Update(float dt, vector<GameObject*>* objects = NULL) {
-		if (!this->isDeleted) {
-			this->objects.clear();
-			this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
-			Collision::GetInstance()->Proccess(this, &this->objects, dt);
+		if (dynamic_cast<Enemy*>(e->dest)) {
+			OnCollisionWithEnemy(e, dt);
 		}
 	}
+	virtual void OnCollisionWithEnemy(CollisionEvent* e, float dt) {
+		if (e->src->GetType() == "PlayerBullet") {
+			auto enemy = (Enemy*)e->dest;
+			enemy->DecreaseHP(1);
+			this->isDeleted = true;
+		}
+		//this->vx = 0;
+		//this->vy = 0;
+		//this->isDeleted = true;
+	}
+	virtual void Update(float dt, vector<GameObject*>* objects = NULL) {
+		this->objects.clear();
+		this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
+		Collision::GetInstance()->Proccess(this, &this->objects, dt);
+	}
 	virtual void Render() {
-		if(!this->isDeleted)
-			this->BulletSprite->Draw(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
+		this->BulletSprite->Draw(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
+		//RenderBoundingBox();
 	}
 	void ClearUp() {
 		delete BulletSprite;

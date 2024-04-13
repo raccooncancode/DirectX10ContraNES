@@ -3,21 +3,27 @@
 #define __ENEMY_H__
 
 #include "GameObject.h"
-
+#include"Helper.h"
 class Enemy :public GameObject {
 protected:
 	int hp;
+	bool toDead;
 public:
 	Enemy(int id, string name, string type, int hp = 1) : GameObject(id, name, type) {
 		this->hp = hp;
+		toDead = false;
 	}
 	void DecreaseHP(float hp) {
 		this->hp -= hp;
+		DebugOut(L"\nDecrease HP");
 		if (this->hp <= 0) {
 			this->hp = 0;
-			this->isDead = true;
+			SetState("Dead", Helper::aXToString(GetAx()) + "Dead");
 		}
 	}
+	virtual void SetState(std::string stateName, std::string animationName) {
+	}
+	virtual int GetAx() { return -1; }
 	virtual void Update(float dt, vector<GameObject*>* objects=NULL){}
 	virtual void Render(){}
 	virtual void OnNoCollision(float dt){}

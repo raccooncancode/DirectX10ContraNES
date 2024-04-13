@@ -73,6 +73,9 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\Soldier">
       <UniqueIdentifier>{f939e5a5-6631-4718-94ae-e07a20830269}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Sniper">
+      <UniqueIdentifier>{eca438f6-6007-42a2-b393-e85d61d809fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -286,6 +289,15 @@
     </ClInclude>
     <ClInclude Include="SoldierState.h">
       <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Sniper.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClInclude>
+    <ClInclude Include="SniperAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClInclude>
+    <ClInclude Include="SniperState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

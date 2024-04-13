@@ -12,19 +12,14 @@ void Soldier::SetState(std::string stateName, std::string animationName) {
 void Soldier::Update(float dt, vector<GameObject*>* objects){
 	isOnGround = false;
 	currentSoldierState->Update(dt);
-
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
-	for (GameObject* o : this->objects) {
-		if (dynamic_cast<Bullet*>(o)) {
-			DebugOut(L"\nFound Bullet");
-		}
-	}
-	Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	this->soldierAnimation->Update(dt, this, this->isDead);
+	Collision::GetInstance()->Proccess(this, &this->objects, dt);
 }
 void Soldier::Render(){
 	soldierAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
+	//RenderBoundingBox();
 }
 void Soldier::OnNoCollision(float dt) {
 	if (!isOnGround && !isJumping && !isSwimming) {
@@ -34,14 +29,27 @@ void Soldier::OnNoCollision(float dt) {
 	this->objectBound->y += vy * dt * ny;
 }
 void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
-	if (e->ny > 0) {
-		if (dynamic_cast<Platform*>(e->dest)) {
-			isOnGround = true;
-			SetState("Running", Helper::aXToString(ax) + "Running");
-		}
-	}
 	if (dynamic_cast<Bullet*>(e->dest)) {
 		OnCollisionWithBullet(e, dt);
+	}
+	if (e->ny != 0) {
+		if (e->ny > 0) {
+			if (dynamic_cast<Platform*>(e->dest)) {
+				if (e->dest->GetType() != "water")
+				{
+
+					isOnGround = true;
+					SetState("Running", Helper::aXToString(ax) + "Running");
+				}
+				else
+				{
+					this->isDeleted = true;
+				}
+			}
+		}
+	}
+	if (e->nx != 0) {
+		//this->nx = 0;
 	}
 }
 void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
@@ -49,9 +57,9 @@ void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Soldier::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nSOldier touch player bullet");
+		//DebugOut(L"\nSOldier touch player bullet");
 		e->dest->isDeleted = true;
-		SetState("Dead", Helper::aXToString(this->ax) + "Dead");
+		DecreaseHP(1);
 	}
 }
 

@@ -204,7 +204,6 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 	for (int i = 0; i < objects->size(); i++) {
 		if (!objects->at(i)->isDeleted) {
-
 			CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
 			if (e->IsCollided()) {
 				coEvents.push_back(e);

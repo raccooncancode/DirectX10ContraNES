@@ -16,6 +16,8 @@ class Map :public Scene{
 public:
 	bool isFinish;
 	std::vector<GameObject*> movingObjects;
+	std::unordered_map<int, GameObject*> mObjects;
+	std::unordered_map<int, GameObject*> sObjects;
 	std::vector<GameObject*> staticObjects;
 	std::vector<GameObject*> allObjects;
 private:

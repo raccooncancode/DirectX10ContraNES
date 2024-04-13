@@ -74,7 +74,6 @@ void Bill::OnNoCollision(float dt) {
 
 void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 
-
 	if (e->ny > 0) {
 		if (dynamic_cast<Platform*>(e->dest)) {
 			if (e->dest->GetType().compare("water") == 0 && !isSwimming) {
@@ -89,8 +88,16 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 		}
 
 	}
-	if(e->nx != 0 && e->dest->GetType() != "PlayerBullet") {
-		this->nx = 0;
+	if(e->nx != 0) {
+		if (dynamic_cast<Bullet*>(e->dest)) {
+			if (e->dest->GetType().compare("PlayerBullet")) {
+				
+			}
+		}
+		else
+		{
+			this->nx = 0;
+		}
 	}
 	if (dynamic_cast<Enemy*>(e->dest)) {
 		SetState("Dead", Helper::aXToString(ax) + "Dead");

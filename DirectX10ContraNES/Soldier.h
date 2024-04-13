@@ -30,7 +30,7 @@ public:
 		this->isJumping = false;
 		this->isSwimming = false;
 		this->isOnGround = false;
-		this->SetSpeed(0.07, 0.1);
+		this->SetSpeed(0.05, 0.1);
 		soldierAnimation = new SoldierAnimation(this);
 		currentSoldierState = new SoldierState(this);
 		stateDict["Running"] = new SoldierRunning(this);
@@ -45,10 +45,11 @@ public:
 	float GetNx() { return this->nx; }
 	float GetVx() { return this->vx; }
 	float GetVy() { return this->vy; }
+	int GetAx() override { return this->ax; }
 	void SetNx(int nx) { this->nx = nx; }
 	void SetNy(int ny) { this->ny = ny; }
 	void SetVy(float vy) { this->vy = vy; }
-	void SetState(std::string stateName, std::string animationName);
+	void SetState(std::string stateName, std::string animationName)override;
 
 	void Update(float dt, vector<GameObject*>* objects = NULL);
 	void Render();

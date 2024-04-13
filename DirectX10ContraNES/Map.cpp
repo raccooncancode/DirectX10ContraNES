@@ -114,12 +114,12 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				Platform* platform =  new Platform(id,"Platform", objectType);
 				platform->GetBound()->UpdateBoundLocation(worldX, worldY);
 				platform->GetBound()->UpdateBoundSize(w, h);
-				AddStaticObject(platform);
+ 				AddStaticObject(platform);
 			}
 		}
 		else {
 			//GameObjects
-			/*for (xmlObject = xmlObjectGroup->FirstChildElement(); xmlObject != NULL; xmlObject = xmlObject->NextSiblingElement()) {
+			for (xmlObject = xmlObjectGroup->FirstChildElement(); xmlObject != NULL; xmlObject = xmlObject->NextSiblingElement()) {
 				xmlObject->QueryIntAttribute("id", &id);
 				xmlObject->QueryFloatAttribute("x", &x);
 				xmlObject->QueryFloatAttribute("y", &y);
@@ -129,30 +129,41 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				objectType = xmlObject->Attribute("type");
 				worldX = x;
 				worldY = ((this->mapRows) * this->tileSize) - (y + h);
-				this->objectsInCurrentMap[id] = new Platform(id, objectName,objectType);
-				this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundLocation(worldX, worldY);
-				this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundSize(w, h);
-			}*/
+				if (objectType == "enemy") {
+					if (objectName == "Soldier") {
+						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+
+					}
+				}
+				else
+				{
+
+				}
+
+				//this->objectsInCurrentMap[id] = new Platform(id, objectName,objectType);
+				//this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundLocation(worldX, worldY);
+				//this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundSize(w, h);
+			}
 		}
 	}
-	GameObject* s = new Soldier(1, "Soldier", "Enemy",1);
-	s->LoadAssets();
-	s->GetBound()->UpdateBoundLocation(400, 200);
-	AddMovingObject(s);
+	
 }
 
 void Map::AddMovingObject(GameObject* o) {
+	o->RetrieveBTree(this->btree);
+	this->btree->Insert(btree->root, o);
 	this->movingObjects.push_back(o);
 	this->allObjects.push_back(o);
-	this->btree->Insert(btree->root, o);
-	o->RetrieveBTree(this->btree);
 }
 
 void Map::AddStaticObject(GameObject* o) {
+	o->RetrieveBTree(this->btree);
+	this->btree->Insert(btree->root, o);
 	this->staticObjects.push_back(o);
 	this->allObjects.push_back(o);
-	this->btree->Insert(btree->root, o);
-	o->RetrieveBTree(this->btree);
 }
 
 void Map::Render() {
@@ -169,38 +180,31 @@ void Map::Update(float dt) {
 	this->tile->Update(dt);
 
 	Camera::GetInstance()->Update(dt,this->mapStage);
-	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
+	for (GameObject* gO : allObjects) {
+		if (gO->isDeleted == false) {
+			if (gO->GetName() != "Platform") {
+				btree->RemoveGameObjectForUpdate(btree->root, gO);
+				btree->Insert(btree->root, gO);
+			}
+			gO->Update(dt,&allObjects);
+		}
+		else {
+			if (dynamic_cast<Bill*>(gO)) {
+				gO->Update(dt, &allObjects);
+			}
+		}
+	}
+	/*for (auto i = movingObjects.begin(); i != movingObjects.end(); ++i) {
 
 		if (!this->mapBound->IsOverlap((*i)->GetBound())) {
 			(*i)->isDeleted = true;
 		}
 		if ((*i)->isDeleted == false) {
-			(*i)->Update(dt, &allObjects);
-			btree->RemoveGameObjectForUpdate(btree->root, (*i));
-			btree->Insert(btree->root, (*i));
+				btree->RemoveGameObjectForUpdate(btree->root, (*i));
+				btree->Insert(btree->root, (*i));
 		}
 		else {
-			if (dynamic_cast<Bill*>(*i)) {
-				(*i)->Update(dt, &allObjects);
-			}
 			btree->RemoveGameObjectForUpdate(btree->root, (*i));
-			/*allObjects.erase(i);*/
-		}
-	}
-	/*for (GameObject* gO : allObjects) {
-		if (!this->mapBound->IsOverlap(gO->GetBound())) {
-			if(gO->GetType().compare("Player")!=0)
-				gO->isDeleted = true;
-		}
-		if (!gO->isDeleted)
-		{
-			gO->Update(dt,&allObjects);
-			btree->RemoveGameObjectForUpdate(btree->root, gO);
-			btree->Insert(btree->root, gO);
-		}
-		else
-		{
-
 		}
 	}*/
 }
