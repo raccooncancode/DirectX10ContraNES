@@ -170,18 +170,19 @@ void Map::Update(float dt) {
 
 	Camera::GetInstance()->Update(dt,this->mapStage);
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
-		/*if ((*i)->GetType() == "PlayerBullet") {
-			DebugOut(L"\n Player BUllet has been added");
-		}*/
+
 		if (!this->mapBound->IsOverlap((*i)->GetBound())) {
 			(*i)->isDeleted = true;
 		}
-		if ((*i)->isDeleted==false) {
+		if ((*i)->isDeleted == false) {
 			(*i)->Update(dt, &allObjects);
 			btree->RemoveGameObjectForUpdate(btree->root, (*i));
 			btree->Insert(btree->root, (*i));
 		}
 		else {
+			if (dynamic_cast<Bill*>(*i)) {
+				(*i)->Update(dt, &allObjects);
+			}
 			btree->RemoveGameObjectForUpdate(btree->root, (*i));
 			/*allObjects.erase(i);*/
 		}

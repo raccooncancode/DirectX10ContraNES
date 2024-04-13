@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Animations>
-     <Animation name="RightDeath" duration="200" totalFrame="1" loop="false">
+     <Animation name="RightDead" duration="200" totalFrame="4" loop="true">
         <Frame x="3" y="108" w="15" h="23"></Frame>
-        <Frame x="20" y="113" w="15" h="23"></Frame>
+        <Frame x="20" y="113" w="22" h="18"></Frame>
         <Frame x="44" y="108" w="15" h="23"></Frame>
-        <Frame x="61" y="121" w="32" h="23"></Frame>
+        <Frame x="61" y="121" w="32" h="10"></Frame>
     </Animation>
-     <Animation name="LeftDeath" duration="200" totalFrame="1" loop="false">
+     <Animation name="LeftDead" duration="200" totalFrame="4" loop="true">
         <Frame x="235" y="315" w="15" h="23"></Frame>
-        <Frame x="211" y="320" w="15" h="23"></Frame>
+        <Frame x="211" y="320" w="22" h="18"></Frame>
         <Frame x="194" y="315" w="15" h="23"></Frame>
-        <Frame x="161" y="328" w="32" h="23"></Frame>
+        <Frame x="161" y="328" w="32" h="10"></Frame>
     </Animation>
     <Animation name="RightSwimming" duration="200" totalFrame="1" loop="false">
         <Frame x="131" y="116" w="16" h="15"></Frame>

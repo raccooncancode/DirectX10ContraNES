@@ -33,7 +33,7 @@ public:
 	{
 		pFrames[pCurrentFrameIndex]->GetSpriteResolution(w, h);
 	}
-	void Update(float dt ,GameObject* o = NULL , bool isDead  = false)
+	void Update(float dt ,GameObject* o , bool isDead)
 	{
 		pTime += dt;
 		if (pTime >= pAnimationDuration)
@@ -41,9 +41,11 @@ public:
 			if (isLoop)
 			{
 				pCurrentFrameIndex++;
+				if (isDead == true)
+					DebugOut(L"\nIndex: %d", pCurrentFrameIndex);
 				if (isDead && pCurrentFrameIndex == pTotalFrame) {
+					DebugOut(L"\nDone Dead Ani");
 					o->isDeleted = true;
-					return;
 				}
 				pCurrentFrameIndex %= (pTotalFrame);
 			}

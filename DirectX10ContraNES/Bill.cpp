@@ -30,12 +30,24 @@ void Bill::OnKeyUp(int keyCode)
 }
 void Bill::Update(float dt,vector<GameObject*>* objects)
 {
+	//DebugOut(L"\nRes Times: %d", respawnTimes);
 	if (this->isDeleted == true) {
-		if (this->respawnTimes > 0) {
+		if (this->respawnTimes >= 0) {
 			this->isDeleted = false;
+			this->isDead = false;
 			this->ax = 1;
-			this->objectBound->UpdateBoundLocation(respawnX, respawnY);
+			this->ny = -1;
+			float cx, cy;
+			cx = Camera::GetInstance()->GetCameraBound()->x;
+			cy = Camera::GetInstance()->GetCameraBound()->y;
+
+			this->objectBound->UpdateBoundLocation(cx + 50, cy + 200);
 			SetState("Falling0", Helper::aXToString(ax) + "Falling0");
+		}
+		else
+		{
+			//this is the place to switch to ending scene
+			return;
 		}
 	}
 	isOnGround = false;
@@ -81,7 +93,7 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 		this->nx = 0;
 	}
 	if (dynamic_cast<Enemy*>(e->dest)) {
-		SetState("Jumping0", Helper::aXToString(ax) + "Jumping0");
+		SetState("Dead", Helper::aXToString(ax) + "Dead");
 	}
 }
 
@@ -95,7 +107,7 @@ void Bill::Render()
 void Bill::CreateBullet(float x,float y) {
 	float bX, bY;
 	
-	float speed = this->bulletType != 3 ? 0.05 : 0.25;
+	float speed = this->bulletType != 3 ? 0.1 : 0.15;
 	float angleSupport1 = this->angle - D3DX_PI / 6;
 	float angleSupport2 = this->angle - D3DX_PI / 4;
 	float angleSupport3 = this->angle + D3DX_PI / 4;

@@ -30,7 +30,7 @@ public:
 		this->isJumping = false;
 		this->isSwimming = false;
 		this->isOnGround = false;
-		this->SetSpeed(0.05, 0.1);
+		this->SetSpeed(0.07, 0.1);
 		soldierAnimation = new SoldierAnimation(this);
 		currentSoldierState = new SoldierState(this);
 		stateDict["Running"] = new SoldierRunning(this);
