@@ -39,7 +39,6 @@ public:
 		stateDict["Shooting"] = new SoldierShooting(this);
 		stateDict["Falling"] = new SoldierFalling(this);
 		stateDict["Dead"] = new SoldierDead(this);
-		auto test = stateDict;
 		SetState("Falling", Helper::aXToString(this->ax) + "Falling");
 	}
 	float GetNx() { return this->nx; }

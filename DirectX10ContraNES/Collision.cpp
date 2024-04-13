@@ -247,12 +247,22 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				// replace with a new collision event using corrected location 
 				coEvents.push_back(SweptAABB(src, colX->dest,dt));
 
+				/*string s = colY->dest->GetName();
+				string s1 = colX->dest->GetName();
+				wstring temp = wstring(s.begin(), s.end());
+				wstring temp1 = wstring(s1.begin(), s1.end());
+				LPCWSTR wideString = temp.c_str();
+				LPCWSTR wideString1 = temp1.c_str();
+				DebugOut(L"\n y: ");
+				DebugOut(wideString);
+				DebugOut(L"\n x: ");
+				DebugOut(wideString1);*/
 				// re-filter on X only
 				Filter(src, coEvents, colX_other, colY, /*filterBlock = */ 1, 1, /*filterY=*/0);
 
 				if (colX_other != NULL)
 				{
-					x += colX_other->t * dx + colX_other->nx * 0.4;
+					x += colX_other->t * dx + colX_other->nx * 0.4f;
 					src->OnCollisionWith(colX_other,dt);
 				}
 				else
@@ -298,7 +308,20 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 			if (colX != NULL)
 			{
-				x += colX->t * dx + colX->nx * 0.4f;
+				std::string bullet = "Bullet";
+				if (colX->src->GetType().find(bullet) != std::string::npos) {
+					x += vx * dt;
+				}
+				else {
+					std::string bullet = "Bullet";
+					if ((colX->dest->GetType()=="PlayerBullet" && src->GetType() == "Player") || (colX->dest->GetType()=="Player" && src->GetType()=="PlayerBullet")) {
+						x += vx * dt;
+					}
+					else {
+						x += colX->t * dx * colX->nx*0.4f;
+					}
+
+				}
 				y += dy;
 				src->OnCollisionWith(colX,dt);
 			}
@@ -307,16 +330,16 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				{
 					x += dx;
 					if (colY->ny < 0) {
-						if (colY->dest->GetType() == "throughable" && colY->src->GetType() == "Player")
+						if (colY->dest->GetType() == "throughable")
 						{
 							y += vy * dt;
 						}
 						else {
-							y += colY->t * dy + colY->ny * 0.04f;
+							y += colY->t * dy;
 
 						}
 					}
-					else  if (colY->ny > 0) {
+					if (colY->ny > 0) {
 						y += colY->t * dy + colY->ny * 0.04f;
 					}
 					src->OnCollisionWith(colY,dt);
@@ -329,4 +352,13 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 		src->SetPosition(x, y);
 	}
+	for (UINT i = 0; i < coEvents.size(); i++)
+	{
+		CollisionEvent* e = coEvents[i];
+		if (e->isDeleted) continue;
+		//if (e->obj->IsBlocking()) continue;  // blocking collisions were handled already, skip them
+
+		src->OnCollisionWith(e,dt);
+	}
+	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }

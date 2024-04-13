@@ -180,6 +180,18 @@
     <ClCompile Include="SoldierFalling.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Soldier</Filter>
     </ClCompile>
+    <ClCompile Include="Sniper.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperShooting.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperDead.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RectF.h">

@@ -44,6 +44,7 @@ void LoadResources()
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
 	textures->Add(1, L"Textures\\Soldier.png");
+	textures->Add(2, L"Textures\\Sniper.png");
 	//gMap = new Map(1,true);
 }
 

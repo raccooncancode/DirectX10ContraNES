@@ -15,7 +15,8 @@ void Soldier::Update(float dt, vector<GameObject*>* objects){
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	this->soldierAnimation->Update(dt, this, this->isDead);
-	Collision::GetInstance()->Proccess(this, &this->objects, dt);
+	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
+	this->collision->Proccess(this, &this->objects, dt);
 }
 void Soldier::Render(){
 	soldierAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
@@ -31,6 +32,9 @@ void Soldier::OnNoCollision(float dt) {
 void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
 	if (dynamic_cast<Bullet*>(e->dest)) {
 		OnCollisionWithBullet(e, dt);
+	}
+	if (dynamic_cast<Enemy*>(e->dest)) {
+		return;
 	}
 	if (e->ny != 0) {
 		if (e->ny > 0) {

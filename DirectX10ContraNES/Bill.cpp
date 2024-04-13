@@ -58,7 +58,8 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 	//auto test = this->objects; 
 	// check if lowest object retrieved 
 	// then you're success that just check collision in only node or (2 nodes) you are in
-	Collision::GetInstance()->Proccess(this, &this->objects, dt);
+	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
+	this->collision->Proccess(this, &this->objects, dt);
 	this->billAnimation->Update(dt,this,this->isDead);
 	this->currentBillState->Update(dt);
 	

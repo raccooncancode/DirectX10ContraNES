@@ -19,6 +19,8 @@ public:
 		this->vx = speed;
 		this->vy = speed;
 		this->angle = angle;
+		this->nx = cos(this->angle);
+		this->ny = sin(this->angle);
 	}
 	virtual void OnNoCollision(float dt) {
 		this->objectBound->x += vx * dt * cos(this->angle);
@@ -32,6 +34,12 @@ public:
 	virtual void OnCollisionWithEnemy(CollisionEvent* e, float dt) {
 		if (e->src->GetType() == "PlayerBullet") {
 			auto enemy = (Enemy*)e->dest;
+			DebugOut(L"\nnx: %d, ny: %d ", e->nx, e->ny);
+			string s = enemy->GetName();
+			wstring temp = wstring(s.begin(), s.end());
+			LPCWSTR wideString = temp.c_str();
+			DebugOut(L"\n");
+			DebugOut(wideString);
 			enemy->DecreaseHP(1);
 			this->isDeleted = true;
 		}
@@ -42,7 +50,8 @@ public:
 	virtual void Update(float dt, vector<GameObject*>* objects = NULL) {
 		this->objects.clear();
 		this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
-		Collision::GetInstance()->Proccess(this, &this->objects, dt);
+		this->collision->Proccess(this, &this->objects, dt);
+		//Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	}
 	virtual void Render() {
 		this->BulletSprite->Draw(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);

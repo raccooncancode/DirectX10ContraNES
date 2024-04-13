@@ -134,8 +134,20 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						AddMovingObject(s);
+						//AddMovingObject(s);
 
+					}
+					if (objectName == "Sniper") {
+						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName == "SniperH") {
+						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1,true);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
 					}
 				}
 				else
@@ -178,15 +190,15 @@ void Map::Render() {
 }
 void Map::Update(float dt) {
 	this->tile->Update(dt);
-
 	Camera::GetInstance()->Update(dt,this->mapStage);
 	for (GameObject* gO : allObjects) {
+		if (!this->mapBound->IsOverlap(gO->GetBound())) {
+			gO->isDeleted = true;
+		}
 		if (gO->isDeleted == false) {
-			if (gO->GetName() != "Platform") {
-				btree->RemoveGameObjectForUpdate(btree->root, gO);
-				btree->Insert(btree->root, gO);
-			}
+			btree->RemoveGameObjectForUpdate(btree->root, gO);
 			gO->Update(dt,&allObjects);
+			btree->Insert(btree->root, gO);
 		}
 		else {
 			if (dynamic_cast<Bill*>(gO)) {

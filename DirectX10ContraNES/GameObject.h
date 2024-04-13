@@ -24,11 +24,14 @@ protected:
 	BTree* btree;
 	vector<GameObject*> objects;
 	LPTEXTURE boundTex;
-	int isCollidable;
+	Collision* collision;
 public:
+	int isCollidable;
+	bool isBlocking;
 	bool isDead;
 	bool isDeleted;
 	GameObject(int id, string name, string type, float x = 0, float y = 0, float w = 0, float h = 0) {
+		isBlocking = false;
 		this->id = id;
 		this->name = name;
 		this->type = type;
@@ -42,6 +45,7 @@ public:
 		this->isDeleted = false;
 		this->boundTex = TextureManager::GetInstance()->Get(-100);
 		this->objectBound = new RectF(x, y, w, h);
+		this->collision = new Collision();
 	}
 	float GetAngle() { return this->angle; }
 	void SetAngle(float angle) { this->angle = angle; }

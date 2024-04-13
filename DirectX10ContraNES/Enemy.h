@@ -8,10 +8,12 @@ class Enemy :public GameObject {
 protected:
 	int hp;
 	bool toDead;
+	GameObject* target;
 public:
 	Enemy(int id, string name, string type, int hp = 1) : GameObject(id, name, type) {
 		this->hp = hp;
 		toDead = false;
+		this->target = NULL;
 	}
 	void DecreaseHP(float hp) {
 		this->hp -= hp;
@@ -21,6 +23,7 @@ public:
 			SetState("Dead", Helper::aXToString(GetAx()) + "Dead");
 		}
 	}
+	virtual void SetTarget(GameObject* o) { this->target = o; }
 	virtual void SetState(std::string stateName, std::string animationName) {
 	}
 	virtual int GetAx() { return -1; }

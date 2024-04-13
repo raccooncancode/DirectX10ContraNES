@@ -159,6 +159,10 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Sniper.cpp" />
+    <ClCompile Include="SniperAnimation.cpp" />
+    <ClCompile Include="SniperDead.cpp" />
+    <ClCompile Include="SniperShooting.cpp" />
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="SoldierAnimation.cpp" />
     <ClCompile Include="SoldierDead.cpp" />
