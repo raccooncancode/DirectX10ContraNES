@@ -10,6 +10,7 @@ using namespace std;
 class SoldierState {
 protected:
 	Soldier* soldier;
+	float maxYCanReach;
 public:
 	SoldierState(Soldier* s) { this->soldier = s; }
 	virtual void Enter() {};
@@ -27,6 +28,7 @@ public:
 	}
 	void Enter()override;
 	void Exit()override;
+	void Update(float dt)override;
 	void OnKeyDown(int keyCode)override;
 	void OnKeyUp(int keyCode)override;
 	string GetStateName() override;
@@ -49,6 +51,19 @@ class SoldierJumping :public SoldierState {
 private:
 public:
 	SoldierJumping(Soldier* soldier) :SoldierState(soldier) {
+	}
+	void Enter()override;
+	void Exit()override;
+	void Update(float) override;
+	void OnKeyDown(int keyCode)override;
+	void OnKeyUp(int keyCode)override;
+	string GetStateName() override;
+};
+
+class SoldierFalling :public SoldierState {
+private:
+public:
+	SoldierFalling(Soldier* soldier) :SoldierState(soldier) {
 	}
 	void Enter()override;
 	void Exit()override;

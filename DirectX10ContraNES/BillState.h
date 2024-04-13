@@ -9,6 +9,8 @@ using namespace std;
 class BillState {
 protected:
 	Bill* bill;
+	float holdingTime;
+	float maxYCanReach;
 public:
 	BillState(Bill* b) {
 		this->bill = b;
@@ -59,7 +61,7 @@ public:
 };
 class BillRunningShooting0 :public BillState {
 private:
-	float holdingTime;
+
 public:
 	BillRunningShooting0(Bill* bill) :BillState(bill) {
 	}
@@ -95,7 +97,6 @@ public:
 
 class BillJumping0:public BillState {
 private:
-	float maxYCanReach;
 public:
 	BillJumping0(Bill* bill) :BillState(bill) {
 	}
@@ -184,6 +185,7 @@ public:
 	}
 	void Enter()override;
 	void Exit()override;
+	void Update(float dt)override;
 	void OnKeyDown(int keyCode)override;
 	void OnKeyUp(int keyCode)override;
 	string GetStateName() override;

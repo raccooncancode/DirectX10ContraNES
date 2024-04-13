@@ -3,6 +3,7 @@
 #define __BULLET_H__
 
 #include "GameObject.h"
+#include "Enemy.h"
 #include "Sprite.h"
 class Bullet: public GameObject {
 protected:
@@ -19,22 +20,23 @@ public:
 		this->vy = speed;
 		this->angle = angle;
 	}
+	virtual void OnNoCollision(float dt) {
+		this->objectBound->x += vx * dt * cos(this->angle);
+		this->objectBound->y += vy * dt * sin(this->angle);
+	}
+	virtual void OnCollisionWith(CollisionEvent* e, float dt) {
+		
+	}
 	virtual void Update(float dt, vector<GameObject*>* objects = NULL) {
-		if (!this->isDeleted)
-		{
-			this->objectBound->x += vx * dt * cos(this->angle);
-			this->objectBound->y += vy * dt * sin(this->angle);
-			if (!Camera::GetInstance()->GetCameraBound()->IsOverlap(this->objectBound))
-			{
-				this->isDeleted = true;
-				ClearUp();
-			}
+		if (!this->isDeleted) {
+			this->objects.clear();
+			this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
+			Collision::GetInstance()->Proccess(this, &this->objects, dt);
 		}
 	}
 	virtual void Render() {
-		if (!this->isDeleted) {
+		if(!this->isDeleted)
 			this->BulletSprite->Draw(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
-		}
 	}
 	void ClearUp() {
 		delete BulletSprite;
@@ -42,4 +44,4 @@ public:
 	}
 };
 
-#endif // !__BULLET_H__
+#endif // !__BULLET_H__	;

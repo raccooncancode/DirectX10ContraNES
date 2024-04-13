@@ -1,5 +1,7 @@
+#include "Map.h"
 #include "Bill.h"
 #include "TextureManager.h"
+#include "SceneManager.h"
 #include <corecrt.h>
 #include <cmath>
 #include <algorithm>
@@ -16,6 +18,9 @@ void Bill::SetState(std::string stateName, std::string animationName)
 
 void Bill::OnKeyDown(int keyCode)
 {
+	if (keyCode == DIK_O) {
+		SceneManager::GetInstance()->ChangeMap(3);
+	}
 	this->currentBillState->OnKeyDown(keyCode);
 }
 
@@ -25,13 +30,26 @@ void Bill::OnKeyUp(int keyCode)
 }
 void Bill::Update(float dt,vector<GameObject*>* objects)
 {
+	if (this->isDeleted == true) {
+		if (this->respawnTimes > 0) {
+			this->isDeleted = false;
+			this->ax = 1;
+			this->objectBound->UpdateBoundLocation(respawnX, respawnY);
+			SetState("Falling0", Helper::aXToString(ax) + "Falling0");
+		}
+	}
 	isOnGround = false;
-	Collision::GetInstance()->Proccess(this, objects, dt);
+	// only retrieve all bound in current object bound is in to process collision
+	this->objects.clear();
+	this->btree->Retrieve(btree->root,this->objects, this->objectBound);
+	//DebugOut(L"\n Object size: %d", this->objects.size());
+	//auto test = this->objects; 
+	// check if lowest object retrieved 
+	// then you're success that just check collision in only node or (2 nodes) you are in
+	Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	this->billAnimation->Update(dt,this,this->isDead);
 	this->currentBillState->Update(dt);
-	for (Bullet* b : bullets) {
-		b->Update(dt,objects);
-	}
+	
 }
 
 void Bill::OnNoCollision(float dt) {
@@ -43,7 +61,9 @@ void Bill::OnNoCollision(float dt) {
 }
 
 void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
-	if (e->ny > 0 ) {
+
+
+	if (e->ny > 0) {
 		if (dynamic_cast<Platform*>(e->dest)) {
 			if (e->dest->GetType().compare("water") == 0 && !isSwimming) {
 				if (!isSwimming) {
@@ -57,24 +77,25 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 		}
 
 	}
-	if(e->nx != 0 ){
+	if(e->nx != 0 && e->dest->GetType() != "PlayerBullet") {
 		this->nx = 0;
+	}
+	if (dynamic_cast<Enemy*>(e->dest)) {
+		SetState("Jumping0", Helper::aXToString(ax) + "Jumping0");
 	}
 }
 
 void Bill::Render()
 {
 	billAnimation->Render(this->objectBound->x +this->objectBound->w/2, this->objectBound->y+this->objectBound->h/2);
-	for (Bullet* b : bullets) {
-		b->Render();
-	}
+	
 	//RenderBoundingBox();
 }
 
 void Bill::CreateBullet(float x,float y) {
 	float bX, bY;
 	
-	float speed = this->bulletType != 3 ? 0.15 : 0.25;
+	float speed = this->bulletType != 3 ? 0.05 : 0.25;
 	float angleSupport1 = this->angle - D3DX_PI / 6;
 	float angleSupport2 = this->angle - D3DX_PI / 4;
 	float angleSupport3 = this->angle + D3DX_PI / 4;
@@ -82,20 +103,21 @@ void Bill::CreateBullet(float x,float y) {
 	Bound bound = this->GetBound();
 	bX = x;
 	bY = y;
+	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
 	switch (bulletType)
 	{
 	case 0: //regular
-		this->bullets.push_back(new Bullet(-99, "BulletSmall", "Bullet", bX, bY, speed, this->angle));
+		currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "PlayerBullet", bX, bY, speed, this->angle));
 		break;
 	case 1: //get M - bigger bullet
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, this->angle));
+		currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, this->angle));
 		break;
 	case 2: //get S - 5 bullets
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, this->angle));
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, angleSupport1));
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, angleSupport2));
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, angleSupport3));
-		this->bullets.push_back(new Bullet(-98, "BulletBig", "Bullet", bX, bY, speed, angleSupport4));
+		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, this->angle));
+		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport1));
+		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport2));
+		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport3));
+		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport4));
 		break;
 	case 3: //get R - sped up bullet
 	default:

@@ -25,13 +25,11 @@ void BillRunning0::OnKeyDown(int keyCode) {
 		this->bill->SetState("RunningShooting0", Helper::aXToString(this->bill->ax) + "RunningShooting0");
 	}
 	if (keyCode == DIK_LEFT) {
-		DebugOut(L"\nLeft Pressed");
 		this->bill->SetNx(-1);
 		this->bill->ax = -1;
 		this->bill->SetState("Running0", Helper::aXToString(this->bill->ax) + "Running0");
 	}
 	if (keyCode == DIK_RIGHT) {
-		DebugOut(L"\nRight Pressed");
 		this->bill->SetNx(1);
 		this->bill->ax = 1;
 		this->bill->SetState("Running0", Helper::aXToString(this->bill->ax) + "Running0");

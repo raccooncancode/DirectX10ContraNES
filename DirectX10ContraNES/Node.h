@@ -4,6 +4,7 @@
 #include <iostream>
 #include "RectF.h"
 #include <vector>
+class GameObject;
 #include "GameObject.h"
 using namespace std;
 class Node {

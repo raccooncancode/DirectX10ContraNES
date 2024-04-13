@@ -5,16 +5,22 @@ Map::Map(int stage , bool isSplitVertical) {
 	this->isSplitVertical = isSplitVertical;
 	this->mapStage = stage;
 	this->tile = new Tile();
-	this->bill = new Bill(0, "Bill", "Player");
-	this->bill->LoadAssets();
-	this->bill->GetBound()->UpdateBoundLocation(70, 100);
-	Camera::GetInstance()->SetFollowTarget(bill);
 	ReadMapFile();
 }
 
 Map::~Map() {
-	this->objectsInCurrentCamera.clear();
-	this->objectsInCurrentMap.clear();
+	this->staticObjects.clear();
+	this->movingObjects.clear();
+	this->allObjects.clear();
+	delete this->tile;
+}
+
+void Map::Clear() {
+	this->staticObjects.clear();
+	this->movingObjects.clear();
+	this->allObjects.clear();
+	delete this->btree;
+	delete this->mapBound;
 	delete this->tile;
 }
 
@@ -47,6 +53,7 @@ void Map::ReadMapFile() {
 	tile->LoadTiles(this->tileSize);
 	tile->LoadAnimationTiles(xmlTileSetImg);
 	this->btree = new BTree(0, 0, 0, mapColumns * tileSize, mapRows * tileSize, isSplitVertical);
+	this->mapBound = new RectF(0, 0, mapColumns * tileSize, mapRows * tileSize);
 	LoadMap2D(xmlRoot->FirstChildElement("layer")->FirstChildElement("data"));
 	LoadObjects(xmlRoot);
 }
@@ -104,10 +111,10 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				objectType = xmlObject->Attribute("type");
 				worldX = x;
 				worldY = ((this->mapRows) * this->tileSize) - (y+h);
-				this->platformsInCurrentMap[id] = new Platform(id,"Platform", objectType);
-				this->platformsInCurrentMap[id]->GetBound()->UpdateBoundLocation(worldX, worldY);
-				this->platformsInCurrentMap[id]->GetBound()->UpdateBoundSize(w, h);
-				this->btree->Insert(btree->root, this->platformsInCurrentMap[id]);
+				Platform* platform =  new Platform(id,"Platform", objectType);
+				platform->GetBound()->UpdateBoundLocation(worldX, worldY);
+				platform->GetBound()->UpdateBoundSize(w, h);
+				AddStaticObject(platform);
 			}
 		}
 		else {
@@ -128,24 +135,71 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 			}*/
 		}
 	}
+	GameObject* s = new Soldier(1, "Soldier", "Enemy",1);
+	s->LoadAssets();
+	s->GetBound()->UpdateBoundLocation(400, 200);
+	AddMovingObject(s);
 }
 
+void Map::AddMovingObject(GameObject* o) {
+	this->movingObjects.push_back(o);
+	this->allObjects.push_back(o);
+	this->btree->Insert(btree->root, o);
+	o->RetrieveBTree(this->btree);
+}
 
+void Map::AddStaticObject(GameObject* o) {
+	this->staticObjects.push_back(o);
+	this->allObjects.push_back(o);
+	this->btree->Insert(btree->root, o);
+	o->RetrieveBTree(this->btree);
+}
 
 void Map::Render() {
 	this->tile->Render();
-	for (GameObject* gO: testObjects) {
-		gO->Render();
+	
+	for (GameObject* gO: this->allObjects) {
+		if (!gO->isDeleted)
+		{
+			gO->Render();
+		}
 	}
-	this->bill->Render();
 }
 void Map::Update(float dt) {
 	this->tile->Update(dt);
+
 	Camera::GetInstance()->Update(dt,this->mapStage);
-	this->testObjects.clear();
-	btree->Retrieve(btree->root, testObjects, Camera::GetInstance()->GetCameraBound());
-	//btree->Retrieve(btree->root, testObjects, test);
-	auto x = btree->root;
-	this->bill->Update(dt, &testObjects);
-	//check collision here
+	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
+		/*if ((*i)->GetType() == "PlayerBullet") {
+			DebugOut(L"\n Player BUllet has been added");
+		}*/
+		if (!this->mapBound->IsOverlap((*i)->GetBound())) {
+			(*i)->isDeleted = true;
+		}
+		if ((*i)->isDeleted==false) {
+			(*i)->Update(dt, &allObjects);
+			btree->RemoveGameObjectForUpdate(btree->root, (*i));
+			btree->Insert(btree->root, (*i));
+		}
+		else {
+			btree->RemoveGameObjectForUpdate(btree->root, (*i));
+			/*allObjects.erase(i);*/
+		}
+	}
+	/*for (GameObject* gO : allObjects) {
+		if (!this->mapBound->IsOverlap(gO->GetBound())) {
+			if(gO->GetType().compare("Player")!=0)
+				gO->isDeleted = true;
+		}
+		if (!gO->isDeleted)
+		{
+			gO->Update(dt,&allObjects);
+			btree->RemoveGameObjectForUpdate(btree->root, gO);
+			btree->Insert(btree->root, gO);
+		}
+		else
+		{
+
+		}
+	}*/
 }

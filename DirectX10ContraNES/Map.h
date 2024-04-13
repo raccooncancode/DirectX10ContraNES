@@ -10,19 +10,19 @@
 #include "Platform.h"
 #include "Bill.h"
 #include "BTree.h"
-class Map {
+#include "Soldier.h"
+#include "Scene.h"
+class Map :public Scene{
 public:
 	bool isFinish;
+	std::vector<GameObject*> movingObjects;
+	std::vector<GameObject*> staticObjects;
+	std::vector<GameObject*> allObjects;
 private:
-	Bill* bill;
+	Bound mapBound;
 	int mapStage;
 	int mapRows, mapColumns;
 	int tileSize;
-	std::vector<GameObject*> testObjects;
-	std::unordered_map<int,GameObject*> platformsInCurrentMap; 
-	std::unordered_map<int,GameObject*> objectsInCurrentMap; 
-	std::unordered_map<int,GameObject*> objectsInCurrentCamera;
-	std::vector<GameObject*> bulletsInCurrentCamera;
 	std::vector<std::vector<int>>map2D;
 	tinyxml2::XMLElement* xmlRoot;
 	Tile* tile;
@@ -33,8 +33,11 @@ private:
 public:
 	Map(int stage,bool isSplitVertical = true);
 	~Map();
+	void AddMovingObject(GameObject* o); // to add bullets to btree
+	void AddStaticObject(GameObject* o);
 	void Update(float dt);
 	void Render();//render rectangle which is overlapped or contain by camera bound
+	void Clear();
 private:
 	void ReadMapFile();
 	void LoadMap2D(tinyxml2::XMLElement* e);

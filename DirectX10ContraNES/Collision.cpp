@@ -1,5 +1,5 @@
-﻿#include "Collision.h"
-#include "GameObject.h"
+﻿#include "GameObject.h"
+#include "Collision.h"
 Collision* Collision::__instance = nullptr;
 Collision* Collision::GetInstance() {
 	if (__instance == nullptr)
@@ -203,12 +203,15 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 	CollisionEvent* colY=NULL;
 
 	for (int i = 0; i < objects->size(); i++) {
-		CollisionEvent* e = SweptAABB(src, objects->at(i),dt);
-		if (e->IsCollided()) {
-			coEvents.push_back(e);
+		if (!objects->at(i)->isDeleted) {
+
+			CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
+			if (e->IsCollided()) {
+				coEvents.push_back(e);
+			}
+			else
+				delete e;
 		}
-		else
-			delete e;
 	}
 	if (coEvents.size() == 0) {
 		src->OnNoCollision(dt);
@@ -305,7 +308,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				{
 					x += dx;
 					if (colY->ny < 0) {
-						if (colY->dest->GetType() == "throughable")
+						if (colY->dest->GetType() == "throughable" && colY->src->GetType() == "Player")
 						{
 							y += vy * dt;
 						}

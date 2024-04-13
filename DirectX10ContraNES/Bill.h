@@ -13,6 +13,8 @@
 #include "tinyxml2.h"
 #include "Platform.h"
 #include "Bullet.h"
+class Map;
+
 using namespace std;
 class Bill:public GameObject, public IControlable {
 public:
@@ -23,8 +25,10 @@ public:
 	bool isSwimming;
 	int respawnTimes;
 	int bulletType;
-	vector<Bullet*> bullets;
+	Map* map;
 private:
+	float respawnX=70;
+	float respawnY = 130;
 	unordered_map<string, BillState*> stateDict;
 	BillState* currentBillState;
 	BillAnimation* billAnimation;
@@ -36,7 +40,7 @@ public:
 		isSwimming = false;
 		respawnTimes = 2;
 		this->ax = 1;
-		this->bulletType = 0;
+		this->bulletType = 1;
 		SetSpeed(0.07, 0.1);
 		billAnimation = new BillAnimation(this);
 		currentBillState = new BillState(this);

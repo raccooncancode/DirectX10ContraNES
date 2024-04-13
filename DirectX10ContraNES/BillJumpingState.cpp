@@ -4,6 +4,7 @@
 void BillJumping0::Enter() {
 	this->bill->isOnGround = false;
 	this->bill->isJumping = true;
+	this->bill->SetNy(1);
 	this->maxYCanReach = this->bill->GetBound()->y + 60;
 }
 void BillJumping0::Exit() {

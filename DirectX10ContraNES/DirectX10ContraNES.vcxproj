@@ -159,7 +159,14 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="SoldierAnimation.cpp" />
+    <ClCompile Include="SoldierDead.cpp" />
+    <ClCompile Include="SoldierFalling.cpp" />
+    <ClCompile Include="SoldierJumping.cpp" />
+    <ClCompile Include="SoldierLaying.cpp" />
+    <ClCompile Include="SoldierRunning.cpp" />
+    <ClCompile Include="SoldierShooting.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />

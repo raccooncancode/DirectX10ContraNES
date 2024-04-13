@@ -8,6 +8,8 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "Collision.h"
+class BTree;
+#include "BTree.h"
 using namespace std;
 
 class GameObject {
@@ -19,6 +21,8 @@ protected:
 	int nx,ny;
 	float vx, vy;
 	Bound objectBound;
+	BTree* btree;
+	vector<GameObject*> objects;
 	LPTEXTURE boundTex;
 	int isCollidable;
 public:
@@ -78,6 +82,7 @@ public:
 			boundTex
 		);
 	}
+	virtual void RetrieveBTree(BTree* btree) { this->btree = btree; }
 	virtual void Update(float dt, vector<GameObject*>* coObjects = NULL) {};
 	virtual void Render() = 0;
 	virtual int IsCollidable() { return isCollidable; }
@@ -85,6 +90,7 @@ public:
 	virtual void OnNoCollision(float dt){}
 	virtual void OnCollisionWith(CollisionEvent* e ,float dt){}
 	static bool IsDeleted(const CollisionEvent*& o) { return o->isDeleted; }
+	virtual void LoadAssets(){}
 };
 
 #endif // !__GAMEOBJECT_H__

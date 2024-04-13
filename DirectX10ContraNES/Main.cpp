@@ -3,8 +3,7 @@
 #include "debug.h"
 #include "Game.h"
 #include "TextureManager.h"
-//#include "SceneManager.h"
-#include "Map.h"
+#include "SceneManager.h"
 //#include "Soldier.h"
 #include "Bill.h"
 #include "TestObject.h"
@@ -24,8 +23,6 @@
 
 HWND hWnd;
 
-Map* gMap;
-std::vector<GameObject*> objects;
 LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message) {
@@ -46,14 +43,16 @@ void LoadResources()
 	textures->Add(-100, L"Textures\\Bound.png");
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
-	gMap = new Map(1,true);
+	textures->Add(1, L"Textures\\Soldier.png");
+	//gMap = new Map(1,true);
 }
 
 
 
 void Update(DWORD dt)
 {
-	gMap->Update(dt);
+	SceneManager::GetInstance()->GetCurrentScene()->Update(dt);
+	//gMap->Update(dt);
 	//bill->Update(dt);
 	//bill->Update(dt);
 	//soldier->Update(dt);
@@ -93,7 +92,8 @@ void Render()
 	}*/
 	//bg->Draw(3326, 240);
 	//SceneManager::GetInstance()->Render();
-	gMap->Render();
+	//gMap->Render();
+	SceneManager::GetInstance()->GetCurrentScene()->Render();
 	//bill->Render();
 	spriteHandler->Flush();
 	spriteHandler->End();

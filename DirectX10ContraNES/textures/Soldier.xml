@@ -22,6 +22,13 @@
 	<Animation name="RightJumping" duration="200" totalFrame="1" loop="false">
 		<Frame x="104" y="37" w="16" h="28"></Frame>
 	</Animation>
+ <Animation name="LeftFalling" duration="200" totalFrame="1" loop="false">
+		<Frame x="108" y="4" w="16" h="28"></Frame>
+	</Animation>
+	<Animation name="RightFalling" duration="200" totalFrame="1" loop="false">
+		<Frame x="104" y="37" w="16" h="28"></Frame>
+	</Animation>
+
 	<Animation name="LeftShooting" duration="200" totalFrame="1" loop="false">
 		<Frame x="126" y="0" w="24" h="32"></Frame>
 	</Animation>
