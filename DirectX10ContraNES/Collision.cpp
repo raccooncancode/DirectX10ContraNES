@@ -28,10 +28,11 @@ void Collision::SweptAABB(
 	// Broad-phase test 
 	//
 
+
 	float x = dx > 0 ? object->x : object->x + dx;
 	float y = dy > 0 ? object->y : object->y + dy;
-	float w = object->w + abs(dx);
-	float h = object->h + abs(dy);
+	float w = object->w + fabs(dx);
+	float h = object->h + fabs(dy);
 
 	Bound bb = new RectF(x, y, w, h);
 	if (!bb->IsOverlap(dest->GetBound())) {
@@ -231,6 +232,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			if (colY->t < colX->t)	// was collision on Y first ?
 			{
 				y += colY->t * dy + colY->ny * 0.4;
+				//y += 0;
 				src->SetPosition(x, y);
 				src->OnCollisionWith(colY,dt);
 
@@ -309,13 +311,13 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			if (colX != NULL)
 			{
 				std::string bullet = "Bullet";
-				if (colX->src->GetType().find(bullet) != std::string::npos) {
+				if (colX->src->GetType().find(bullet) != std::string::npos && colX->dest->GetName()=="Platform") {
 					x += vx * dt;
 				}
 				else {
-					std::string bullet = "Bullet";
 					if ((colX->dest->GetType()=="PlayerBullet" && src->GetType() == "Player") || (colX->dest->GetType()=="Player" && src->GetType()=="PlayerBullet")) {
 						x += vx * dt;
+						
 					}
 					else {
 						x += colX->t * dx * colX->nx*0.4f;
@@ -340,6 +342,10 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 						}
 					}
 					if (colY->ny > 0) {
+						std::string bullet = "Bullet";
+						if (src->GetType().find(bullet) != std::string::npos && colY->dest->GetName() == "Platform") {
+							DebugOut(L"\nHere");
+						}
 						y += colY->t * dy + colY->ny * 0.04f;
 					}
 					src->OnCollisionWith(colY,dt);

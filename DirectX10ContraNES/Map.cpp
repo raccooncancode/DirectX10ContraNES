@@ -134,7 +134,7 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						//AddMovingObject(s);
+						AddMovingObject(s);
 
 					}
 					if (objectName == "Sniper") {
@@ -161,12 +161,15 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 			}
 		}
 	}
-	
+	/*GameObject* s = new Sniper(2, "Sniper", "Enemy", 1, false);
+	s->LoadAssets();
+	s->GetBound()->UpdateBoundLocation(304, 66);
+	AddMovingObject(s);*/
 }
 
 void Map::AddMovingObject(GameObject* o) {
-	o->RetrieveBTree(this->btree);
 	this->btree->Insert(btree->root, o);
+	o->RetrieveBTree(this->btree);
 	this->movingObjects.push_back(o);
 	this->allObjects.push_back(o);
 }
@@ -191,21 +194,48 @@ void Map::Render() {
 void Map::Update(float dt) {
 	this->tile->Update(dt);
 	Camera::GetInstance()->Update(dt,this->mapStage);
-	for (GameObject* gO : allObjects) {
-		if (!this->mapBound->IsOverlap(gO->GetBound())) {
-			gO->isDeleted = true;
+	allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
+		return obj->GetType() == "EnemyBullet" && obj->isDeleted;
+		}), allObjects.end());
+	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
+		
+		if (!this->mapBound->IsOverlap((*i)->GetBound())) {
+			(*i)->isDeleted = true;
 		}
-		if (gO->isDeleted == false) {
-			btree->RemoveGameObjectForUpdate(btree->root, gO);
-			gO->Update(dt,&allObjects);
-			btree->Insert(btree->root, gO);
+		if ((*i)->isDeleted == false) {
+				btree->RemoveGameObjectForUpdate(btree->root, (*i));
+				(*i)->Update(dt, &allObjects);
+				btree->Insert(btree->root, (*i));
 		}
 		else {
-			if (dynamic_cast<Bill*>(gO)) {
-				gO->Update(dt, &allObjects);
+			if (dynamic_cast<Bill*>(*i)) {
+				(*i)->Update(dt, &allObjects);
 			}
+			//btree->RemoveGameObjectForUpdate(btree->root, (*i));
 		}
 	}
+	//for (GameObject* gO : allObjects) {
+	//	if (gO->GetType() == "EnemyBullet" && gO->isDeleted) {
+
+	//	}
+	//	if (!this->mapBound->IsOverlap(gO->GetBound())) {
+	//		gO->isDeleted = true;
+	//		btree->RemoveGameObjectForUpdate(btree->root, gO);
+	//	}
+	//	/*if (gO->GetType() == "SniperBullet") {
+	//		DebugOut(L"\nAdded sniper bullet");
+	//	}*/
+	//	if (gO->isDeleted == false) {
+	//		btree->RemoveGameObjectForUpdate(btree->root, gO);
+	//		gO->Update(dt,&allObjects);
+	//		btree->Insert(btree->root, gO);
+	//	}
+	//	else {
+	//		if (dynamic_cast<Bill*>(gO)) {
+	//			gO->Update(dt, &allObjects);
+	//		}
+	//	}
+	//}
 	/*for (auto i = movingObjects.begin(); i != movingObjects.end(); ++i) {
 
 		if (!this->mapBound->IsOverlap((*i)->GetBound())) {

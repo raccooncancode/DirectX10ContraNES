@@ -13,39 +13,39 @@ void Sniper::SetState(std::string stateName, std::string animationName) {
 
 void Sniper::Update(float dt, vector<GameObject*>* objects) {
 	isOnGround = isHiding == false ? false : true;
-	currentSniperState->Update(dt);
 	this->objects.clear();
-	this->SetTarget(NULL);
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	this->collision->Proccess(this, &this->objects, dt);
-	/*for (GameObject* gO : this->objects) {
-		if (gO->GetType() == "Player") {
-			SetTarget(gO);
+	if (this->target == NULL)
+	{
+		for (GameObject* gO : this->objects) {
+			if (gO->GetType() == "Player") {
+				DebugOut(L"\n Found Player");
+				this->isInShootRange = true;
+				SetTarget(gO);
+			}
 		}
-	}*/
-	//if (this->target != NULL) {
-	//	DebugOut(L"\nBill Found ,x : %f, y : %f , bill X: %f",this->objectBound->x,this->objectBound->y,this->target->GetBound()->x);
-	//}
+	}
+	currentSniperState->Update(dt);
 	this->sniperAnimation->Update(dt, this, this->isDead);
 }
 void Sniper::Render() {
 	sniperAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void Sniper::CreateBullet(float x, float y) {
 	float bX, bY;
-
-	float speed = 0.1;
+	float speed = 0.05;
 	bX = x;
 	bY = y;
 	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
-	currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "SniperBullet", bX, bY, speed, this->angle));
+	currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "EnemyBullet", bX, bY, speed, this->angle));
 }
 
 void Sniper::OnNoCollision(float dt) {
-	if (!isOnGround && !isJumping && !isHiding) {
+	if (!isOnGround && !isJumping && !isHiding && !isShooting) {
 		SetState("Shooting0", Helper::aXToString(ax) + "Shooting0");
 	}
 	if (!isOnGround && !isJumping && isHiding) {
@@ -55,6 +55,9 @@ void Sniper::OnNoCollision(float dt) {
 	this->objectBound->y += vy * dt * ny;
 }
 void Sniper::OnCollisionWith(CollisionEvent* e, float dt) {
+	if (dynamic_cast<Bullet*>(e->dest)) {
+		OnCollisionWithBullet(e, dt);
+	}
 	if (e->ny != 0) {
 		if (e->ny > 0) {
 			if (dynamic_cast<Platform*>(e->dest)) {
@@ -64,16 +67,6 @@ void Sniper::OnCollisionWith(CollisionEvent* e, float dt) {
 		}
 	}
 	if (e->nx != 0) {
-		/*string s = e->dest->GetName();
-		wstring temp = wstring(s.begin(), s.end());
-		LPCWSTR wideString = temp.c_str();
-		DebugOut(L"\n");
-		DebugOut(wideString);
-		DebugOut(L"\nHere NX Sniper");*/
-		//this->nx = 0;
-	}
-	if (dynamic_cast<Bullet*>(e->dest)) {
-		OnCollisionWithBullet(e, dt);
 	}
 }
 void Sniper::OnCollisionWithPlayer(CollisionEvent* e, float dt) {

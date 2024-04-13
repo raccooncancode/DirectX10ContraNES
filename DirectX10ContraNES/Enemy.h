@@ -24,6 +24,7 @@ public:
 		}
 	}
 	virtual void SetTarget(GameObject* o) { this->target = o; }
+	virtual GameObject* GetTarget() { return this->target; }
 	virtual void SetState(std::string stateName, std::string animationName) {
 	}
 	virtual int GetAx() { return -1; }

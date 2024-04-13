@@ -17,13 +17,14 @@ public:
 	bool isJumping;
 	bool isSwimming;
 	bool isHiding;
+	bool isShooting;
 private:
 	SniperState* currentSniperState;
 	std::unordered_map<string, SniperState*>stateDict;
 	SniperAnimation* sniperAnimation;
 public:
 	Sniper(int id, string name, string type, int hp,bool isHiding=false) : Enemy(id, name, type, hp) {
-		this->nx = -1;
+		this->nx = 0;
 		this->ny = isHiding == false ? -1 : 0;
 		this->ax = -1;
 		this->isJumping = false;
