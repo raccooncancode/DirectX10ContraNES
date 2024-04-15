@@ -129,6 +129,11 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				objectType = xmlObject->Attribute("type");
 				worldX = x;
 				worldY = ((this->mapRows) * this->tileSize) - (y + h);
+				string s =objectName;
+				wstring temp = wstring(s.begin(), s.end());
+				LPCWSTR wideString = temp.c_str();
+				DebugOut(L"\n");
+				DebugOut(wideString);
 				if (objectType == "enemy") {
 					if (objectName == "Soldier") {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
@@ -139,6 +144,12 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 					}
 					if (objectName == "Sniper") {
 						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName == "GunRotating") {
+						GameObject* s = new RotatingGun(3,"GunRotating","Enemy",4);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
@@ -154,17 +165,11 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				{
 
 				}
-
-				//this->objectsInCurrentMap[id] = new Platform(id, objectName,objectType);
-				//this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundLocation(worldX, worldY);
-				//this->objectsInCurrentMap[id]->GetObjectBound()->UpdateBoundSize(w, h);
+				
 			}
 		}
 	}
-	/*GameObject* s = new Sniper(2, "Sniper", "Enemy", 1, false);
-	s->LoadAssets();
-	s->GetBound()->UpdateBoundLocation(304, 66);
-	AddMovingObject(s);*/
+
 }
 
 void Map::AddMovingObject(GameObject* o) {
@@ -194,24 +199,27 @@ void Map::Render() {
 void Map::Update(float dt) {
 	this->tile->Update(dt);
 	Camera::GetInstance()->Update(dt,this->mapStage);
-	allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
-		return obj->GetType() == "EnemyBullet" && obj->isDeleted;
-		}), allObjects.end());
+	if (!allObjects.empty())
+	{
+		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
+			return obj->GetType() == "EnemyBullet" && obj->isDeleted;
+			}), allObjects.end());
+	}
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
 		
-		if (!this->mapBound->IsOverlap((*i)->GetBound())) {
+		if (!this->mapBound->IsOverlap((*i)->GetBound()) && (*i)->isDeleted==false && (*i)!=NULL) {
 			(*i)->isDeleted = true;
 		}
-		if ((*i)->isDeleted == false) {
+
+		if ((*i)->isDeleted == false && (*i) != NULL) {
 				btree->RemoveGameObjectForUpdate(btree->root, (*i));
 				(*i)->Update(dt, &allObjects);
 				btree->Insert(btree->root, (*i));
 		}
-		else {
+		else if((*i) != NULL && (*i)->isDeleted) {
 			if (dynamic_cast<Bill*>(*i)) {
 				(*i)->Update(dt, &allObjects);
 			}
-			//btree->RemoveGameObjectForUpdate(btree->root, (*i));
 		}
 	}
 	//for (GameObject* gO : allObjects) {

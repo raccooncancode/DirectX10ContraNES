@@ -44,7 +44,7 @@ public:
 			DebugOut(L"\n");
 			DebugOut(wideString);
 			enemy->DecreaseHP(1);
-			//this->isDeleted = true;
+			this->isDeleted = true;
 		}
 		else if (e->src->GetType() == "EnemyBullet") {
 			this->isDeleted = true;

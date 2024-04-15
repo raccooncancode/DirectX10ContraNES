@@ -12,6 +12,7 @@
 #include "BTree.h"
 #include "Soldier.h"
 #include "Sniper.h"
+#include "RotatingGun.h"
 #include "Scene.h"
 class Map :public Scene{
 public:

@@ -24,13 +24,14 @@ private:
 	SoldierAnimation* soldierAnimation;
 public:
 	Soldier(int id, string name, string type, int hp) :Enemy(id, name, type, hp) {
-		this->nx = -1;
+		this->nx = 0;
 		this->ny = -1;
 		this->ax = -1;
 		this->isJumping = false;
 		this->isSwimming = false;
 		this->isOnGround = false;
-		this->SetSpeed(0.01, 0.1);
+		this->isInShootRange = true;
+		this->SetSpeed(0.05, 0.1);
 		soldierAnimation = new SoldierAnimation(this);
 		currentSoldierState = new SoldierState(this);
 		stateDict["Running"] = new SoldierRunning(this);

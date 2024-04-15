@@ -6,7 +6,7 @@
 	<Animation name="GunLeft180" duration="200" totalFrame="1" loop="false">
 		<Frame x="41" y="3" w="32" h="32"></Frame>
 	</Animation>
-	<Animation name="GunLeft135" duration="200" totalFrame="1" loop="false">
+	<Animation name="GunNo" duration="200" totalFrame="1" loop="false">
 		<Frame x="79" y="3" w="32" h="32"></Frame>
 	</Animation>
 </Animations>

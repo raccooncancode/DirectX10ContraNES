@@ -119,7 +119,7 @@ void Bill::Render()
 void Bill::CreateBullet(float x,float y) {
 	float bX, bY;
 	
-	float speed = this->bulletType != 3 ? 0.1 : 0.15;
+	float speed = this->bulletType != 3 ? 0.15 : 0.2;
 	float angleSupport1 = this->angle - D3DX_PI / 6;
 	float angleSupport2 = this->angle - D3DX_PI / 4;
 	float angleSupport3 = this->angle + D3DX_PI / 4;

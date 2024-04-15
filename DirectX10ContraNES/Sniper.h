@@ -24,14 +24,14 @@ private:
 	SniperAnimation* sniperAnimation;
 public:
 	Sniper(int id, string name, string type, int hp,bool isHiding=false) : Enemy(id, name, type, hp) {
-		this->nx = 0;
+		this->nx = -1;
 		this->ny = isHiding == false ? -1 : 0;
 		this->ax = -1;
 		this->isJumping = false;
 		this->isSwimming = false;
 		this->isOnGround = false;
 		this->isHiding = isHiding;
-		this->SetSpeed(0.0, 0.1);
+		this->SetSpeed(0.1, 0.1);
 		this->sniperAnimation = new SniperAnimation(this);
 		this->currentSniperState = new SniperState(this);
 		stateDict["Shooting0"] = new SniperShooting0(this);

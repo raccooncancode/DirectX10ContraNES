@@ -2,10 +2,10 @@
 #include "SoldierState.h"
 
 void SoldierDead::Enter() {
-	this->soldier->isCollidable = 0;
 	this->soldier->isOnGround = false;
 	this->soldier->isJumping = true;
 	this->soldier->SetNy(1);
+	this->soldier->SetSpeed(0, 0.1);
 	this->soldier->SetNx(0);
 	this->maxYCanReach = this->soldier->GetBound()->y + 20;
 }

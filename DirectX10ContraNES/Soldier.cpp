@@ -11,12 +11,26 @@ void Soldier::SetState(std::string stateName, std::string animationName) {
 }
 void Soldier::Update(float dt, vector<GameObject*>* objects){
 	isOnGround = false;
-	currentSoldierState->Update(dt);
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
-	this->soldierAnimation->Update(dt, this, this->isDead);
 	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	this->collision->Proccess(this, &this->objects, dt);
+	if (this->target == NULL)
+	{
+		for (GameObject* gO : this->objects) {
+			if (gO->GetType() == "Player") {
+				//DebugOut(L"\nSoldier Found Player");
+				SetTarget(gO);
+				this->nx = gO->GetBound()->x < this->objectBound->x ? -1 : 1;
+				this->ax = this->nx;
+				SetState("Running", Helper::aXToString(ax) + "Running");
+				this->isInShootRange = false;
+				//this->isInShootRange = true;
+			}
+		}
+	}
+	currentSoldierState->Update(dt);
+	this->soldierAnimation->Update(dt, this, this->isDead);
 }
 void Soldier::Render(){
 	soldierAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
@@ -26,7 +40,6 @@ void Soldier::OnNoCollision(float dt) {
 	if (!isOnGround && !isJumping && !isSwimming) {
 		SetState("Falling", Helper::aXToString(ax) + "Falling");
 	}
-	this->objectBound->x += vx * dt * nx;
 	this->objectBound->y += vy * dt * ny;
 }
 void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
@@ -43,7 +56,11 @@ void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
 				{
 
 					isOnGround = true;
-					SetState("Running", Helper::aXToString(ax) + "Running");
+					if(isInShootRange == true)
+						SetState("Shooting", Helper::aXToString(ax) + "Shooting");
+					else
+						SetState("Running", Helper::aXToString(ax) + "Running");
+
 				}
 				else
 				{
@@ -61,7 +78,6 @@ void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Soldier::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		//DebugOut(L"\nSOldier touch player bullet");
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

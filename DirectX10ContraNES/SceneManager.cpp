@@ -3,7 +3,7 @@
 SceneManager::SceneManager() {
 	bill = new Bill(0, "Bill", "Player");
 	bill->LoadAssets();
-	bill->GetBound()->UpdateBoundLocation(70, 250);
+	bill->GetBound()->UpdateBoundLocation(70, 240);
 	Camera::GetInstance()->SetFollowTarget(bill);
 	this->scenes["intro"] = new IntroScene();
 

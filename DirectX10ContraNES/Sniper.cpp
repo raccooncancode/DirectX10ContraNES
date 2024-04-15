@@ -37,7 +37,7 @@ void Sniper::Render() {
 
 void Sniper::CreateBullet(float x, float y) {
 	float bX, bY;
-	float speed = 0.05;
+	float speed = 0.1;
 	bX = x;
 	bY = y;
 	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
@@ -51,8 +51,13 @@ void Sniper::OnNoCollision(float dt) {
 	if (!isOnGround && !isJumping && isHiding) {
 		SetState("HidingShooting0", Helper::aXToString(ax) + "HidingShooting0");
 	}
-	////this->objectBound->x += vx * dt * nx;
-	this->objectBound->y += vy * dt * ny;
+	if (this->isHiding) {
+		if (this->ny > 0) {
+			this->objectBound->y += vy * dt * ny;
+		}
+	}
+	else
+		this->objectBound->y += vy * dt * ny;
 }
 void Sniper::OnCollisionWith(CollisionEvent* e, float dt) {
 	if (dynamic_cast<Bullet*>(e->dest)) {
@@ -67,6 +72,11 @@ void Sniper::OnCollisionWith(CollisionEvent* e, float dt) {
 		}
 	}
 	if (e->nx != 0) {
+		/*string s = e->dest->GetName();
+		wstring temp = wstring(s.begin(), s.end());
+		LPCWSTR wideString = temp.c_str();
+		DebugOut(L"\n e nx dest: ");
+		DebugOut(wideString);*/
 	}
 }
 void Sniper::OnCollisionWithPlayer(CollisionEvent* e, float dt) {

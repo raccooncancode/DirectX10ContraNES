@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="Dead" duration="200" totalFrame="2" loop="true">
+        <Frame x="3" y="3" w="24" h="24"></Frame>
+        <Frame x="33" y="3" w="28" h="28"></Frame>
+    </Animation>
+</Animations>

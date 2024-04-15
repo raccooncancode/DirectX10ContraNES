@@ -2,12 +2,12 @@
 #include "SniperState.h"
 
 void SniperDead::Enter() {
-	DebugOut(L"\nSniper Dead");
+	DebugOut(L"\nHere Sniper Dead");
 	this->sniper->isOnGround = false;
 	this->sniper->isJumping = true;
 	this->sniper->SetNy(1);
-	this->sniper->SetSpeed(0, 0.1);
-;	this->sniper->SetNx(0);
+	this->sniper->SetSpeed(0.1, 0.1);
+;	this->sniper->SetNx(-1);
 	this->maxYCanReach = this->sniper->GetBound()->y + 20;
 }
 void SniperDead::Exit() {

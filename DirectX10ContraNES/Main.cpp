@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "SceneManager.h"
+#include "AnimationAddOnManager.h"
 //#include "Soldier.h"
 #include "Bill.h"
 #include "TestObject.h"
@@ -39,12 +40,22 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 void LoadResources()
 {
 	TextureManager* textures = TextureManager::GetInstance();
-	textures->Add(0, L"Textures\\Bill.png");
+	AnimationAddOnManager* aniAddOn = AnimationAddOnManager::GetInstance();
+
 	textures->Add(-100, L"Textures\\Bound.png");
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
+
+	textures->Add(-200, L"Textures\\Explosion0.png");
+	textures->Add(-199, L"Textures\\Explosion1.png"); //for bridge
+	
+	textures->Add(0, L"Textures\\Bill.png");
 	textures->Add(1, L"Textures\\Soldier.png");
 	textures->Add(2, L"Textures\\Sniper.png");
+	textures->Add(3, L"Textures\\RotatingGun.png");
+
+	aniAddOn->AddAnimation("Explosion0", "Textures\\Explosion0.xml", -200);
+	aniAddOn->AddAnimation("Explosion1", "Textures\\Explosion1.xml", -199);
 	//gMap = new Map(1,true);
 }
 

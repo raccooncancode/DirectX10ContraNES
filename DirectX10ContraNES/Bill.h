@@ -27,8 +27,6 @@ public:
 	int bulletType;
 	Map* map;
 private:
-	float respawnX=70;
-	float respawnY = 130;
 	unordered_map<string, BillState*> stateDict;
 	BillState* currentBillState;
 	BillAnimation* billAnimation;
@@ -41,7 +39,7 @@ public:
 		respawnTimes = 2;
 		this->ax = 1;
 		this->bulletType = 1;
-		SetSpeed(0.07, 0.1);
+		SetSpeed(0.1, 0.1);
 		billAnimation = new BillAnimation(this);
 		currentBillState = new BillState(this);
 		stateDict["Dead"] = new BillDead(this);

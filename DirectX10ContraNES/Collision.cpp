@@ -151,7 +151,6 @@ CollisionEvent* Collision::SweptAABB(GameObject* src, GameObject* dest,float dt)
 		src,
 		dest
 	);
-
 	CollisionEvent* e = new CollisionEvent(t, nx, ny, dx, dy, src, dest);
 	return e;
 }
@@ -202,15 +201,49 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 	vector<CollisionEvent*> coEvents;
 	CollisionEvent* colX=NULL;
 	CollisionEvent* colY=NULL;
-
+	bool isAllowCollision;
 	for (int i = 0; i < objects->size(); i++) {
+		isAllowCollision = true;
 		if (!objects->at(i)->isDeleted) {
-			CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
-			if (e->IsCollided()) {
-				coEvents.push_back(e);
+			if (src->GetType() == "Enemy") {
+				if (objects->at(i)->GetType() == "Enemy") {
+					isAllowCollision = false;
+				}
 			}
-			else
-				delete e;
+			if (src->GetType() == "EnemyBullet") {
+				if (objects->at(i)->GetType() == "Enemy") {
+					isAllowCollision = false;
+				}
+			}
+			if (src->GetType() == "Player") {
+				if (objects->at(i)->GetType() == "PlayerBullet") {
+					isAllowCollision = false;
+				}
+			}
+			if (src->GetType() == "PlayerBullet") {
+				if (objects->at(i)->GetType() == "Player") {
+					isAllowCollision = false;
+				}
+			}
+			//if two bullet collide , just skip
+			if (src->GetType().find("Bullet") != std::string::npos) {
+				if (objects->at(i)->GetType().find("Bullet") != std::string::npos) {
+					isAllowCollision = false;
+				}
+			}
+			if (src->GetType().find("Bullet") != std::string::npos) {
+				if (objects->at(i)->GetName()=="Platform") {
+					isAllowCollision = false;
+				}
+			}
+			if (isAllowCollision) {
+				CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
+				if (e->IsCollided()) {
+					coEvents.push_back(e);
+				}
+				else
+					delete e;
+			}
 		}
 	}
 	if (coEvents.size() == 0) {
@@ -223,6 +256,13 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 		float x, y, vx, vy, dx, dy;
 		src->GetPosition(x, y);
 		src->GetSpeed(vx, vy);
+		if (src->GetName() == "Sniper" || src->GetName()=="SniperH") {
+			vx = 0;
+		}
+		if (src->GetName() == "GunRotating") {
+			vy = 0;
+			vx = 0;
+		}
 		dx = vx * dt;
 		dy = vy * dt;
 			
@@ -231,7 +271,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 			if (colY->t < colX->t)	// was collision on Y first ?
 			{
-				y += colY->t * dy + colY->ny * 0.4;
+				y += colY->t * dy;
 				//y += 0;
 				src->SetPosition(x, y);
 				src->OnCollisionWith(colY,dt);
@@ -264,7 +304,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 				if (colX_other != NULL)
 				{
-					x += colX_other->t * dx + colX_other->nx * 0.4f;
+					x += colX_other->t * dx;
 					src->OnCollisionWith(colX_other,dt);
 				}
 				else
@@ -274,7 +314,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			}
 			else // collision on X first
 			{
-				x += colX->t * dx + colX->nx * 0.4f;
+				x += colX->t * dx;
 				src->SetPosition(x, y);
 
 				src->OnCollisionWith(colX,dt);
@@ -297,7 +337,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 
 				if (colY_other != NULL)
 				{
-					y += colY_other->t * dy + colY_other->ny * 0.4f;
+					y += colY_other->t * dy;
 					src->OnCollisionWith(colY_other,dt);
 				}
 				else
@@ -315,13 +355,13 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 					x += vx * dt;
 				}
 				else {
-					if ((colX->dest->GetType()=="PlayerBullet" && src->GetType() == "Player") || (colX->dest->GetType()=="Player" && src->GetType()=="PlayerBullet")) {
+					/*if ((colX->dest->GetType()=="PlayerBullet" && src->GetType() == "Player") || (colX->dest->GetType()=="Player" && src->GetType()=="PlayerBullet")) {
 						x += vx * dt;
 						
 					}
-					else {
-						x += colX->t * dx * colX->nx*0.4f;
-					}
+					else {*/
+						x += colX->t * dx;
+					//}
 
 				}
 				y += dy;
@@ -344,9 +384,8 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 					if (colY->ny > 0) {
 						std::string bullet = "Bullet";
 						if (src->GetType().find(bullet) != std::string::npos && colY->dest->GetName() == "Platform") {
-							DebugOut(L"\nHere");
 						}
-						y += colY->t * dy + colY->ny * 0.04f;
+						y += colY->t * dy ;
 					}
 					src->OnCollisionWith(colY,dt);
 				}

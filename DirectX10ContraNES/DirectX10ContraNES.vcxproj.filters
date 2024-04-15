@@ -76,6 +76,9 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\Sniper">
       <UniqueIdentifier>{eca438f6-6007-42a2-b393-e85d61d809fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\RotatingGun">
+      <UniqueIdentifier>{8f890581-5fee-46b8-b3a3-a8556f9f71e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -191,6 +194,18 @@
     </ClCompile>
     <ClCompile Include="SniperDead.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingGun.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingGunAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingGunState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationAddOnManager.cpp">
+      <Filter>FrameWork Files\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +325,18 @@
     </ClInclude>
     <ClInclude Include="SniperState.h">
       <Filter>FrameWork Files\GameObject\Enemy\Sniper</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingGun.h">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingGunAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingGunState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\RotatingGun</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationAddOnManager.h">
+      <Filter>FrameWork Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="Dead" duration="80" totalFrame="15" loop="true">
+        <Frame x="3" y="3" w="62" h="46"></Frame>
+        <Frame x="71" y="3" w="62" h="46"></Frame>
+        <Frame x="139" y="3" w="62" h="46"></Frame>
+        <Frame x="207" y="3" w="62" h="46"></Frame>
+        <Frame x="275" y="3" w="62" h="46"></Frame>
+        <Frame x="343" y="3" w="62" h="46"></Frame>
+        <Frame x="411" y="3" w="62" h="46"></Frame>
+        <Frame x="479" y="3" w="62" h="46"></Frame>
+        <Frame x="547" y="3" w="62" h="46"></Frame>
+        <Frame x="615" y="3" w="62" h="46"></Frame>
+        <Frame x="683" y="3" w="62" h="46"></Frame>
+        <Frame x="751" y="3" w="62" h="46"></Frame>
+        <Frame x="819" y="3" w="62" h="46"></Frame>
+        <Frame x="887" y="3" w="62" h="46"></Frame>
+        <Frame x="955" y="3" w="62" h="46"></Frame>
+    </Animation>
+</Animations>

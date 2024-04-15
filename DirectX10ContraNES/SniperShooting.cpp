@@ -17,7 +17,7 @@ void SniperShooting0::Update(float dt) {
 			this->sniper->SetState("Shooting315", Helper::aXToString(this->sniper->ax) + "Shooting315");
 		}
 	}
-	if (this->holdTime < 2000) {
+	if (this->holdTime<1000) {
 		holdTime += dt;
 	}
 	else
@@ -25,7 +25,7 @@ void SniperShooting0::Update(float dt) {
 		this->sniper->SetAngle(D3DX_PI);
 		float bx, by;
 		Bound b = this->sniper->GetBound();
-		bx = b->x - 10;
+		bx = b->x - 3;
 		by = b->y + b->h/2 + 3;
 		if(this->sniper->isInShootRange)
 			this->sniper->CreateBullet(bx, by);
@@ -50,7 +50,7 @@ void SniperShooting45::Exit() {
 	this->sniper->isShooting = false;
 }
 void SniperShooting45::Update(float dt) {
-	if (this->holdTime < 2000) {
+	if (this->holdTime<1000) {
 		holdTime += dt;
 	}
 	else
@@ -58,8 +58,8 @@ void SniperShooting45::Update(float dt) {
 		this->sniper->SetAngle(D3DX_PI-D3DX_PI/4);
 		float bx, by;
 		Bound b = this->sniper->GetBound();
-		bx = b->x - 10;
-		by = b->y + b->h + 10;
+		bx = b->x - 3;
+		by = b->y + b->h + 3;
 		if (this->sniper->isInShootRange)
 			this->sniper->CreateBullet(bx, by);
 		this->holdTime = 0;
@@ -93,7 +93,7 @@ void SniperShooting315::Update(float dt) {
 			this->sniper->SetState("Shooting0", Helper::aXToString(this->sniper->ax) + "Shooting0");
 		}
 	}*/
-	if (this->holdTime < 2000) {
+	if (this->holdTime<1000) {
 		holdTime += dt;
 	}
 	else
@@ -101,8 +101,8 @@ void SniperShooting315::Update(float dt) {
 		this->sniper->SetAngle(D3DX_PI + D3DX_PI / 4);
 		float bx, by;
 		Bound b = this->sniper->GetBound();
-		bx = b->x - 10;
-		by = b->y - 10;
+		bx = b->x - 3;
+		by = b->y - 3;
 		if (this->sniper->isInShootRange) {
 			this->sniper->CreateBullet(bx, by);
 		}
@@ -127,7 +127,7 @@ void SniperHidingShooting0::Exit() {
 
 }
 void SniperHidingShooting0::Update(float dt) {
-	if (this->holdTime < 2000) {
+	if (this->holdTime<1000) {
 		holdTime += dt;
 	}
 	else
@@ -137,8 +137,12 @@ void SniperHidingShooting0::Update(float dt) {
 		Bound b = this->sniper->GetBound();
 		bx = b->x - 10;
 		by = b->y + b->h / 2 + 3;
-		if (this->sniper->isInShootRange)
-			this->sniper->CreateBullet(bx, by);
+		if (this->sniper->GetTarget() != NULL) {
+
+			auto targetBound = this->sniper->GetTarget()->GetBound();
+			if (this->sniper->isInShootRange && targetBound->y + targetBound->h >= by)
+				this->sniper->CreateBullet(bx, by);
+		}
 		this->holdTime = 0;
 	}
 }

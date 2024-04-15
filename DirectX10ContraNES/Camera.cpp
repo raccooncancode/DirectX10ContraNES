@@ -26,7 +26,7 @@ void Camera::Update(float dt, float stage) {
 		float cy = this->target->GetBound()->y;
 
 
-		cx -= this->GetCameraBound()->w / 2;
+		cx -= this->GetCameraBound()->w / 2 - 30;
 		cy -= this->GetCameraBound()->h / 2 ;
 
 		if (cx < 0) cx = 0;

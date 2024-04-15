@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationAddOnManager.cpp" />
     <ClCompile Include="Bill.cpp" />
     <ClCompile Include="BillAnimation.cpp" />
     <ClCompile Include="BillDead.cpp" />
@@ -156,6 +157,9 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="RectF.cpp" />
+    <ClCompile Include="RotatingGun.cpp" />
+    <ClCompile Include="RotatingGunAnimation.cpp" />
+    <ClCompile Include="RotatingGunState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -178,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationAddOnManager.h" />
     <ClInclude Include="Bill.h" />
     <ClInclude Include="BillAnimation.h" />
     <ClInclude Include="BillState.h" />
@@ -192,6 +197,9 @@
     <ClInclude Include="GameAnimation.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="RotatingGun.h" />
+    <ClInclude Include="RotatingGunAnimation.h" />
+    <ClInclude Include="RotatingGunState.h" />
     <ClInclude Include="Sniper.h" />
     <ClInclude Include="SniperAnimation.h" />
     <ClInclude Include="SniperState.h" />
