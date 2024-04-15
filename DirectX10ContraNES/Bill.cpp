@@ -104,8 +104,11 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 		SetState("Dead", Helper::aXToString(ax) + "Dead");
 	}
 	if (dynamic_cast<Bullet*>(e->dest)) {
-		if(e->dest->GetType()=="EnemyBullet")
+		if (e->dest->GetType() == "EnemyBullet")
+		{
+			e->dest->isDeleted = true;
 			SetState("Dead", Helper::aXToString(ax) + "Dead");
+		}
 	}
 }
 

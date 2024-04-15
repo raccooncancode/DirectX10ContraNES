@@ -259,7 +259,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 		if (src->GetName() == "Sniper" || src->GetName()=="SniperH") {
 			vx = 0;
 		}
-		if (src->GetName() == "GunRotating") {
+		if (src->GetName() == "GunRotating" || src->GetName() == "Cannon") {
 			vy = 0;
 			vx = 0;
 		}

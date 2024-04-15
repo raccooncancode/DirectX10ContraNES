@@ -79,6 +79,9 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\RotatingGun">
       <UniqueIdentifier>{8f890581-5fee-46b8-b3a3-a8556f9f71e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Cannon">
+      <UniqueIdentifier>{a0630aa3-48cf-4fbb-a089-08aa6cbd67dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -206,6 +209,15 @@
     </ClCompile>
     <ClCompile Include="AnimationAddOnManager.cpp">
       <Filter>FrameWork Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Cannon.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="CannonState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +349,15 @@
     </ClInclude>
     <ClInclude Include="AnimationAddOnManager.h">
       <Filter>FrameWork Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="CannonState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

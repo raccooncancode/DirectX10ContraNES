@@ -1,18 +1,18 @@
-#include "RotatingGun.h"
+#include "Cannon.h"
 #include "Bullet.h"
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
-void RotatingGun::SetState(std::string stateName, std::string animationName) {
-	if (this->rotatingGunAnimation->GetAnimation() != animationName)
+void Cannon::SetState(std::string stateName, std::string animationName) {
+	if (this->cannonAnimation->GetAnimation() != animationName && this->currentCannonState->GetStateName()!=stateName)
 	{
-		this->currentRotatingGunState->Exit();
-		this->currentRotatingGunState = stateDict[stateName];
-		this->currentRotatingGunState->Enter();
-		this->rotatingGunAnimation->SetAnimation(animationName);
+		this->currentCannonState->Exit();
+		this->currentCannonState = stateDict[stateName];
+		this->currentCannonState->Enter();
+		this->cannonAnimation->SetAnimation(animationName);
 	}
 }
 
-void RotatingGun::Update(float dt, vector<GameObject*>* objects) {
+void Cannon::Update(float dt, vector<GameObject*>* objects) {
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
@@ -22,7 +22,7 @@ void RotatingGun::Update(float dt, vector<GameObject*>* objects) {
 		for (GameObject* gO : this->objects) {
 			if (gO->GetType() == "Player") {
 				SetTarget(gO);
-				SetState("GunOpen", "GunOpen");
+				SetState("CannonShowing", "CannonShowing");
 			}
 		}
 	}
@@ -36,64 +36,18 @@ void RotatingGun::Update(float dt, vector<GameObject*>* objects) {
 		else
 			this->ny = 1;
 	}
-	currentRotatingGunState->Update(dt);
-	this->rotatingGunAnimation->Update(dt, this, this->isDead);
-	Rotate();
+	currentCannonState->Update(dt);
+	this->cannonAnimation->Update(dt, this, this->isDead);
 }
 
-void RotatingGun::Rotate() {
-	if (this->isOpened && this->isInShootRange && !this->isDead) {
-		if (this->target != NULL) {
-			Bound b = this->target->GetBound();
-			if (b->x < this->objectBound->x) {
-				if (b->y > this->objectBound->y + this->objectBound->h) {
-					//left up 45  = 135
-					SetState("GunRotate135", "GunRotate135");
-				}
-				else if (b->y > this->objectBound->y && b->y < this->objectBound->y + this->objectBound->h + 3) {
-					// left 180
-					SetState("GunRotate180", "GunRotate180");
-				}
-				else {
-					//left down 45
-					SetState("GunRotate225", "GunRotate225");
-				}
-			}
-			else if (b->x > this->objectBound->x  && b->x < this->objectBound->x + this->objectBound->w + 3) {
-				if (b->y > this->objectBound->y + this->objectBound->h) {
-					// up 90
-					SetState("GunRotate90", "GunRotate90");
-				}
-				else
-				{
-					//down 90
-					SetState("GunRotate270", "GunRotate270");
-				}
-			}
-			else {
-				if (b->y > this->objectBound->y + this->objectBound->h) {
-					// right up 45
-					SetState("GunRotate45", "GunRotate45");
-				}
-				else if (b->y > this->objectBound->y && b->y < this->objectBound->y + this->objectBound->h + 3) {
-					// right 0
-					SetState("GunRotate0", "GunRotate0");
-				}
-				else {
-					//right down 315
-					SetState("GunRotate315", "GunRotate315");
-				}
-			}
-		}
-	}
-}
 
-void RotatingGun::Render() {
-	rotatingGunAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
+
+void Cannon::Render() {
+	cannonAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
 	//RenderBoundingBox();
 }
 
-void RotatingGun::CreateBullet(float x, float y) {
+void Cannon::CreateBullet(float x, float y) {
 	float bX, bY;
 	float speed = 0.1;
 	bX = x;
@@ -102,7 +56,7 @@ void RotatingGun::CreateBullet(float x, float y) {
 	currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "EnemyBullet", bX, bY, speed, this->angle));
 }
 
-void RotatingGun::OnNoCollision(float dt) {
+void Cannon::OnNoCollision(float dt) {
 	/*if (!isOnGround && !isJumping && !isHiding && !isShooting) {
 		SetState("Shooting0", Helper::aXToString(ax) + "Shooting0");
 	}
@@ -112,7 +66,7 @@ void RotatingGun::OnNoCollision(float dt) {
 	////this->objectBound->x += vx * dt * nx;
 	//this->objectBound->y += vy * dt * ny;
 }
-void RotatingGun::OnCollisionWith(CollisionEvent* e, float dt) {
+void Cannon::OnCollisionWith(CollisionEvent* e, float dt) {
 	if (dynamic_cast<Bullet*>(e->dest)) {
 		OnCollisionWithBullet(e, dt);
 	}
@@ -132,20 +86,20 @@ void RotatingGun::OnCollisionWith(CollisionEvent* e, float dt) {
 	//	DebugOut(wideString);*/
 	//}
 }
-void RotatingGun::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
+void Cannon::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 }
-void RotatingGun::OnCollisionWithBullet(CollisionEvent* e, float dt) {
+void Cannon::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nRotatingGun touch player bullet");
+		DebugOut(L"\nCannon touch player bullet");
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}
 }
 
-void RotatingGun::LoadAssets() {
+void Cannon::LoadAssets() {
 	tinyxml2::XMLDocument xmlDoc;
-	tinyxml2::XMLError eResult = xmlDoc.LoadFile("Textures\\RotatingGun.xml");
+	tinyxml2::XMLError eResult = xmlDoc.LoadFile("Textures\\Cannon.xml");
 	if (eResult != tinyxml2::XML_SUCCESS) {
 		return;
 	}
@@ -177,11 +131,11 @@ void RotatingGun::LoadAssets() {
 			frame->QueryFloatAttribute("h", &h);
 			ani->AddFrame(new CSprite(x, y, w, h, tex));
 		}
-		this->rotatingGunAnimation->AddAnimation(name, ani);
+		this->cannonAnimation->AddAnimation(name, ani);
 	}
-	this->rotatingGunAnimation->AddAnimation("Dead", AnimationAddOnManager::GetInstance()->GetAnimation("Explosion0"));
+	this->cannonAnimation->AddAnimation("Dead", AnimationAddOnManager::GetInstance()->GetAnimation("Explosion0"));
 	ani = new CAnimation(0, 0, false);//temp
-	this->rotatingGunAnimation->Update(0, this, this->isDead);
+	this->cannonAnimation->Update(0, this, this->isDead);
 	//InitStateVariable();
 	delete ani;
 }

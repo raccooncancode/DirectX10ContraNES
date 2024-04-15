@@ -148,14 +148,20 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
 					}
+					if (objectName == "SniperH") {
+						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1,true);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
 					if (objectName == "GunRotating") {
 						GameObject* s = new RotatingGun(3,"GunRotating","Enemy",4);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
 					}
-					if (objectName == "SniperH") {
-						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1,true);
+					if (objectName == "Cannon") {
+						GameObject* s = new Cannon(4, "Cannon", "Enemy", 4);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
@@ -203,6 +209,9 @@ void Map::Update(float dt) {
 	{
 		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
 			return obj->GetType() == "EnemyBullet" && obj->isDeleted;
+			}), allObjects.end());
+		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
+			return obj->GetType() == "PlayerBullet" && obj->isDeleted;
 			}), allObjects.end());
 	}
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {

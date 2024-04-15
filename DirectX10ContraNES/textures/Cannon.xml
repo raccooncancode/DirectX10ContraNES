@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Animations>
-    <Animation name="GunOpen" duration="200" totalFrame="1" loop="false">
+    <Animation name="CannonShowing" duration="200" totalFrame="1" loop="false">
 		<Frame x="3" y="19" w="32" h="16"></Frame>
 	</Animation>
-	<Animation name="GunLeft180" duration="200" totalFrame="1" loop="false">
+	<Animation name="CannonShooting" duration="200" totalFrame="1" loop="false">
 		<Frame x="41" y="3" w="32" h="32"></Frame>
 	</Animation>
-	<Animation name="GunNo" duration="200" totalFrame="1" loop="false">
+	<Animation name="CannonHiding" duration="200" totalFrame="1" loop="false">
 		<Frame x="79" y="3" w="32" h="32"></Frame>
 	</Animation>
 </Animations>
