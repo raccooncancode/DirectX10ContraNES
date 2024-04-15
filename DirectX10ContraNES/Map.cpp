@@ -167,8 +167,18 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						AddMovingObject(s);
 					}
 				}
-				else
+				else if(objectType =="object")
 				{
+					if (objectName == "Bridge") {
+						Bridge* s = new Bridge(-1, "Bridge", "Bridge",worldX,worldY);
+						s->Init(worldX, worldY);
+						//DebugOut(L"\ny: %f, worldY: %f", s->bH->GetBound()->y, worldY);
+						AddMovingObject(s);
+						AddMovingObject(s->bH);
+						AddMovingObject(s->bB1);
+						AddMovingObject(s->bB2);
+						AddMovingObject(s->bB3);
+					}
 
 				}
 				

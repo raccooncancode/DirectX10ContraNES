@@ -147,6 +147,13 @@
     <ClCompile Include="BillRunningState.cpp" />
     <ClCompile Include="BillStandingState.cpp" />
     <ClCompile Include="BillSwimmingState.cpp" />
+    <ClCompile Include="Bridge.cpp" />
+    <ClCompile Include="BridgeBody.cpp" />
+    <ClCompile Include="BridgeBodyAnimation.cpp" />
+    <ClCompile Include="BridgeBodyState.cpp" />
+    <ClCompile Include="BridgeHead.cpp" />
+    <ClCompile Include="BridgeHeadAnimation.cpp" />
+    <ClCompile Include="BridgeHeadState.cpp" />
     <ClCompile Include="BTree.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cannon.cpp" />
@@ -189,6 +196,13 @@
     <ClInclude Include="Bill.h" />
     <ClInclude Include="BillAnimation.h" />
     <ClInclude Include="BillState.h" />
+    <ClInclude Include="Bridge.h" />
+    <ClInclude Include="BridgeBody.h" />
+    <ClInclude Include="BridgeBodyAnimation.h" />
+    <ClInclude Include="BridgeBodyState.h" />
+    <ClInclude Include="BridgeHead.h" />
+    <ClInclude Include="BridgeHeadAnimation.h" />
+    <ClInclude Include="BridgeHeadState.h" />
     <ClInclude Include="BTree.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Camera.h" />

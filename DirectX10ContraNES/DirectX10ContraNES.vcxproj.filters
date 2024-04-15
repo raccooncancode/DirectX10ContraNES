@@ -82,6 +82,18 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\Cannon">
       <UniqueIdentifier>{a0630aa3-48cf-4fbb-a089-08aa6cbd67dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Bridge">
+      <UniqueIdentifier>{45aa8a8d-2f62-419c-a981-459758aef80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Bridge\Head">
+      <UniqueIdentifier>{16e54ec3-a9d6-4a9d-9748-f42622aa10a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Bridge\Body">
+      <UniqueIdentifier>{0c545132-e193-4fe4-833a-102f88b7c0f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Bridge\Tail">
+      <UniqueIdentifier>{5452d02c-bd41-475a-9a24-07308566e578}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -218,6 +230,27 @@
     </ClCompile>
     <ClCompile Include="CannonState.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeHead.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeHeadAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeHeadState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeBody.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeBodyAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgeBodyState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +391,27 @@
     </ClInclude>
     <ClInclude Include="CannonState.h">
       <Filter>FrameWork Files\GameObject\Enemy\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeHead.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeHeadAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeHeadState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeBody.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeBodyAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeBodyState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Bridge\Body</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

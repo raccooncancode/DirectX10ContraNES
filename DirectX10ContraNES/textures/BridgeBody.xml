@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="BridgeBodyDefault" duration="200" totalFrame="1" loop="false">
+        <Frame x="0" y="0" w="32" h="32"></Frame>
+    </Animation>
+</Animations>
