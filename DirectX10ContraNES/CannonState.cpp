@@ -51,6 +51,20 @@ void CannonShooting::Enter() {
 void CannonShooting::Exit() {
 }
 void CannonShooting::Update(float dt) {
+	if (this->holdTime < 1000) {
+		holdTime += dt;
+	}
+	else
+	{
+		this->cannon->SetAngle(D3DX_PI);
+		float bx, by;
+		Bound b = this->cannon->GetBound();
+		bx = b->x - 3;
+		by = b->y +b->h/2 + 3;
+		if (this->cannon->isInShootRange)
+			this->cannon->CreateBullet(bx, by);
+		this->holdTime = 0;
+	}
 }
 void CannonShooting::OnKeyDown(int keyCode) {
 }

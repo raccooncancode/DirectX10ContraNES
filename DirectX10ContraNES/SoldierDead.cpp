@@ -7,6 +7,7 @@ void SoldierDead::Enter() {
 	this->soldier->SetNy(1);
 	this->soldier->SetSpeed(0, 0.1);
 	this->soldier->SetNx(0);
+	this->soldier->isDead = true;
 	this->maxYCanReach = this->soldier->GetBound()->y + 20;
 }
 void SoldierDead::Exit() {

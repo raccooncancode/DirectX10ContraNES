@@ -205,22 +205,14 @@ void Map::Render() {
 void Map::Update(float dt) {
 	this->tile->Update(dt);
 	Camera::GetInstance()->Update(dt,this->mapStage);
-	if (!allObjects.empty())
-	{
-		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
-			return obj->GetType() == "EnemyBullet" && obj->isDeleted;
-			}), allObjects.end());
-		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
-			return obj->GetType() == "PlayerBullet" && obj->isDeleted;
-			}), allObjects.end());
-	}
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
-		
+		if (*i == NULL) {
+			continue;
+		}
 		if (!this->mapBound->IsOverlap((*i)->GetBound()) && (*i)->isDeleted==false && (*i)!=NULL) {
 			(*i)->isDeleted = true;
 		}
-
-		if ((*i)->isDeleted == false && (*i) != NULL) {
+		if (!(*i)->isDeleted && (*i) != NULL) {
 				btree->RemoveGameObjectForUpdate(btree->root, (*i));
 				(*i)->Update(dt, &allObjects);
 				btree->Insert(btree->root, (*i));
@@ -230,6 +222,15 @@ void Map::Update(float dt) {
 				(*i)->Update(dt, &allObjects);
 			}
 		}
+	}
+	if (!allObjects.empty())
+	{
+		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
+			return obj->GetType() == "EnemyBullet" && obj->isDeleted;
+			}), allObjects.end());
+		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
+			return obj->GetType() == "PlayerBullet" && obj->isDeleted;
+			}), allObjects.end());
 	}
 	//for (GameObject* gO : allObjects) {
 	//	if (gO->GetType() == "EnemyBullet" && gO->isDeleted) {
