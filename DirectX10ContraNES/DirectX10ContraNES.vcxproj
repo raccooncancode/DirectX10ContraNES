@@ -186,6 +186,9 @@
     <ClCompile Include="SoldierRunning.cpp" />
     <ClCompile Include="SoldierShooting.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StaticWeapon.cpp" />
+    <ClCompile Include="StaticWeaponAnimation.cpp" />
+    <ClCompile Include="StaticWeaponState.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
@@ -226,6 +229,9 @@
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="SoldierAnimation.h" />
     <ClInclude Include="SoldierState.h" />
+    <ClInclude Include="StaticWeapon.h" />
+    <ClInclude Include="StaticWeaponAnimation.h" />
+    <ClInclude Include="StaticWeaponState.h" />
     <ClInclude Include="TestObject.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="IControlable.h" />

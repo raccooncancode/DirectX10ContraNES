@@ -16,6 +16,7 @@
 #include "RotatingGun.h"
 #include "Cannon.h"
 #include "Bridge.h"
+#include "StaticWeapon.h"
 
 #include "Scene.h"
 class Map :public Scene{

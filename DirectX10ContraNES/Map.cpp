@@ -179,7 +179,12 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						AddMovingObject(s->bB2);
 						AddMovingObject(s->bB3);
 					}
-
+					if (objectName.find("StaticWeapon") != std::string::npos) {
+						GameObject* s = new StaticWeapon(8, objectName, "StaticWeapon");
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
 				}
 				
 			}

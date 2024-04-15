@@ -87,7 +87,10 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 				isOnGround = true;
 			}
 		}
+		if (e->dest->GetType() == "Bridge") {
+				isOnGround = true;
 
+		}
 	}
 	if(e->nx != 0) {
 		if (dynamic_cast<Bullet*>(e->dest)) {

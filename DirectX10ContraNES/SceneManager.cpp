@@ -8,7 +8,9 @@ SceneManager::SceneManager() {
 	this->scenes["intro"] = new IntroScene();
 
 	auto map1 = new Map(1);
+	//auto map3 = new Map(3,false);
 	map1->AddMovingObject(bill);
+	//map3->AddMovingObject(bill);
 	this->scenes["playscene"] = map1;
 
 
