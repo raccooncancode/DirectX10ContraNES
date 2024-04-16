@@ -271,6 +271,12 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				if (objects->at(i)->GetType() == "Item") {
 					isAllowCollision = false;
 				}
+				if (objects->at(i)->GetType() == "Bridge") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "Item") {
+					isAllowCollision = false;
+				}
 			}
 			if (isAllowCollision) {
 				CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
