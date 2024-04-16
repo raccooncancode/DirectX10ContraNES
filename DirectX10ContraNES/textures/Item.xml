@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="ItemDefault" duration="200" totalFrame="1" loop="false">
+        <Frame x="0" y="0" w="24" h="15"></Frame>
+    </Animation>
+</Animations>

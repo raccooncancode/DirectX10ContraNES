@@ -25,6 +25,7 @@ public:
 	bool isSwimming;
 	int respawnTimes;
 	int bulletType;
+	float timeBulletType;
 	Map* map;
 private:
 	unordered_map<string, BillState*> stateDict;
@@ -37,8 +38,9 @@ public:
 		isJumping = false;
 		isSwimming = false;
 		respawnTimes = 2;
+		timeBulletType = 0;
 		this->ax = 1;
-		this->bulletType = 1;
+		this->bulletType = 0;
 		SetSpeed(0.1, 0.1);
 		billAnimation = new BillAnimation(this);
 		currentBillState = new BillState(this);
@@ -79,6 +81,9 @@ public:
 	void CreateBullet(float x,float y);
 	void OnNoCollision(float dt) override;
 	void OnCollisionWith(CollisionEvent* e, float dt) override;
+	void OnCollisionWithItem(CollisionEvent* e, float dt);
+	void DecreaseHP();
+	void ResetBulletType(float dt);
 };
 
 #endif // !__BILL_H__

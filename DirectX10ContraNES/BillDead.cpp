@@ -7,7 +7,7 @@ void BillDead::Enter() {
 	this->bill->isOnGround = false;
 	this->bill->SetNy(1);
 	this->maxYCanReach = this->bill->GetBound()->y + 35;
-	this->bill->respawnTimes -= 1;
+	this->bill->DecreaseHP();
 }
 void BillDead::Exit() {
 

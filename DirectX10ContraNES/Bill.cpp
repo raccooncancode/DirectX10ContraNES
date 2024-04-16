@@ -62,7 +62,8 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 	this->collision->Proccess(this, &this->objects, dt);
 	this->billAnimation->Update(dt,this,this->isDead);
 	this->currentBillState->Update(dt);
-	
+	ResetBulletType(dt);
+	//DebugOut(L"\nBullet Type :%d", this->bulletType);
 }
 
 void Bill::OnNoCollision(float dt) {
@@ -113,6 +114,28 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 			SetState("Dead", Helper::aXToString(ax) + "Dead");
 		}
 	}
+	if (e->dest->GetType() == "Item") {
+		OnCollisionWithItem(e, dt);
+	}
+}
+
+void Bill::OnCollisionWithItem(CollisionEvent* e, float dt) {
+	/*string s = e->dest->GetName();
+	wstring temp = wstring(s.begin(), s.end());
+	LPCWSTR wideString = temp.c_str();
+	DebugOut(L"\n");
+	DebugOut(wideString);*/
+	e->dest->isDeleted = true;
+	this->timeBulletType = 0;
+	if (e->dest->GetName() == "ItemM") {
+		this->bulletType = 1;
+	}
+	else if (e->dest->GetName() == "ItemS") {
+		this->bulletType = 2;
+	}
+	else {
+		this->bulletType = 3;
+	}
 }
 
 void Bill::Render()
@@ -134,7 +157,7 @@ void Bill::CreateBullet(float x,float y) {
 	bX = x;
 	bY = y;
 	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
-	switch (bulletType)
+	switch (this->bulletType)
 	{
 	case 0: //regular
 		currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "PlayerBullet", bX, bY, speed, this->angle));
@@ -150,8 +173,27 @@ void Bill::CreateBullet(float x,float y) {
 		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport4));
 		break;
 	case 3: //get R - sped up bullet
+		currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "PlayerBullet", bX, bY, speed, this->angle));
+		break;
 	default:
 		break;
+	}
+}
+
+void Bill::DecreaseHP() {
+	this->respawnTimes--;
+}
+
+void Bill::ResetBulletType(float dt) {
+	//after 5 second , reset bullet type to default
+	if (this->bulletType != 0) {
+		if (this->timeBulletType <= 10000) {
+			this->timeBulletType += dt;
+		}
+		else {
+			this->bulletType = 0;
+			this->timeBulletType = 0;
+		}
 	}
 }
 

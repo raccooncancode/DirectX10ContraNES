@@ -1,11 +1,18 @@
 #include "Capsule.h"
 #include "AnimationAddOnManager.h"
 #include "Bill.h"
+#include "Item.h"
+#include "SceneManager.h"
 void Capsule::Update(float dt, vector<GameObject*>* objects) {
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	this->collision->Proccess(this, &this->objects, dt);
-	if (this->bill == NULL) {
+	
+	this->currentCapsuleState->Update(dt);
+	this->capsuleAnimation->Update(dt, this, this->isDead);
+}
+
+void Capsule::Render() {if (this->bill == NULL) {
 		for (GameObject* gO : this->objects) {
 			if (gO->GetType()=="Player") {
 				this->bill = gO;
@@ -19,11 +26,6 @@ void Capsule::Update(float dt, vector<GameObject*>* objects) {
 			this->isShowing = true;
 		}
 	}
-	this->currentCapsuleState->Update(dt);
-	this->capsuleAnimation->Update(dt, this, this->isDead);
-}
-
-void Capsule::Render() {
 	capsuleAnimation->Render(this->objectBound->x + this->objectBound->w / 2, this->objectBound->y + this->objectBound->h / 2);
 }
 

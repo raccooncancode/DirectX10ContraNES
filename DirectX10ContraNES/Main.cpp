@@ -59,6 +59,9 @@ void LoadResources()
 	textures->Add(7, L"Textures\\BridgeTail.png");
 	textures->Add(8, L"Textures\\StaticWeapon.png");
 	textures->Add(9, L"Textures\\Capsule.png");
+	textures->Add(10, L"Textures\\ItemM.png");
+	textures->Add(11, L"Textures\\ItemS.png");
+	textures->Add(12, L"Textures\\ItemR.png");
 
 	aniAddOn->AddAnimation("Explosion0", "Textures\\Explosion0.xml", -200);
 	aniAddOn->AddAnimation("Explosion1", "Textures\\Explosion1.xml", -199);

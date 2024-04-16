@@ -1,6 +1,7 @@
 #include "Capsule.h"
 #include "CapsuleState.h"
-
+#include "SceneManager.h"
+#include "Item.h"
 void CapsuleDefault::Enter() {
 }
 void CapsuleDefault::Exit() {
@@ -37,6 +38,26 @@ string CapsuleHiding::GetStateName() {
 
 void CapsuleDead::Enter() {
 	this->capsule->isDead = true;
+	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
+	int itemId;
+	std::string itemName;
+	if (this->capsule->GetName() == "CapsuleWeaponM") {
+		itemId = 10;
+		itemName = "ItemM";
+	}
+	else if (this->capsule->GetName() == "CapsuleWeaponS") {
+		itemId = 11;
+		itemName = "ItemS";
+	}
+	else {
+		itemId = 12;
+		itemName = "ItemR";
+	}
+	auto item = new Item(itemId, itemName, "Item");
+	item->LoadAssets();
+	item->GetBound()->UpdateBoundLocation(this->capsule->GetBound()->x, this->capsule->GetBound()->y);
+	item->InitItem();
+	currentMap->AddMovingObject(item);
 }
 void CapsuleDead::Exit() {
 }
