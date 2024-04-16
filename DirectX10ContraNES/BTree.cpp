@@ -67,16 +67,18 @@ void BTree::Retrieve(Nodeptr root, std::vector<GameObject*>& returnObjects,Bound
 	if (root != NULL) {
 		for (std::vector<GameObject*>::iterator i = root->GameObjects.begin(); i != root->GameObjects.end(); i++)
 		{
-			bool isExist = false;
-			for (GameObject* ptr : returnObjects) {
-				if (ptr == (*i)) {
-					isExist = true;
+			if ((*i) != NULL && (*i)->isDeleted == false) {
+				bool isExist = false;
+				for (GameObject* ptr : returnObjects) {
+					if (ptr == (*i)) {
+						isExist = true;
+					}
 				}
-			}
-			if (!isExist)
-			{
-				if (!(*i)->isDeleted) {
-					returnObjects.push_back(*i);//all objects are stored in leaf node so don't need to check if parent node has any object
+				if (!isExist)
+				{
+					if (!(*i)->isDeleted) {
+						returnObjects.push_back(*i);//all objects are stored in leaf node so don't need to check if parent node has any object
+					}
 				}
 			}
 		}
@@ -94,11 +96,15 @@ void BTree::Traversal(Nodeptr root) {
 void BTree::RemoveGameObjectForUpdate(Nodeptr root, GameObject* e) {
 	if (root != NULL) {
 		if (root->bound->IsOverlap(e->GetBound()) && root->left == NULL && root->right == NULL) {
-			for (auto i = root->GameObjects.begin(); i != root->GameObjects.end(); ++i) {
-				if ((*i) == e) {
-					root->GameObjects.erase(i);
-					return;
+			if (!root->GameObjects.empty()) {
+
+				for (auto i = root->GameObjects.begin(); i != root->GameObjects.end(); ++i) {
+					if ((*i) == e && (*i)->isDeleted == false && (*i) != NULL && e!=NULL) {
+						root->GameObjects.erase(i);
+						return;
+					}
 				}
+
 			}
 		}
 		if (root->left != NULL) {

@@ -103,6 +103,15 @@
     <Filter Include="FrameWork Files\GameObject\FriendlyObject\Item">
       <UniqueIdentifier>{a695f008-9f56-4940-9a24-1ce547aca73b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss1">
+      <UniqueIdentifier>{60c3385f-ac1a-4259-bc31-cd681ac4f17e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss1\GunBoss1">
+      <UniqueIdentifier>{1a6e273f-8e75-4890-a1be-f6a03dce364c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1">
+      <UniqueIdentifier>{cfddfe1d-f34a-4f00-80c9-b457d95be46c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -287,6 +296,27 @@
     </ClCompile>
     <ClCompile Include="ItemState.cpp">
       <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1</Filter>
+    </ClCompile>
+    <ClCompile Include="GunBoss1.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="GunBoss1Animation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="GunBoss1State.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss1.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss1Animation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss1State.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +505,27 @@
     </ClInclude>
     <ClInclude Include="ItemState.h">
       <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1</Filter>
+    </ClInclude>
+    <ClInclude Include="GunBoss1.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="GunBoss1Animation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="GunBoss1State.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\GunBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss1.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss1Animation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss1State.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

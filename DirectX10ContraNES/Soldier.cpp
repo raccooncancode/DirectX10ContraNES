@@ -69,9 +69,7 @@ void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
 			}
 		}
 	}
-	if (e->nx != 0) {
-		//this->nx = 0;
-	}
+	
 }
 void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 }

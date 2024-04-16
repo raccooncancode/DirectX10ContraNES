@@ -18,6 +18,8 @@
 #include "Bridge.h"
 #include "StaticWeapon.h"
 #include "Capsule.h"
+#include "Boss1.h"
+#include "BodyBoss1.h"
 
 #include "Scene.h"
 class Map :public Scene{
@@ -48,6 +50,9 @@ public:
 	void Update(float dt);
 	void Render();//render rectangle which is overlapped or contain by camera bound
 	void Clear();
+	int GetStage() {
+		return this->mapStage;
+	}
 private:
 	void ReadMapFile();
 	void LoadMap2D(tinyxml2::XMLElement* e);

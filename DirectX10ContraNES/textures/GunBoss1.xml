@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="GunBoss1Default" duration="200" totalFrame="1" loop="false">
+        <Frame x="27" y="42" w="14" h="6"></Frame>
+    </Animation>
+    <Animation name="GunBoss1Ruin" duration="200" totalFrame="1" loop="false">
+        <Frame x="0" y="42" w="16" h="9"></Frame>
+    </Animation>
+</Animations>

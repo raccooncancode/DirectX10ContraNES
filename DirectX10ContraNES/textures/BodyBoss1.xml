@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="BodyBoss1Default" duration="200" totalFrame="3" loop="true">
+        <Frame x="0" y="54" w="24" h="31"></Frame>
+        <Frame x="27" y="54" w="24" h="31"></Frame>
+        <Frame x="54" y="54" w="24" h="31"></Frame>
+    </Animation>
+    <Animation name="BodyBoss1Ruin" duration="200" totalFrame="1" loop="false">
+        <Frame x="0" y="0" w="109" h="39"></Frame>
+    </Animation>
+</Animations>

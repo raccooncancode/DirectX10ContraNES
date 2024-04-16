@@ -147,6 +147,10 @@
     <ClCompile Include="BillRunningState.cpp" />
     <ClCompile Include="BillStandingState.cpp" />
     <ClCompile Include="BillSwimmingState.cpp" />
+    <ClCompile Include="BodyBoss1.cpp" />
+    <ClCompile Include="BodyBoss1Animation.cpp" />
+    <ClCompile Include="BodyBoss1State.cpp" />
+    <ClCompile Include="Boss1.cpp" />
     <ClCompile Include="Bridge.cpp" />
     <ClCompile Include="BridgeBody.cpp" />
     <ClCompile Include="BridgeBodyAnimation.cpp" />
@@ -165,6 +169,9 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GunBoss1.cpp" />
+    <ClCompile Include="GunBoss1Animation.cpp" />
+    <ClCompile Include="GunBoss1State.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemAnimation.cpp" />
@@ -205,6 +212,10 @@
     <ClInclude Include="Bill.h" />
     <ClInclude Include="BillAnimation.h" />
     <ClInclude Include="BillState.h" />
+    <ClInclude Include="BodyBoss1.h" />
+    <ClInclude Include="BodyBoss1Animation.h" />
+    <ClInclude Include="BodyBoss1State.h" />
+    <ClInclude Include="Boss1.h" />
     <ClInclude Include="Bridge.h" />
     <ClInclude Include="BridgeBody.h" />
     <ClInclude Include="BridgeBodyAnimation.h" />
@@ -228,6 +239,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameAnimation.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GunBoss1.h" />
+    <ClInclude Include="GunBoss1Animation.h" />
+    <ClInclude Include="GunBoss1State.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAnimation.h" />
     <ClInclude Include="ItemState.h" />

@@ -98,6 +98,7 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 	std::string groupObjectType;
 	std::string objectName;
 	std::string objectType;
+	Boss1* boss1 = new Boss1();
 	for (xmlObjectGroup = root->FirstChildElement("objectgroup"); xmlObjectGroup != NULL; xmlObjectGroup = xmlObjectGroup->NextSiblingElement()) {
 		groupObjectType = xmlObjectGroup->Attribute("name");
 		if (groupObjectType.compare("CollisionRect") == 0) {
@@ -129,24 +130,24 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				objectType = xmlObject->Attribute("type");
 				worldX = x;
 				worldY = ((this->mapRows) * this->tileSize) - (y + h);
-				/*string s =objectName;
+				string s =objectName;
 				wstring temp = wstring(s.begin(), s.end());
 				LPCWSTR wideString = temp.c_str();
 				DebugOut(L"\n");
-				DebugOut(wideString);*/
+				DebugOut(wideString);
 				if (objectType == "enemy") {
 					if (objectName == "Soldier") {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						//AddMovingObject(s);
+						AddMovingObject(s);
 
 					}
 					if (objectName == "Sniper") {
 						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						//AddMovingObject(s);
+						AddMovingObject(s);
 					}
 					if (objectName == "SniperH") {
 						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1,true);
@@ -166,13 +167,26 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
 					}
+					if (objectName == "GunBoss1") {
+						GunBoss1* s = new GunBoss1(13, "GunBoss1", "Enemy", 12);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						boss1->AddGun(s);
+						AddMovingObject(s);
+					}
+					if (objectName == "BodyBoss1") {
+						BodyBoss1* s = new BodyBoss1(13, "BodyBoss1", "Enemy", 12);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						s->SetParent(boss1);
+						AddMovingObject(s);
+					}
 				}
 				else if(objectType =="object")
 				{
 					if (objectName == "Bridge") {
 						Bridge* s = new Bridge(-1, "Bridge", "Bridge",worldX,worldY);
 						s->Init(worldX, worldY);
-						//DebugOut(L"\ny: %f, worldY: %f", s->bH->GetBound()->y, worldY);
 						AddMovingObject(s);
 						AddMovingObject(s->bH);
 						AddMovingObject(s->bB1);
@@ -226,18 +240,19 @@ void Map::Render() {
 void Map::Update(float dt) {
 	this->tile->Update(dt);
 	Camera::GetInstance()->Update(dt,this->mapStage);
+	//DebugOut(L"\nBtree Root Size, W: %f , H: %f", this->btree->root->bound->w, this->btree->root->bound->h);
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {
 		if (*i == NULL) {
 			continue;
 		}
 		//this is secure that no enemy left behind can shoot player 
-		if (Camera::GetInstance()->GetCameraBound()->x - 100 > (*i)->GetBound()->x && (*i) != NULL) {
+		if (Camera::GetInstance()->GetCameraBound()->x - 100 > (*i)->GetBound()->x && (*i) != NULL && this->mapStage == 1) {
 			if (!(*i)->isDeleted && ((*i)->GetType()=="Enemy"|| (*i)->GetType()=="EnemyBullet"))
 			{
 				(*i)->isDeleted = true;
 			}
 		}
-		if (Camera::GetInstance()->GetCameraBound()->y - 100 > (*i)->GetBound()->y && (*i) != NULL) {
+		if (Camera::GetInstance()->GetCameraBound()->y - 100 >  (*i)->GetBound()->y && (*i) != NULL && this->mapStage == 3) {
 			if (!(*i)->isDeleted && ((*i)->GetType() == "Enemy" || (*i)->GetType() == "EnemyBullet"))
 			{
 				(*i)->isDeleted = true;
@@ -269,10 +284,10 @@ void Map::Update(float dt) {
 	if (!allObjects.empty())
 	{
 		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
-			return obj->GetType() == "EnemyBullet" && obj->isDeleted;
+			return obj->GetType() == "EnemyBullet" && obj->isDeleted && obj!=NULL;
 			}), allObjects.end());
 		allObjects.erase(std::remove_if(allObjects.begin(), allObjects.end(), [](GameObject* obj) {
-			return obj->GetType() == "PlayerBullet" && obj->isDeleted;
+			return obj->GetType() == "PlayerBullet" && obj->isDeleted && obj != NULL;
 			}), allObjects.end());
 	}
 	//for (GameObject* gO : allObjects) {

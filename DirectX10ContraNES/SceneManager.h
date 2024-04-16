@@ -7,6 +7,7 @@
 #include "Bill.h"
 #include <unordered_map>
 #include <string>
+
 class SceneManager {
 private:
 	static SceneManager* __instance;

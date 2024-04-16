@@ -279,12 +279,15 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				}
 			}
 			if (isAllowCollision) {
-				CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
-				if (e->IsCollided()) {
-					coEvents.push_back(e);
+				if (objects->at(i)->isCollidable == 1) {
+
+					CollisionEvent* e = SweptAABB(src, objects->at(i), dt);
+					if (e->IsCollided()) {
+						coEvents.push_back(e);
+					}
+					else
+						delete e;
 				}
-				else
-					delete e;
 			}
 		}
 	}
@@ -304,7 +307,10 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 		if (src->GetName() == "GunRotating" || 
 			src->GetName() == "Cannon" || 
 			src->GetType()=="Bridge" ||
-			src->GetType()=="StaticWeapon") {
+			src->GetType()=="StaticWeapon"||
+			src->GetName()=="GunBoss1"||
+			src->GetName()=="BodyBoss1"
+			) {
 			vy = 0;
 			vx = 0;
 		}

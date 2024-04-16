@@ -54,14 +54,14 @@ public:
 		//this->isDeleted = true;
 	}
 	virtual void Update(float dt, vector<GameObject*>* objects = NULL) {
-		if (!this->btree->root->bound->IsOverlap(this->objectBound) && this->isDeleted== false)
+		if (!this->btree->root->bound->IsOverlap(this->objectBound) && this->isDeleted == false)
 		{
+			DebugOut(L"\nBtree Root Size, W: %f , H: %f", this->btree->root->bound->w, this->btree->root->bound->h);
 			this->isDeleted = true;
 			
 		}
 		if (!this->isDeleted)
 		{
-
 			this->objects.clear();
 			this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 			this->collision->Proccess(this, &this->objects, dt);
