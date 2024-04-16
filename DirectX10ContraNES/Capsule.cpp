@@ -88,8 +88,17 @@ void Capsule::OnNoCollision(float dt) {
 		{
 			crow = 0;
 		}
-		this->nx = 1;
-		this->ny = sin(crow);
+		Map* currentMap = (Map*)SceneManager::GetInstance()->GetCurrentScene();
+		if (currentMap->GetStage() == 1) {
+			this->SetSpeed(1, 3.5);
+			this->nx = 1;
+			this->ny = sin(crow)*1.1f;
+		}
+		else {
+			this->SetSpeed(3.5, 1);
+			this->nx = cos(crow) * 1.1f;
+			this->ny = 1;
+		}
 		this->objectBound->x += this->vx * nx;
 		this->objectBound->y += this->vy * ny;
 	}

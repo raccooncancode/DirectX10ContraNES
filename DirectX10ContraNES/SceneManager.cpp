@@ -3,16 +3,16 @@
 SceneManager::SceneManager() {
 	bill = new Bill(0, "Bill", "Player");
 	bill->LoadAssets();
-	bill->GetBound()->UpdateBoundLocation(2900, 240);
+	bill->GetBound()->UpdateBoundLocation(70, 20);
 	Camera::GetInstance()->SetFollowTarget(bill);
 	this->scenes["intro"] = new IntroScene();
 
-	auto map1 = new Map(1);
-	map1->AddMovingObject(bill);
-	this->scenes["playscene"] = map1;
-	//auto map3 = new Map(3,false);
-	//map3->AddMovingObject(bill);
-	//this->scenes["playscene"] = map3;
+	//auto map1 = new Map(1);
+	//map1->AddMovingObject(bill);
+	//this->scenes["playscene"] = map1;
+	auto map3 = new Map(3,false);
+	map3->AddMovingObject(bill);
+	this->scenes["playscene"] = map3;
 
 	SwitchScene("playscene");
 }

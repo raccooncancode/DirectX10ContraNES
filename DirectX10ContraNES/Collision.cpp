@@ -246,6 +246,12 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				}
 
 			}
+			if (src->GetType().find("CapsuleWeapon") != std::string::npos) {
+				if (objects->at(i)->GetType().find("CapsuleWeapon") != std::string::npos) {
+					isAllowCollision = false;
+				}
+
+			}
 			//if two bullet collide , just skip
 			if (src->GetType().find("Bullet") != std::string::npos) {
 				if (objects->at(i)->GetType().find("Bullet") != std::string::npos) {

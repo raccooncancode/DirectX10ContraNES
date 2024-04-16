@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="ScubaDefault" duration="200" totalFrame="1" loop="false">
+        <Frame x="38" y="0" w="16" h="30"></Frame>
+    </Animation>
+     <Animation name="ScubaHiding" duration="200" totalFrame="1" loop="false">
+        <Frame x="56" y="16" w="16" h="15"></Frame>
+    </Animation>
+</Animations>

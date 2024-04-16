@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="StoneDefault" duration="200" totalFrame="1" loop="false">
+        <Frame x="39" y="6" w="24" h="7"></Frame>
+    </Animation>
+</Animations>

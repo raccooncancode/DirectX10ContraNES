@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="DynamicPlatformDefault" duration="200" totalFrame="1" loop="false">
+        <Frame x="4" y="2" w="32" h="31"></Frame>
+    </Animation>
+</Animations>
