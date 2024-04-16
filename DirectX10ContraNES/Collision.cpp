@@ -216,9 +216,10 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				}
 			}
 			if (src->GetType() == "Player") {
-				if (objects->at(i)->GetType() == "PlayerBullet") {
+				if (objects->at(i)->GetType() == "PlayerBullet" || objects->at(i)->GetType().find("CapsuleWeapon") != std::string::npos) {
 					isAllowCollision = false;
 				}
+				
 			}
 			if (src->GetType() == "PlayerBullet") {
 				if (objects->at(i)->GetType() == "Player") {
@@ -229,6 +230,14 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			if (src->GetType().find("Bullet") != std::string::npos) {
 				if (objects->at(i)->GetType().find("Bullet") != std::string::npos) {
 					isAllowCollision = false;
+				}
+			}
+			if (src->GetType().find("CapsuleWeapon") != std::string::npos) {
+				if (objects->at(i)->GetType()!="PlayerBullet") {
+					isAllowCollision =false;
+				}
+				else {
+					isAllowCollision = true;
 				}
 			}
 			if (src->GetType().find("Bullet") != std::string::npos) {

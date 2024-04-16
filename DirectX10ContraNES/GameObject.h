@@ -18,7 +18,7 @@ protected:
 	string name;
 	string type;
 	float angle;
-	int nx,ny;
+	float nx,ny;
 	float vx, vy;
 	Bound objectBound;
 	BTree* btree;

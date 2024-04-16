@@ -3254,7 +3254,7 @@
   <object id="106" name="GunRotating" type="enemy" x="1824" y="96" width="32" height="32"/>
   <object id="107" name="GunRotating" type="enemy" x="2976" y="160" width="32" height="32"/>
   <object id="108" name="GunRotating" type="enemy" x="3104" y="160" width="32" height="32"/>
-  <object id="119" name="CapsuleWeaponR" type="object" x="231" y="51" width="24" height="15"/>
+  <object id="119" name="CapsuleWeaponR" type="object" x="234.333" y="159.667" width="24" height="15"/>
   <object id="120" name="Cannon" type="enemy" x="2048" y="144" width="32" height="32"/>
   <object id="121" name="CapsuleWeaponR" type="object" x="2322" y="64" width="24" height="15"/>
   <object id="122" name="CapsuleWeaponL" type="object" x="2322" y="128" width="24" height="15"/>

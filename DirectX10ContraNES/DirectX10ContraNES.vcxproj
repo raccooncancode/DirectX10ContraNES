@@ -159,6 +159,9 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="CannonAnimation.cpp" />
     <ClCompile Include="CannonState.cpp" />
+    <ClCompile Include="Capsule.cpp" />
+    <ClCompile Include="CapsuleAnimation.cpp" />
+    <ClCompile Include="CapsuleState.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -212,6 +215,9 @@
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="CannonAnimation.h" />
     <ClInclude Include="CannonState.h" />
+    <ClInclude Include="Capsule.h" />
+    <ClInclude Include="CapsuleAnimation.h" />
+    <ClInclude Include="CapsuleState.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Enemy.h" />

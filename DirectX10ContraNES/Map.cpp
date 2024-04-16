@@ -139,14 +139,14 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						AddMovingObject(s);
+						//AddMovingObject(s);
 
 					}
 					if (objectName == "Sniper") {
 						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1);
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
-						AddMovingObject(s);
+						//AddMovingObject(s);
 					}
 					if (objectName == "SniperH") {
 						GameObject* s = new Sniper(2, "Sniper", "Enemy", 1,true);
@@ -181,6 +181,12 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 					}
 					if (objectName.find("StaticWeapon") != std::string::npos) {
 						GameObject* s = new StaticWeapon(8, objectName, "StaticWeapon");
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName.find("CapsuleWeapon") != std::string::npos) {
+						GameObject* s = new Capsule(9, objectName, "CapsuleWeapon");
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
@@ -224,8 +230,26 @@ void Map::Update(float dt) {
 		if (*i == NULL) {
 			continue;
 		}
+		//this is secure that no enemy left behind can shoot player 
+		if (Camera::GetInstance()->GetCameraBound()->x - 100 > (*i)->GetBound()->x && (*i) != NULL) {
+			if (!(*i)->isDeleted && ((*i)->GetType()=="Enemy"|| (*i)->GetType()=="EnemyBullet"))
+			{
+				(*i)->isDeleted = true;
+			}
+		}
+		if (Camera::GetInstance()->GetCameraBound()->y - 100 > (*i)->GetBound()->y && (*i) != NULL) {
+			if (!(*i)->isDeleted && ((*i)->GetType() == "Enemy" || (*i)->GetType() == "EnemyBullet"))
+			{
+				(*i)->isDeleted = true;
+			}
+		}
 		if (!this->mapBound->IsOverlap((*i)->GetBound()) && (*i)->isDeleted==false && (*i)!=NULL) {
-			(*i)->isDeleted = true;
+			if ((*i)->GetType() == "CapsuleWeapon") {
+
+			}
+			else {
+				(*i)->isDeleted = true;
+			}
 		}
 		if (!(*i)->isDeleted && (*i) != NULL) {
 				btree->RemoveGameObjectForUpdate(btree->root, (*i));

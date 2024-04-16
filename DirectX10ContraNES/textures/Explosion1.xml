@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Animations>
-     <Animation name="Dead" duration="80" totalFrame="15" loop="true">
+     <Animation name="Dead" duration="50" totalFrame="15" loop="true">
         <Frame x="3" y="3" w="62" h="46"></Frame>
         <Frame x="71" y="3" w="62" h="46"></Frame>
         <Frame x="139" y="3" w="62" h="46"></Frame>

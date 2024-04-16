@@ -5,6 +5,24 @@ void StaticWeapon::Update(float dt, vector<GameObject*>* objects) {
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	this->collision->Proccess(this, &this->objects, dt);
+	if (this->bill == NULL) {
+		for (GameObject* gO : this->objects) {
+			if (gO->GetType() == "Player") {
+				this->bill = gO;
+				//SetState("CapsuleDefault", "CapsuleDefault");
+			}
+		}
+	}
+	if (this->bill != NULL) {
+		if (this->bill->GetBound()->x <= this->objectBound->x)
+			this->nx = -1;
+		else
+			this->nx = 1;
+		if (this->bill->GetBound()->y <= this->objectBound->y)
+			this->ny = -1;
+		else
+			this->ny = 1;
+	}
 	this->currentStaticWeaponState->Update(dt);
 	this->staticWeaponAnimation->Update(dt, this, this->isDead);
 }
