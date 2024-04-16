@@ -100,6 +100,9 @@
     <Filter Include="FrameWork Files\GameObject\FriendlyObject\Capsule">
       <UniqueIdentifier>{ebb87a9f-b2d2-4052-b689-41c474b54da2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\FriendlyObject\Item">
+      <UniqueIdentifier>{a695f008-9f56-4940-9a24-1ce547aca73b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -275,6 +278,15 @@
     </ClCompile>
     <ClCompile Include="CapsuleState.cpp">
       <Filter>FrameWork Files\GameObject\FriendlyObject\Capsule</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemState.cpp">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +466,15 @@
     </ClInclude>
     <ClInclude Include="CapsuleState.h">
       <Filter>FrameWork Files\GameObject\FriendlyObject\Capsule</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemAnimation.h">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemState.h">
+      <Filter>FrameWork Files\GameObject\FriendlyObject\Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -209,11 +209,30 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				if (objects->at(i)->GetType() == "Enemy") {
 					isAllowCollision = false;
 				}
+				if (objects->at(i)->GetType()=="Item") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "StaticWeapon") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "CapsuleWeapon") {
+					isAllowCollision = false;
+				}
 			}
 			if (src->GetType() == "EnemyBullet") {
 				if (objects->at(i)->GetType() == "Enemy") {
 					isAllowCollision = false;
 				}
+				if (objects->at(i)->GetType() == "Item") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "StaticWeapon") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "CapsuleWeapon") {
+					isAllowCollision = false;
+				}
+				
 			}
 			if (src->GetType() == "Player") {
 				if (objects->at(i)->GetType() == "PlayerBullet" || objects->at(i)->GetType().find("CapsuleWeapon") != std::string::npos) {
@@ -225,6 +244,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				if (objects->at(i)->GetType() == "Player") {
 					isAllowCollision = false;
 				}
+
 			}
 			//if two bullet collide , just skip
 			if (src->GetType().find("Bullet") != std::string::npos) {
@@ -242,6 +262,12 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			}
 			if (src->GetType().find("Bullet") != std::string::npos) {
 				if (objects->at(i)->GetName()=="Platform") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "Bridge") {
+					isAllowCollision = false;
+				}
+				if (objects->at(i)->GetType() == "Item") {
 					isAllowCollision = false;
 				}
 			}
@@ -265,7 +291,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 		float x, y, vx, vy, dx, dy;
 		src->GetPosition(x, y);
 		src->GetSpeed(vx, vy);
-		if (src->GetName() == "Sniper" || src->GetName()=="SniperH") {
+		if (src->GetName() == "Sniper" || src->GetName()=="SniperH" || src->GetType()=="Item") {
 			vx = 0;
 		}
 		if (src->GetName() == "GunRotating" || 
@@ -384,7 +410,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				{
 					x += dx;
 					if (colY->ny < 0) {
-						if (colY->dest->GetType() == "throughable")
+						if (colY->dest->GetType() == "throughable" || src->GetType()=="Item")
 						{
 							y += vy * dt;
 						}

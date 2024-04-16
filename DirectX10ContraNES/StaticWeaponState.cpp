@@ -1,6 +1,7 @@
 #include "StaticWeapon.h"
 #include "StaticWeaponState.h"
-
+#include "Item.h"
+#include "SceneManager.h"
 void StaticWeaponDefault::Enter() {
 }
 void StaticWeaponDefault::Exit() {
@@ -18,6 +19,26 @@ string StaticWeaponDefault::GetStateName() {
 
 void StaticWeaponDead::Enter() {
 	this->staticWeapon->isDead = true;
+	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
+	int itemId;
+	std::string itemName;
+	if (this->staticWeapon->GetName() == "StaticWeaponM") {
+		itemId = 10;
+		itemName = "ItemM";
+	}
+	else if (this->staticWeapon->GetName() == "StaticWeaponS") {
+		itemId = 11;
+		itemName = "ItemS";
+	}
+	else {
+		itemId = 12;
+		itemName = "ItemR";
+	}
+	auto item = new Item(itemId, itemName, "Item");
+	item->LoadAssets();
+	item->GetBound()->UpdateBoundLocation(this->staticWeapon->GetBound()->x, this->staticWeapon->GetBound()->y);
+	item->InitItem();
+	currentMap->AddMovingObject(item);
 }
 void StaticWeaponDead::Exit() {
 }

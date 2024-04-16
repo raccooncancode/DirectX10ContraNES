@@ -129,11 +129,11 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 				objectType = xmlObject->Attribute("type");
 				worldX = x;
 				worldY = ((this->mapRows) * this->tileSize) - (y + h);
-				string s =objectName;
+				/*string s =objectName;
 				wstring temp = wstring(s.begin(), s.end());
 				LPCWSTR wideString = temp.c_str();
 				DebugOut(L"\n");
-				DebugOut(wideString);
+				DebugOut(wideString);*/
 				if (objectType == "enemy") {
 					if (objectName == "Soldier") {
 						GameObject* s = new Soldier(1, "Soldier", "Enemy", 1);
@@ -248,6 +248,10 @@ void Map::Update(float dt) {
 
 			}
 			else {
+				if ((*i)->GetType() == "Player") {
+					auto billPointer = (Bill*)(*i);
+					billPointer->DecreaseHP();
+				}
 				(*i)->isDeleted = true;
 			}
 		}

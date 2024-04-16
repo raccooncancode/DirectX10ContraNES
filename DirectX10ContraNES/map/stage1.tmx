@@ -3244,8 +3244,8 @@
   <object id="54" name="Soldier" type="enemy" x="3060" y="179" width="16.333" height="33"/>
   <object id="55" name="Soldier" type="enemy" x="3090" y="179" width="16.333" height="33"/>
   <object id="95" name="StaticWeaponM" type="object" x="317" y="144" width="32" height="32"/>
-  <object id="96" name="StaticWeaponF" type="object" x="1567" y="144" width="32" height="32"/>
-  <object id="97" name="StaticWeaponS" type="object" x="2272" y="176" width="32" height="32"/>
+  <object id="96" name="StaticWeaponS" type="object" x="1469.67" y="162.667" width="32" height="32"/>
+  <object id="97" name="StaticWeaponS" type="object" x="2428.67" y="116" width="32" height="32"/>
   <object id="98" name="GunBoss1" type="enemy" x="3219" y="127" width="12" height="8"/>
   <object id="100" name="GunBoss1" type="enemy" x="3241" y="127.333" width="12" height="8"/>
   <object id="103" name="FinalBoss1" type="enemy" x="3225.33" y="163" width="14" height="25.3334"/>
@@ -3257,7 +3257,7 @@
   <object id="119" name="CapsuleWeaponR" type="object" x="234.333" y="159.667" width="24" height="15"/>
   <object id="120" name="Cannon" type="enemy" x="2048" y="144" width="32" height="32"/>
   <object id="121" name="CapsuleWeaponR" type="object" x="2322" y="64" width="24" height="15"/>
-  <object id="122" name="CapsuleWeaponL" type="object" x="2322" y="128" width="24" height="15"/>
+  <object id="122" name="CapsuleWeaponM" type="object" x="2322" y="128" width="24" height="15"/>
   <object id="123" name="Cannon" type="enemy" x="2176" y="48" width="32" height="32"/>
   <object id="129" name="Cannon" type="enemy" x="2752" y="112" width="32" height="32"/>
   <object id="137" name="CameraTranslatePoint" type="&quot;&quot;" x="3204" y="0" width="12" height="240"/>
