@@ -13,6 +13,7 @@ private:
 public:
 	void AddGun(GunBoss1* gun);
 	bool IsAllGunsRuined();
+	bool IsSiblingShooting(GunBoss1* sib1);
 };
 
 #endif // !__BOSS1_H__

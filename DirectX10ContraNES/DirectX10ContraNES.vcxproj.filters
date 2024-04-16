@@ -112,6 +112,9 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1">
       <UniqueIdentifier>{cfddfe1d-f34a-4f00-80c9-b457d95be46c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Bullet\GunBoss1Bullet">
+      <UniqueIdentifier>{c18ab38a-0208-49e8-94dd-8c53b505d5dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -526,6 +529,9 @@
     </ClInclude>
     <ClInclude Include="BodyBoss1State.h">
       <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClInclude>
+    <ClInclude Include="GunBossBullet.h">
+      <Filter>FrameWork Files\GameObject\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

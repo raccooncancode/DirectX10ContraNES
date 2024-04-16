@@ -2,10 +2,25 @@
 #include "GunBoss1State.h"
 #include "SceneManager.h"
 void GunBoss1Default::Enter() {
+	this->holdTime = 0;
 }
 void GunBoss1Default::Exit() {
+	this->holdTime = 0;
 }
 void GunBoss1Default::Update(float dt) {
+	if (this->holdTime < 1000) {
+		holdTime += dt;
+	}
+	else
+	{
+		float bx, by;
+		Bound b = this->gunBoss1->GetBound();
+		bx = b->x - 3;
+		by = b->y + b->h / 2;
+		if (this->gunBoss1->isInShootRange)
+			this->gunBoss1->CreateBullet(bx, by);
+		this->holdTime = 0;
+	}
 }
 void GunBoss1Default::OnKeyDown(int keyCode) {
 }

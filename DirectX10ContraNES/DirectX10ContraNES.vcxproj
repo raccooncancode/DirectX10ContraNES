@@ -242,6 +242,7 @@
     <ClInclude Include="GunBoss1.h" />
     <ClInclude Include="GunBoss1Animation.h" />
     <ClInclude Include="GunBoss1State.h" />
+    <ClInclude Include="GunBossBullet.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAnimation.h" />
     <ClInclude Include="ItemState.h" />

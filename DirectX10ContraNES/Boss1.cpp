@@ -11,12 +11,23 @@ bool Boss1::IsAllGunsRuined() {
 		if (!gun->isDeleted)
 			isAllRuined = false;
 	}
-	if (isAllRuined) {
-		DebugOut(L"\nIs all ruined");
-	}
-	else {
+	//if (isAllRuined) {
+	//	DebugOut(L"\nIs all ruined");
+	//}
+	//else {
 
-		DebugOut(L"\nNO all ruined");
-	}
+	//	DebugOut(L"\nNO all ruined");
+	//}
 	return isAllRuined;
+}
+
+bool Boss1::IsSiblingShooting(GunBoss1* sib1) {
+	bool res = false;
+	for (GunBoss1* gun : guns) {
+		if (!gun->isDeleted && gun != sib1) {
+			if(gun->isInShootRange)
+				res = true;
+		}
+	}
+	return res;
 }

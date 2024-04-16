@@ -10,6 +10,8 @@ class Boss1;
 #include <unordered_map>
 #include "tinyxml2.h"
 class GunBoss1 :public Enemy {
+public:
+	bool isInShootRange;
 private:
 	GunBoss1Animation* gunBoss1Animation;
 	GunBoss1State* currentGunBoss1State;
@@ -21,7 +23,9 @@ public:
 		this->nx = -1;
 		this->ny = -1;
 		this->SetSpeed(0.1, 0.1);
+		this->angle = D3DX_PI + D3DX_PI / 4;
 		this->isRuined = isRuined;
+		this->isInShootRange = false;
 		this->gunBoss1Animation = new GunBoss1Animation(this);
 		this->currentGunBoss1State = new GunBoss1State(this);
 		stateDict["GunBoss1Default"] = new GunBoss1Default(this);
@@ -46,6 +50,7 @@ public:
 	void OnNoCollision(float dt) override;
 	void OnCollisionWith(CollisionEvent* e, float dt) override;
 	void OnCollisionWithPlayer(CollisionEvent* e, float dt);
+	void CreateBullet(float x, float y);
 };
 
 #endif // !__GunBoss1_H__

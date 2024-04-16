@@ -2431,11 +2431,11 @@
   <object id="58" name="GunRotating" type="enemy" x="-1.33333" y="1025.83" width="32" height="32"/>
   <object id="60" name="GunRotating" type="enemy" x="-1.33333" y="755.827" width="32" height="32"/>
   <object id="62" name="Scubar" type="enemy" x="148.667" y="1605.83" width="20" height="18"/>
-  <object id="63" name="Scubar" type="enemy" x="68.6667" y="1013.83" width="20" height="18"/>
+  <object id="63" name="Scuba" type="enemy" x="68.6667" y="1013.83" width="20" height="18"/>
   <object id="64" name="Cannon" type="enemy" x="206.667" y="704.827" width="32" height="32"/>
   <object id="65" name="CapsuleWeaponS" type="object" x="62.6667" y="1499.83" width="24" height="15"/>
   <object id="66" name="CapsuleWeaponM" type="object" x="174.667" y="1499.83" width="24" height="15"/>
-  <object id="67" name="Scubar" type="enemy" x="240.334" y="910.827"/>
+  <object id="67" name="Scuba" type="enemy" x="206.667" y="1126.83"/>
   <object id="68" name="Boss3ArmRight" type="enemy" x="174.94" y="116.008" width="9.90909" height="10.5455"/>
   <object id="69" name="Boss3ArmLeft" type="enemy" x="69.6364" y="115.674" width="10.5758" height="10.5454"/>
   <object id="70" name="Boss3Head" type="enemy" x="78.3337" y="39.9937" width="96" height="72"/>

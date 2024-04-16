@@ -2,12 +2,28 @@
 #include "GunBoss1.h"
 #include "AnimationAddOnManager.h"
 #include "Bill.h"
+#include "GunBossBullet.h"
+#include "SceneManager.h"
 void GunBoss1::Update(float dt, vector<GameObject*>* objects) {
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	if (this->isRuined)
 		this->isCollidable = 0;
 	this->collision->Proccess(this, &this->objects, dt);
+	if (this->parent != NULL) {
+		if (this->parent->IsSiblingShooting(this)) {
+			this->isInShootRange = true;
+		}
+	}
+	if (this->target == NULL)
+	{
+		for (GameObject* gO : this->objects) {
+			if (gO->GetType() == "Player") {
+				SetTarget(gO);
+				this->isInShootRange = true;
+			}
+		}
+	}
 	this->currentGunBoss1State->Update(dt);
 	this->gunBoss1Animation->Update(dt, this, this->isDead);
 }
@@ -70,6 +86,14 @@ void GunBoss1::LoadAssets() {
 	ani = new CAnimation(0, 0, false);//temp
 	this->gunBoss1Animation->Update(0, this, this->isDead);
 	delete ani;
+}
+void GunBoss1::CreateBullet(float x, float y) {
+	float bX, bY;
+	float speed = 0.01;
+	bX = x;
+	bY = y;
+	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
+	currentMap->AddMovingObject(new GunBoss1Bullet(-98, "BulletBig", "EnemyBullet", bX, bY, speed, this->angle));
 }
 void GunBoss1::OnNoCollision(float dt) {
 

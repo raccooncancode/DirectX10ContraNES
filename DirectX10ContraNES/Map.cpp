@@ -172,6 +172,7 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						boss1->AddGun(s);
+						s->SetParent(boss1);
 						AddMovingObject(s);
 					}
 					if (objectName == "BodyBoss1") {
