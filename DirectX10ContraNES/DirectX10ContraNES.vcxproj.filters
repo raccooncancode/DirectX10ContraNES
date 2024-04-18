@@ -115,6 +115,12 @@
     <Filter Include="FrameWork Files\GameObject\Bullet\GunBoss1Bullet">
       <UniqueIdentifier>{c18ab38a-0208-49e8-94dd-8c53b505d5dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss3">
+      <UniqueIdentifier>{bb5167e9-d76d-42c3-b3d1-bc91a51e25bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss3\ArmJoint">
+      <UniqueIdentifier>{4da24cb7-1941-4b19-8e33-58f5843814b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -320,6 +326,18 @@
     </ClCompile>
     <ClCompile Include="BodyBoss1State.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmJoint.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmJointAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmJointState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -532,6 +550,18 @@
     </ClInclude>
     <ClInclude Include="GunBossBullet.h">
       <Filter>FrameWork Files\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmJoint.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmJointState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmJointAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

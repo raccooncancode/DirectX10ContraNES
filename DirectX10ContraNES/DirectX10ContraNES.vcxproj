@@ -138,6 +138,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimationAddOnManager.cpp" />
+    <ClCompile Include="ArmJoint.cpp" />
+    <ClCompile Include="ArmJointAnimation.cpp" />
+    <ClCompile Include="ArmJointState.cpp" />
     <ClCompile Include="Bill.cpp" />
     <ClCompile Include="BillAnimation.cpp" />
     <ClCompile Include="BillDead.cpp" />
@@ -151,6 +154,7 @@
     <ClCompile Include="BodyBoss1Animation.cpp" />
     <ClCompile Include="BodyBoss1State.cpp" />
     <ClCompile Include="Boss1.cpp" />
+    <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="Bridge.cpp" />
     <ClCompile Include="BridgeBody.cpp" />
     <ClCompile Include="BridgeBodyAnimation.cpp" />
@@ -209,6 +213,9 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationAddOnManager.h" />
+    <ClInclude Include="ArmJoint.h" />
+    <ClInclude Include="ArmJointAnimation.h" />
+    <ClInclude Include="ArmJointState.h" />
     <ClInclude Include="Bill.h" />
     <ClInclude Include="BillAnimation.h" />
     <ClInclude Include="BillState.h" />
@@ -216,6 +223,7 @@
     <ClInclude Include="BodyBoss1Animation.h" />
     <ClInclude Include="BodyBoss1State.h" />
     <ClInclude Include="Boss1.h" />
+    <ClInclude Include="Boss3.h" />
     <ClInclude Include="Bridge.h" />
     <ClInclude Include="BridgeBody.h" />
     <ClInclude Include="BridgeBodyAnimation.h" />

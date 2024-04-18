@@ -99,6 +99,7 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 	std::string objectName;
 	std::string objectType;
 	Boss1* boss1 = new Boss1();
+	Boss3* boss3 = new Boss3();
 	for (xmlObjectGroup = root->FirstChildElement("objectgroup"); xmlObjectGroup != NULL; xmlObjectGroup = xmlObjectGroup->NextSiblingElement()) {
 		groupObjectType = xmlObjectGroup->Attribute("name");
 		if (groupObjectType.compare("CollisionRect") == 0) {
@@ -181,6 +182,116 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						s->SetParent(boss1);
 						AddMovingObject(s);
+					}
+					if (objectName == "Boss3ArmLeft") {
+						ArmJoint* s = new ArmJoint(15, "ArmLeft", "Enemy", 12,true);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						ArmJoint* armLeftJoint1 = new ArmJoint(15, "ArmJoint", "Enemy", 14,true);
+						ArmJoint* armLeftJoint2 = new ArmJoint(15, "ArmJoint", "Enemy", 14,true);
+						ArmJoint* armLeftJoint3 = new ArmJoint(15, "ArmJoint", "Enemy", 14,true);
+						ArmJoint* armLeftJoint4 = new ArmJoint(15, "ArmJoint", "Enemy", 14,true,true);
+
+						float x, y;
+						x = worldX;
+						y = worldY;
+
+						armLeftJoint1->LoadAssets();
+						armLeftJoint1->GetBound()->UpdateBoundLocation(x  - 16 * 1, y);
+						armLeftJoint2->LoadAssets();
+						armLeftJoint2->GetBound()->UpdateBoundLocation(x - 16 * 2, y);
+						armLeftJoint3->LoadAssets();
+						armLeftJoint3->GetBound()->UpdateBoundLocation(x - 16 * 3, y);
+						armLeftJoint4->LoadAssets();
+						armLeftJoint4->GetBound()->UpdateBoundLocation(x - 16 * 4, y);
+						
+						armLeftJoint1->SetAngularSpeed(D3DX_PI/60);
+						armLeftJoint2->SetAngularSpeed(D3DX_PI/60);
+						armLeftJoint3->SetAngularSpeed(D3DX_PI/60);
+						armLeftJoint4->SetAngularSpeed(D3DX_PI/60);
+
+						//trick to make some delay on the joint outside
+						armLeftJoint2->SetAngle(-D3DX_PI *6/ 60);
+						armLeftJoint3->SetAngle(-D3DX_PI *12/ 60);
+						armLeftJoint4->SetAngle(-D3DX_PI *24/ 60);
+
+						armLeftJoint1->SetRadius(16);
+						armLeftJoint2->SetRadius(16);
+						armLeftJoint3->SetRadius(16);
+						armLeftJoint4->SetRadius(16);
+
+
+						boss3->AddArmLeft(s);
+						boss3->AddArmLeftJoint(armLeftJoint1);
+						boss3->AddArmLeftJoint(armLeftJoint2);
+						boss3->AddArmLeftJoint(armLeftJoint3);
+						boss3->AddArmLeftJoint(armLeftJoint4);
+
+						armLeftJoint1->SetFrontSibling(boss3->armLeft);
+						armLeftJoint2->SetFrontSibling(armLeftJoint1);
+						armLeftJoint3->SetFrontSibling(armLeftJoint2);
+						armLeftJoint4->SetFrontSibling(armLeftJoint3);
+
+						AddMovingObject(s);
+						AddMovingObject(armLeftJoint1);
+						AddMovingObject(armLeftJoint2);
+						AddMovingObject(armLeftJoint3);
+						AddMovingObject(armLeftJoint4);
+					}
+					if (objectName == "Boss3ArmRight") {
+						ArmJoint* s = new ArmJoint(15, "ArmRight", "Enemy", 12);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						ArmJoint* armRightJoint1 = new ArmJoint(15, "ArmJoint", "Enemy", 14);
+						ArmJoint* armRightJoint2 = new ArmJoint(15, "ArmJoint", "Enemy", 14);
+						ArmJoint* armRightJoint3 = new ArmJoint(15, "ArmJoint", "Enemy", 14);
+						ArmJoint* armRightJoint4 = new ArmJoint(15, "ArmJoint", "Enemy", 14,false,true);
+
+						float x, y;
+						x = worldX;
+						y = worldY;
+
+						armRightJoint1->LoadAssets();
+						armRightJoint1->GetBound()->UpdateBoundLocation(x + 16 * 1, y);
+						armRightJoint2->LoadAssets();
+						armRightJoint2->GetBound()->UpdateBoundLocation(x + 16 * 2, y);
+						armRightJoint3->LoadAssets();
+						armRightJoint3->GetBound()->UpdateBoundLocation(x + 16 * 3, y);
+						armRightJoint4->LoadAssets();
+						armRightJoint4->GetBound()->UpdateBoundLocation(x + 16 * 4, y);
+
+						boss3->AddArmLeft(s);
+						boss3->AddArmLeftJoint(armRightJoint1);
+						boss3->AddArmLeftJoint(armRightJoint2);
+						boss3->AddArmLeftJoint(armRightJoint3);
+						boss3->AddArmLeftJoint(armRightJoint4);
+
+						armRightJoint1->SetAngularSpeed(D3DX_PI / 60);
+						armRightJoint2->SetAngularSpeed(D3DX_PI / 60);
+						armRightJoint3->SetAngularSpeed(D3DX_PI / 60);
+						armRightJoint4->SetAngularSpeed(D3DX_PI / 60);
+
+						//trick to make some delay on the joint outside
+						armRightJoint2->SetAngle(D3DX_PI * 6 / 60);
+						armRightJoint3->SetAngle(D3DX_PI * 12 / 60);
+						armRightJoint4->SetAngle(D3DX_PI * 24 / 60);
+
+						armRightJoint1->SetRadius(16);
+						armRightJoint2->SetRadius(16);
+						armRightJoint3->SetRadius(16);
+						armRightJoint4->SetRadius(16);
+
+
+						armRightJoint1->SetFrontSibling(boss3->armLeft);
+						armRightJoint2->SetFrontSibling(armRightJoint1);
+						armRightJoint3->SetFrontSibling(armRightJoint2);
+						armRightJoint4->SetFrontSibling(armRightJoint3);
+
+						AddMovingObject(s);
+						AddMovingObject(armRightJoint1);
+						AddMovingObject(armRightJoint2);
+						AddMovingObject(armRightJoint3);
+						AddMovingObject(armRightJoint4);
 					}
 				}
 				else if(objectType =="object")
