@@ -112,14 +112,23 @@
     <Filter Include="FrameWork Files\GameObject\Enemy\Boss1\BodyBoss1">
       <UniqueIdentifier>{cfddfe1d-f34a-4f00-80c9-b457d95be46c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FrameWork Files\GameObject\Bullet\GunBoss1Bullet">
-      <UniqueIdentifier>{c18ab38a-0208-49e8-94dd-8c53b505d5dc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FrameWork Files\GameObject\Enemy\Boss3">
       <UniqueIdentifier>{bb5167e9-d76d-42c3-b3d1-bc91a51e25bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="FrameWork Files\GameObject\Enemy\Boss3\ArmJoint">
       <UniqueIdentifier>{4da24cb7-1941-4b19-8e33-58f5843814b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Stone">
+      <UniqueIdentifier>{59c4b3f7-f6ca-425c-b293-f6573b0895ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Scuba">
+      <UniqueIdentifier>{502e5bcb-9e5a-48f9-b496-bef6bdbcc811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Blazer">
+      <UniqueIdentifier>{0f5b345f-0b02-4810-a69e-90052b84a514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Flatform\DynamicPlatform">
+      <UniqueIdentifier>{7668402f-91b5-4236-8d90-4932c232c188}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +347,42 @@
     </ClCompile>
     <ClCompile Include="ArmJointState.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClCompile>
+    <ClCompile Include="Stone.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClCompile>
+    <ClCompile Include="Blazer.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClCompile>
+    <ClCompile Include="BlazerState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClCompile>
+    <ClCompile Include="BlazerAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPlatform.cpp">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPlatformState.cpp">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPlatformAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuba.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClCompile>
+    <ClCompile Include="ScubaAnimation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClCompile>
+    <ClCompile Include="ScubaState.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -562,6 +607,45 @@
     </ClInclude>
     <ClInclude Include="ArmJointAnimation.h">
       <Filter>FrameWork Files\GameObject\Enemy\Boss3\ArmJoint</Filter>
+    </ClInclude>
+    <ClInclude Include="Stone.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Stone</Filter>
+    </ClInclude>
+    <ClInclude Include="Blazer.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClInclude>
+    <ClInclude Include="BlazerAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClInclude>
+    <ClInclude Include="BlazerState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Blazer</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPlatform.h">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPlatformAnimation.h">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPlatformState.h">
+      <Filter>FrameWork Files\GameObject\Flatform\DynamicPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuba.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClInclude>
+    <ClInclude Include="ScubaAnimation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClInclude>
+    <ClInclude Include="ScubaState.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClInclude>
+    <ClInclude Include="ScubaBullet.h">
+      <Filter>FrameWork Files\GameObject\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

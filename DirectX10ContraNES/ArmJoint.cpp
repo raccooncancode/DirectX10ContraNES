@@ -16,13 +16,11 @@ void ArmJoint::Update(float dt, vector<GameObject*>* objects) {
 			this->angle += this->angularSpeed;
 		else
 			this->angle -= this->angularSpeed;
-		DebugOut(L"\nAngle :%f", this->angle);
 		if (this->angle >= D3DX_PI*2)
 			this->angle = 0;
 		float xNext,yNext;
 		xNext = this->frontSibling->GetBound()->GetMiddleXOffset() + (cos(angle) * this->radius) - this->objectBound->w/2;
 		yNext = this->frontSibling->GetBound()->GetMiddleYOffset() + (sin(angle) * this->radius) - this->objectBound->h/2;
-		DebugOut(L"\nxNext: %f, yNext: %f", xNext,yNext);
 		this->objectBound->x = xNext;
 		this->objectBound->y = yNext;
 		if (this->frontSibling->isDead) {

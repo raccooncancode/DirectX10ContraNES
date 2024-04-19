@@ -69,7 +69,8 @@ void Soldier::OnCollisionWith(CollisionEvent* e, float dt) {
 			}
 		}
 	}
-	
+	if(e->nx!=0)
+		this->objectBound->x += this->nx * this->vx * dt;
 }
 void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 }

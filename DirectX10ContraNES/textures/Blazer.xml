@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Animations>
      <Animation name="BlazerDefault" duration="200" totalFrame="1" loop="false">
-        <Frame x="105" y="7" w="16" h="16"></Frame>
+        <Frame x="105" y="17" w="16" h="16"></Frame>
     </Animation>
 </Animations>

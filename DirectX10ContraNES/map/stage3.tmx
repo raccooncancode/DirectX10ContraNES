@@ -2419,9 +2419,9 @@
   <object id="45" name="CameraTranslationPoint" type="&quot;&quot;" x="0" y="208.827" width="257" height="15"/>
   <object id="46" name="Blazer" type="enemy" x="62.6667" y="1366.16" width="14" height="14"/>
   <object id="47" name="Blazer" type="enemy" x="177.334" y="1366.83" width="14" height="14"/>
-  <object id="48" name="DynamicPlatform" type="object" x="70.6667" y="1096.16" width="32" height="12"/>
-  <object id="49" name="DynamicPlatform" type="object" x="82.6667" y="1222.83" width="32" height="12"/>
-  <object id="50" name="DynamicPlatform" type="object" x="90.6667" y="633.494" width="32" height="12"/>
+  <object id="48" name="DynamicPlatform" type="object" x="70" y="1101.16" width="32" height="23"/>
+  <object id="49" name="DynamicPlatform" type="object" x="65.6667" y="1191.17" width="32" height="30.3333"/>
+  <object id="50" name="DynamicPlatform" type="object" x="90.6667" y="636.827" width="32" height="24.6667"/>
   <object id="51" name="Stone" type="enemy" x="32.6667" y="1925.83" width="27" height="27"/>
   <object id="52" name="Stone" type="enemy" x="161.667" y="1828.83" width="27" height="27"/>
   <object id="53" name="Stone" type="enemy" x="193.667" y="1859.83" width="27" height="27"/>
@@ -2432,7 +2432,7 @@
   <object id="60" name="GunRotating" type="enemy" x="-1.33333" y="755.827" width="32" height="32"/>
   <object id="62" name="Scubar" type="enemy" x="148.667" y="1605.83" width="20" height="18"/>
   <object id="63" name="Scuba" type="enemy" x="68.6667" y="1013.83" width="20" height="18"/>
-  <object id="64" name="Cannon" type="enemy" x="206.667" y="704.827" width="32" height="32"/>
+  <object id="64" name="Cannon" type="enemy" x="222.334" y="705.827" width="32" height="32"/>
   <object id="65" name="CapsuleWeaponS" type="object" x="62.6667" y="1499.83" width="24" height="15"/>
   <object id="66" name="CapsuleWeaponM" type="object" x="174.667" y="1499.83" width="24" height="15"/>
   <object id="67" name="Scuba" type="enemy" x="206.667" y="1126.83"/>

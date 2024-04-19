@@ -234,6 +234,15 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				}
 				
 			}
+			if (src->GetName() == "Stone") {
+				if (objects->at(i)->GetType() == "Player" || objects->at(i)->GetType() == "PlayerBullet") {
+					isAllowCollision = true;
+				}
+				else
+				{
+					isAllowCollision = false;
+				}
+			}
 			if (src->GetType() == "Player") {
 				if (objects->at(i)->GetType() == "PlayerBullet" || objects->at(i)->GetType().find("CapsuleWeapon") != std::string::npos) {
 					isAllowCollision = false;
@@ -241,7 +250,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				
 			}
 			if (src->GetType() == "PlayerBullet") {
-				if (objects->at(i)->GetType() == "Player") {
+				if (objects->at(i)->GetType() == "Player" || objects->at(i)->GetName()=="Blazer") {
 					isAllowCollision = false;
 				}
 
@@ -267,8 +276,7 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				}
 			}
 			if (src->GetType().find("Bullet") != std::string::npos) {
-				if (objects->at(i)->GetName()=="Platform") {
-
+				if (objects->at(i)->GetName()=="Platform" || objects->at(i)->GetType()=="Platform") {
 					isAllowCollision = false;
 				}
 				if (objects->at(i)->GetType() == "Bridge") {
@@ -278,9 +286,6 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 					isAllowCollision = false;
 				}
 				if (objects->at(i)->GetType() == "Bridge") {
-					isAllowCollision = false;
-				}
-				if (objects->at(i)->GetType() == "Item") {
 					isAllowCollision = false;
 				}
 			}
@@ -316,11 +321,16 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			src->GetType()=="StaticWeapon"||
 			src->GetName()=="GunBoss1"||
 			src->GetName()=="BodyBoss1"||
+			src->GetName()=="Scuba"||
 			src->GetName().find("Arm") != std::string::npos
 			) {
 			vy = 0;
 			vx = 0;
 		}
+		if (src->GetName() == "DynamicPlatform") {
+			vx = 0;
+		}
+		
 		dx = vx * dt;
 		dy = vy * dt;
 			
@@ -359,15 +369,17 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				DebugOut(wideString1);*/
 				// re-filter on X only
 				Filter(src, coEvents, colX_other, colY, /*filterBlock = */ 1, 1, /*filterY=*/0);
+				if (src->GetName() != "DynamicPlatfrom") {
 
-				if (colX_other != NULL)
-				{
-					x += colX_other->t * dx;
-					src->OnCollisionWith(colX_other,dt);
-				}
-				else
-				{
-					x += dx;
+					if (colX_other != NULL)
+					{
+						x += colX_other->t * dx;
+						src->OnCollisionWith(colX_other, dt);
+					}
+					else
+					{
+						x += dx;
+					}
 				}
 			}
 			else // collision on X first

@@ -168,6 +168,24 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);
 					}
+					if (objectName == "Blazer") {
+						GameObject* s = new Blazer(15, "Blazer", "Enemy", 4);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName == "Stone") {
+						GameObject* s = new Stone(15, "Stone", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName == "Scuba") {
+						GameObject* s = new Scuba(16, "Scuba", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
 					if (objectName == "GunBoss1") {
 						GunBoss1* s = new GunBoss1(13, "GunBoss1", "Enemy", 12);
 						s->LoadAssets();
@@ -313,6 +331,12 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 					}
 					if (objectName.find("CapsuleWeapon") != std::string::npos) {
 						GameObject* s = new Capsule(9, objectName, "CapsuleWeapon");
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						AddMovingObject(s);
+					}
+					if (objectName == "DynamicPlatform") {
+						GameObject* s = new DynamicPlatform(15, "DynamicPlatform", "Platform");
 						s->LoadAssets();
 						s->GetBound()->UpdateBoundLocation(worldX, worldY);
 						AddMovingObject(s);

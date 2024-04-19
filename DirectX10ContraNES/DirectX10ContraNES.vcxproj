@@ -150,6 +150,9 @@
     <ClCompile Include="BillRunningState.cpp" />
     <ClCompile Include="BillStandingState.cpp" />
     <ClCompile Include="BillSwimmingState.cpp" />
+    <ClCompile Include="Blazer.cpp" />
+    <ClCompile Include="BlazerAnimation.cpp" />
+    <ClCompile Include="BlazerState.cpp" />
     <ClCompile Include="BodyBoss1.cpp" />
     <ClCompile Include="BodyBoss1Animation.cpp" />
     <ClCompile Include="BodyBoss1State.cpp" />
@@ -172,6 +175,9 @@
     <ClCompile Include="CapsuleState.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="DynamicPlatform.cpp" />
+    <ClCompile Include="DynamicPlatformAnimation.cpp" />
+    <ClCompile Include="DynamicPlatformState.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GunBoss1.cpp" />
     <ClCompile Include="GunBoss1Animation.cpp" />
@@ -189,6 +195,9 @@
     <ClCompile Include="RotatingGunState.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="IntroScene.cpp" />
+    <ClCompile Include="Scuba.cpp" />
+    <ClCompile Include="ScubaAnimation.cpp" />
+    <ClCompile Include="ScubaState.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Sniper.cpp" />
     <ClCompile Include="SniperAnimation.cpp" />
@@ -206,6 +215,9 @@
     <ClCompile Include="StaticWeapon.cpp" />
     <ClCompile Include="StaticWeaponAnimation.cpp" />
     <ClCompile Include="StaticWeaponState.cpp" />
+    <ClCompile Include="Stone.cpp" />
+    <ClCompile Include="StoneAnimation.cpp" />
+    <ClCompile Include="StoneState.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
@@ -219,6 +231,9 @@
     <ClInclude Include="Bill.h" />
     <ClInclude Include="BillAnimation.h" />
     <ClInclude Include="BillState.h" />
+    <ClInclude Include="Blazer.h" />
+    <ClInclude Include="BlazerAnimation.h" />
+    <ClInclude Include="BlazerState.h" />
     <ClInclude Include="BodyBoss1.h" />
     <ClInclude Include="BodyBoss1Animation.h" />
     <ClInclude Include="BodyBoss1State.h" />
@@ -242,6 +257,9 @@
     <ClInclude Include="CapsuleState.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="DynamicPlatform.h" />
+    <ClInclude Include="DynamicPlatformAnimation.h" />
+    <ClInclude Include="DynamicPlatformState.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FBullet.h" />
     <ClInclude Include="Game.h" />
@@ -258,6 +276,10 @@
     <ClInclude Include="RotatingGun.h" />
     <ClInclude Include="RotatingGunAnimation.h" />
     <ClInclude Include="RotatingGunState.h" />
+    <ClInclude Include="Scuba.h" />
+    <ClInclude Include="ScubaAnimation.h" />
+    <ClInclude Include="ScubaBullet.h" />
+    <ClInclude Include="ScubaState.h" />
     <ClInclude Include="Sniper.h" />
     <ClInclude Include="SniperAnimation.h" />
     <ClInclude Include="SniperState.h" />
@@ -267,6 +289,9 @@
     <ClInclude Include="StaticWeapon.h" />
     <ClInclude Include="StaticWeaponAnimation.h" />
     <ClInclude Include="StaticWeaponState.h" />
+    <ClInclude Include="Stone.h" />
+    <ClInclude Include="StoneAnimation.h" />
+    <ClInclude Include="StoneState.h" />
     <ClInclude Include="TestObject.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="IControlable.h" />
