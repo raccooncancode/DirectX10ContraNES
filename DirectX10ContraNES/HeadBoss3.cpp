@@ -17,12 +17,7 @@ void HeadBoss3::Update(float dt, vector<GameObject*>* objects) {
 	}
 	if (this->parent != NULL) {
 		if (this->parent->IsAllArmDestroyed()) {
-			DebugOut(L"\n Head is collidable");
 			this->isCollidable = 1;
-		}
-		else {
-			DebugOut(L"\n Head is uncollidable");
-
 		}
 	}
 	this->currentHeadBoss3State->Update(dt);
@@ -90,10 +85,13 @@ void HeadBoss3::LoadAssets() {
 }
 void HeadBoss3::CreateBullet(float x, float y) {
 	float bX, bY;
-	float speed = 0.01;
+	float speed = 0.06;
 	bX = x;
 	bY = y;
 	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
+	currentMap->AddMovingObject(new Bullet(-96, "Boss3Bullet", "EnemyBullet", bX, bY, speed, (float) 3*D3DX_PI/2));
+	currentMap->AddMovingObject(new Bullet(-96, "Boss3Bullet", "EnemyBullet", bX, bY, speed, (float)4* D3DX_PI / 3));
+	currentMap->AddMovingObject(new Bullet(-96, "Boss3Bullet", "EnemyBullet", bX, bY, speed, (float)5* D3DX_PI / 3));
 }
 void HeadBoss3::OnNoCollision(float dt) {
 	this->objectBound->y += this->vy * this->ny;

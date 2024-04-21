@@ -10,13 +10,14 @@ void HeadBoss3Default::Exit() {
 }
 void HeadBoss3Default::Update(float dt) {
 	if (this->headBoss3->GetParent() != NULL) {
-
-		if (this->holdTime <= 3000 && Camera::GetInstance()->IsReachedBossArea()) {
-			this->holdTime += dt;
-		}
-		else {
-			this->holdTime = 0;
-			this->headBoss3->SetState("HeadBoss3Shooting", "HeadBoss3Shooting");
+		if (this->headBoss3->GetParent()->isSeeTarget && this->headBoss3->GetParent()->IsDoneMoveTo()) {
+			if (this->holdTime <= 5000) {
+				this->holdTime += dt;
+			}
+			else {
+				this->holdTime = 0;
+				this->headBoss3->SetState("HeadBoss3Shooting", "HeadBoss3Shooting");
+			}
 		}
 	}
 }
@@ -44,7 +45,10 @@ void HeadBoss3Shooting::Update(float dt) {
 			this->shootingTime += dt;
 		}else{
 			this->shootingTime = 0;
-			//this->headBoss3->CreateBullet(0,0);
+			float bx, by;
+			bx = this->headBoss3->GetBound()->GetMiddleXOffset()-10;
+			by = this->headBoss3->GetBound()->y;
+			this->headBoss3->CreateBullet(bx,by);
 		}
 	}
 	else {

@@ -10,7 +10,7 @@ void ArmJoint::Update(float dt, vector<GameObject*>* objects) {
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	this->collision->Proccess(this, &this->objects, dt);
 	if (this->parent != NULL) {
-		if (this->parent->isSeeTarget && this->parent->IsDoneMoveTo() ==false) {
+		if (this->parent->isSeeTarget && this->parent->IsDoneMoveTo() == false) {
 			MoveTo(dt);
 		}
 		if (this->parent->IsDoneMoveTo()) {
@@ -65,7 +65,7 @@ void ArmJoint::MoveAround(float dt) {
 			this->isDead = true;
 		}
 		if (this->isTail) {
-			if (this->shootingTime <= 1666) {
+			if (this->shootingTime <= 2333) {
 				this->shootingTime += dt;
 			}
 			else {
