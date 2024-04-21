@@ -45,6 +45,8 @@ void LoadResources()
 	textures->Add(-100, L"Textures\\Bound.png");
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
+	textures->Add(-97, L"Textures\\FireBall.png");
+	textures->Add(-96, L"Textures\\EnergyBall.png");
 
 	textures->Add(-200, L"Textures\\Explosion0.png");
 	textures->Add(-199, L"Textures\\Explosion1.png"); //for bridge

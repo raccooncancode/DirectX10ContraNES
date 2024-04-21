@@ -17,7 +17,6 @@ void ArmJoint::Update(float dt, vector<GameObject*>* objects) {
 			MoveAround(dt);
 		}
 	}
-
 	this->currentArmJointState->Update(dt);
 	this->armJointAnimation->Update(dt, this, this->isDead);
 }
@@ -65,6 +64,16 @@ void ArmJoint::MoveAround(float dt) {
 		if (this->frontSibling->isDead) {
 			this->isDead = true;
 		}
+		if (this->isTail) {
+			if (this->shootingTime <= 1666) {
+				this->shootingTime += dt;
+			}
+			else {
+				this->shootingTime = 0;
+				this->CreateBullet(this->objectBound->x, this->objectBound->y);
+			}
+		}
+
 	}
 }
 
@@ -145,11 +154,14 @@ void ArmJoint::LoadAssets() {
 }
 void ArmJoint::CreateBullet(float x, float y) {
 	float bX, bY;
-	float speed = 0.01;
+	float minRange = this->isLeftSide ? (float)5 * D3DX_PI / 4 : (float)11 * D3DX_PI / 6;
+	float maxRange = this->isLeftSide ? (float)11 * D3DX_PI / 6 : (float)7 * D3DX_PI / 4;
+	float angle = ((float)rand() / RAND_MAX) * (maxRange - minRange) + minRange;
+	float speed = 0.06;
 	bX = x;
 	bY = y;
 	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
-	currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "EnemyBullet", bX, bY, speed, this->angle));
+	currentMap->AddMovingObject(new Bullet(-96, "Boss3Bullet", "EnemyBullet", bX, bY, speed, angle));
 }
 void ArmJoint::OnNoCollision(float dt) {
 

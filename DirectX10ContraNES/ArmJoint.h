@@ -22,6 +22,7 @@ public:
 	float angularSpeed;
 	float radius;
 	float desX, desY;
+	float shootingTime;
 private:
 	ArmJointAnimation* armJointAnimation;
 	ArmJointState* currentArmJointState;
@@ -33,6 +34,7 @@ public:
 		this->ny = -1;
 		this->SetSpeed(0.07, 0.01);
 		this->angle = 0;
+		this->shootingTime = 0;
 		this->radius = 0;
 		this->isLeftSide = isLeftSide;
 		this->frontSibling = NULL;
