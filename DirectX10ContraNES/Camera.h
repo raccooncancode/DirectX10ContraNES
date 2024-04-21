@@ -16,6 +16,7 @@ public:
 	static Camera* GetInstance();
 	Bound GetCameraBound();
 	void ResetCamera();
+	bool IsReachedBossArea();
 	void UpdateCameraSize(float w, float h);
 	void Update(float dt, float stage=1);
 	void SetFollowTarget(GameObject* target);

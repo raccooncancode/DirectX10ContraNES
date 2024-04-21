@@ -25,6 +25,7 @@
 #include "Boss1.h"
 #include "BodyBoss1.h"
 #include "Boss3.h"
+#include "BodyBoss3.h"
 
 #include "Scene.h"
 class Map :public Scene{

@@ -5,6 +5,7 @@
 #include <corecrt.h>
 #include <cmath>
 #include <algorithm>
+#include "Camera.h"
 void Bill::SetState(std::string stateName, std::string animationName)
 {
 	if (this->billAnimation->GetAnimation() != animationName)
@@ -60,6 +61,16 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 	// then you're success that just check collision in only node or (2 nodes) you are in
 	//Collision::GetInstance()->Proccess(this, &this->objects, dt);
 	this->collision->Proccess(this, &this->objects, dt);
+	if (this->boss == NULL) {
+
+		for (GameObject* o : this->objects) {
+			if (o->GetName() == "BodyBoss3" || o->GetName() == "BodyBoss1") {
+				this->boss = o;
+				DebugOut(L"\nPlayer found boss");
+				Camera::GetInstance()->SetFollowTarget(o);
+			}
+		}
+	}
 	this->billAnimation->Update(dt,this,this->isDead);
 	this->currentBillState->Update(dt);
 	ResetBulletType(dt);
@@ -150,10 +161,10 @@ void Bill::CreateBullet(float x,float y) {
 	float bX, bY;
 	
 	float speed = this->bulletType != 3 ? 0.15 : 0.2;
-	float angleSupport1 = this->angle - D3DX_PI / 6;
-	float angleSupport2 = this->angle - D3DX_PI / 4;
-	float angleSupport3 = this->angle + D3DX_PI / 4;
-	float angleSupport4 = this->angle + D3DX_PI / 6;
+	float angleSupport1 = this->angle - D3DX_PI / 12;
+	float angleSupport2 = this->angle - D3DX_PI / 24;
+	float angleSupport3 = this->angle + D3DX_PI / 12;
+	float angleSupport4 = this->angle + D3DX_PI / 24;
 	Bound bound = this->GetBound();
 	bX = x;
 	bY = y;

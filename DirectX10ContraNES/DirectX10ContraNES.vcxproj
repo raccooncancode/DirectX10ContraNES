@@ -156,6 +156,9 @@
     <ClCompile Include="BodyBoss1.cpp" />
     <ClCompile Include="BodyBoss1Animation.cpp" />
     <ClCompile Include="BodyBoss1State.cpp" />
+    <ClCompile Include="BodyBoss3.cpp" />
+    <ClCompile Include="BodyBoss3Animation.cpp" />
+    <ClCompile Include="BodyBoss3State.cpp" />
     <ClCompile Include="Boss1.cpp" />
     <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="Bridge.cpp" />
@@ -182,6 +185,9 @@
     <ClCompile Include="GunBoss1.cpp" />
     <ClCompile Include="GunBoss1Animation.cpp" />
     <ClCompile Include="GunBoss1State.cpp" />
+    <ClCompile Include="HeadBoss3.cpp" />
+    <ClCompile Include="HeadBoss3Animation.cpp" />
+    <ClCompile Include="HeadBoss3State.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemAnimation.cpp" />
@@ -237,6 +243,9 @@
     <ClInclude Include="BodyBoss1.h" />
     <ClInclude Include="BodyBoss1Animation.h" />
     <ClInclude Include="BodyBoss1State.h" />
+    <ClInclude Include="BodyBoss3.h" />
+    <ClInclude Include="BodyBoss3Animation.h" />
+    <ClInclude Include="BodyBoss3State.h" />
     <ClInclude Include="Boss1.h" />
     <ClInclude Include="Boss3.h" />
     <ClInclude Include="Bridge.h" />
@@ -269,6 +278,9 @@
     <ClInclude Include="GunBoss1Animation.h" />
     <ClInclude Include="GunBoss1State.h" />
     <ClInclude Include="GunBossBullet.h" />
+    <ClInclude Include="HeadBoss3.h" />
+    <ClInclude Include="HeadBoss3Animation.h" />
+    <ClInclude Include="HeadBoss3State.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAnimation.h" />
     <ClInclude Include="ItemState.h" />

@@ -27,6 +27,7 @@ public:
 	int bulletType;
 	float timeBulletType;
 	Map* map;
+	GameObject* boss;
 private:
 	unordered_map<string, BillState*> stateDict;
 	BillState* currentBillState;

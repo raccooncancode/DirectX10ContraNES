@@ -21,6 +21,7 @@ public:
 	bool isDoneMoveAround;
 	float angularSpeed;
 	float radius;
+	float desX, desY;
 private:
 	ArmJointAnimation* armJointAnimation;
 	ArmJointState* currentArmJointState;
@@ -30,7 +31,7 @@ public:
 	ArmJoint(int id, string name, string type, int hp,bool isLeftSide=false,bool isTail =false) :Enemy(id, name, type, hp) {
 		this->nx = -1;
 		this->ny = -1;
-		this->SetSpeed(0.1, 0.1);
+		this->SetSpeed(0.07, 0.01);
 		this->angle = 0;
 		this->radius = 0;
 		this->isLeftSide = isLeftSide;
@@ -54,6 +55,12 @@ public:
 	int GetAx()override {
 		return 0;
 	}
+	void SetMoveToPos(float x, float y) {
+		this->desX = x;
+		this->desY = y;
+	}
+	void MoveTo(float dt);
+	void MoveAround(float dt);
 	void SetAngularSpeed(float speed);
 	void SetRadius(float radius);
 	void SetFrontSibling(ArmJoint* joint);

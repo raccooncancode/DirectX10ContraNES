@@ -20,7 +20,7 @@ public:
 	Blazer(int id, string name, string type, int hp, bool isRuined = false) :Enemy(id, name, type, hp) {
 		this->nx = -1;
 		this->ny = -1;
-		this->SetSpeed(0.05, 0.05);
+		this->SetSpeed(0.02, 0.05);
 		this->angle = 0;
 		this->isRuined = isRuined;
 		this->isInShootRange = false;

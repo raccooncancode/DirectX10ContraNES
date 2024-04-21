@@ -201,6 +201,21 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						s->SetParent(boss1);
 						AddMovingObject(s);
 					}
+					if (objectName == "Boss3Body") {
+						BodyBoss3* s = new BodyBoss3(17, "BodyBoss3", "Enemy", 1);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						s->SetParent(boss3);
+						AddMovingObject(s);
+					}
+					if (objectName == "Boss3Head") {
+						HeadBoss3* s = new HeadBoss3(17, "HeadBoss3", "Enemy", 30);
+						s->LoadAssets();
+						s->GetBound()->UpdateBoundLocation(worldX, worldY);
+						boss3->AddHead(s);
+						s->SetParent(boss3);
+						AddMovingObject(s);
+					}
 					if (objectName == "Boss3ArmLeft") {
 						ArmJoint* s = new ArmJoint(15, "ArmLeft", "Enemy", 12,true);
 						s->LoadAssets();
@@ -215,13 +230,13 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						y = worldY;
 
 						armLeftJoint1->LoadAssets();
-						armLeftJoint1->GetBound()->UpdateBoundLocation(x  - 16 * 1, y);
+						armLeftJoint1->GetBound()->UpdateBoundLocation(x, y);
 						armLeftJoint2->LoadAssets();
-						armLeftJoint2->GetBound()->UpdateBoundLocation(x - 16 * 2, y);
+						armLeftJoint2->GetBound()->UpdateBoundLocation(x, y);
 						armLeftJoint3->LoadAssets();
-						armLeftJoint3->GetBound()->UpdateBoundLocation(x - 16 * 3, y);
+						armLeftJoint3->GetBound()->UpdateBoundLocation(x, y);
 						armLeftJoint4->LoadAssets();
-						armLeftJoint4->GetBound()->UpdateBoundLocation(x - 16 * 4, y);
+						armLeftJoint4->GetBound()->UpdateBoundLocation(x, y);
 						
 						armLeftJoint1->SetAngularSpeed(D3DX_PI/60);
 						armLeftJoint2->SetAngularSpeed(D3DX_PI/60);
@@ -229,21 +244,31 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						armLeftJoint4->SetAngularSpeed(D3DX_PI/60);
 
 						//trick to make some delay on the joint outside
-						armLeftJoint2->SetAngle(-D3DX_PI *6/ 60);
-						armLeftJoint3->SetAngle(-D3DX_PI *12/ 60);
-						armLeftJoint4->SetAngle(-D3DX_PI *24/ 60);
+						armLeftJoint1->SetAngle(-D3DX_PI);
+						armLeftJoint2->SetAngle(-D3DX_PI - D3DX_PI *6/ 60);
+						armLeftJoint3->SetAngle(-D3DX_PI - D3DX_PI *12/ 60);
+						armLeftJoint4->SetAngle(-D3DX_PI - D3DX_PI *24/ 60);
 
 						armLeftJoint1->SetRadius(16);
 						armLeftJoint2->SetRadius(16);
 						armLeftJoint3->SetRadius(16);
 						armLeftJoint4->SetRadius(16);
 
+						armLeftJoint1->SetMoveToPos(x - 16 * 1, y);
+						armLeftJoint2->SetMoveToPos(x - 16 * 2, y);
+						armLeftJoint3->SetMoveToPos(x - 16 * 3, y);
+						armLeftJoint4->SetMoveToPos(x - 16 * 4, y);
 
 						boss3->AddArmLeft(s);
 						boss3->AddArmLeftJoint(armLeftJoint1);
 						boss3->AddArmLeftJoint(armLeftJoint2);
 						boss3->AddArmLeftJoint(armLeftJoint3);
 						boss3->AddArmLeftJoint(armLeftJoint4);
+
+						armLeftJoint1->SetParent(boss3);
+						armLeftJoint2->SetParent(boss3);
+						armLeftJoint3->SetParent(boss3);
+						armLeftJoint4->SetParent(boss3);
 
 						armLeftJoint1->SetFrontSibling(boss3->armLeft);
 						armLeftJoint2->SetFrontSibling(armLeftJoint1);
@@ -270,13 +295,13 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						y = worldY;
 
 						armRightJoint1->LoadAssets();
-						armRightJoint1->GetBound()->UpdateBoundLocation(x + 16 * 1, y);
+						armRightJoint1->GetBound()->UpdateBoundLocation(x, y);
 						armRightJoint2->LoadAssets();
-						armRightJoint2->GetBound()->UpdateBoundLocation(x + 16 * 2, y);
+						armRightJoint2->GetBound()->UpdateBoundLocation(x, y);
 						armRightJoint3->LoadAssets();
-						armRightJoint3->GetBound()->UpdateBoundLocation(x + 16 * 3, y);
+						armRightJoint3->GetBound()->UpdateBoundLocation(x, y);
 						armRightJoint4->LoadAssets();
-						armRightJoint4->GetBound()->UpdateBoundLocation(x + 16 * 4, y);
+						armRightJoint4->GetBound()->UpdateBoundLocation(x, y);
 
 						boss3->AddArmLeft(s);
 						boss3->AddArmLeftJoint(armRightJoint1);
@@ -299,6 +324,15 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						armRightJoint3->SetRadius(16);
 						armRightJoint4->SetRadius(16);
 
+						armRightJoint1->SetMoveToPos(x + 16 * 1, y);
+						armRightJoint2->SetMoveToPos(x + 16 * 2, y);
+						armRightJoint3->SetMoveToPos(x + 16 * 3, y);
+						armRightJoint4->SetMoveToPos(x + 16 * 4, y);
+
+						armRightJoint1->SetParent(boss3);
+						armRightJoint2->SetParent(boss3);
+						armRightJoint3->SetParent(boss3);
+						armRightJoint4->SetParent(boss3);
 
 						armRightJoint1->SetFrontSibling(boss3->armLeft);
 						armRightJoint2->SetFrontSibling(armRightJoint1);
@@ -311,6 +345,7 @@ void Map::LoadObjects(tinyxml2::XMLElement* root) {
 						AddMovingObject(armRightJoint3);
 						AddMovingObject(armRightJoint4);
 					}
+
 				}
 				else if(objectType =="object")
 				{
@@ -365,11 +400,18 @@ void Map::AddStaticObject(GameObject* o) {
 
 void Map::Render() {
 	this->tile->Render();
-	
+	for (GameObject* gO : this->allObjects) {
+		if (!gO->isDeleted && (gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3"))
+		{
+			if(gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3")
+				gO->Render();
+		}
+	}
 	for (GameObject* gO: this->allObjects) {
 		if (!gO->isDeleted)
 		{
-			gO->Render();
+			if (gO->GetName() != "BodyBoss3" && gO->GetName() != "HeadBoss3")
+				gO->Render();
 		}
 	}
 }

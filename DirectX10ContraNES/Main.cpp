@@ -66,6 +66,7 @@ void LoadResources()
 	textures->Add(14, L"Textures\\Bullets.png");
 	textures->Add(15, L"Textures\\Stage3 Elements.png");
 	textures->Add(16, L"Textures\\Scuba.png");
+	textures->Add(17, L"Textures\\Boss3.png");
 
 	aniAddOn->AddAnimation("Explosion0", "Textures\\Explosion0.xml", -200);
 	aniAddOn->AddAnimation("Explosion1", "Textures\\Explosion1.xml", -199);

@@ -9,27 +9,63 @@ void ArmJoint::Update(float dt, vector<GameObject*>* objects) {
 	this->objects.clear();
 	this->btree->Retrieve(this->btree->root, this->objects, this->objectBound);
 	this->collision->Proccess(this, &this->objects, dt);
-	if (this->angularSpeed != 0 && this->frontSibling != NULL) {
-		this->nx = cos(angle);
-		this->ny = sin(angle);
-		if(isLeftSide)
-			this->angle += this->angularSpeed;
-		else
-			this->angle -= this->angularSpeed;
-		if (this->angle >= D3DX_PI*2)
-			this->angle = 0;
-		float xNext,yNext;
-		xNext = this->frontSibling->GetBound()->GetMiddleXOffset() + (cos(angle) * this->radius) - this->objectBound->w/2;
-		yNext = this->frontSibling->GetBound()->GetMiddleYOffset() + (sin(angle) * this->radius) - this->objectBound->h/2;
-		this->objectBound->x = xNext;
-		this->objectBound->y = yNext;
-		if (this->frontSibling->isDead) {
-			this->isDead=true;
+	if (this->parent != NULL) {
+		if (this->parent->isSeeTarget && this->parent->IsDoneMoveTo() ==false) {
+			MoveTo(dt);
+		}
+		if (this->parent->IsDoneMoveTo()) {
+			MoveAround(dt);
 		}
 	}
 
 	this->currentArmJointState->Update(dt);
 	this->armJointAnimation->Update(dt, this, this->isDead);
+}
+
+void ArmJoint::MoveTo(float dt) {
+	
+	this->ny = 1;
+	this->nx = this->isLeftSide ? -1 : 1;
+	if (this->isLeftSide) {
+		if (this->objectBound->x != desX) {
+			if (this->objectBound->x <= this->desX)
+				this->objectBound->x = desX;
+			else
+				this->objectBound->x += this->nx * this->vx * dt;
+		}
+	}
+	else {
+		if (this->objectBound->x != desX) {
+			if (this->objectBound->x >= this->desX)
+				this->objectBound->x = desX;
+			else
+				this->objectBound->x += this->nx * this->vx * dt;
+		}
+	}
+	if (this->objectBound->x == desX) {
+		this->isDoneMoveTo = true;
+	}
+}
+
+void ArmJoint::MoveAround(float dt) {
+	if (this->angularSpeed != 0 && this->frontSibling != NULL) {
+		this->nx = cos(angle);
+		this->ny = sin(angle);
+		if (isLeftSide)
+			this->angle += this->angularSpeed;
+		else
+			this->angle -= this->angularSpeed;
+		if (this->angle >= D3DX_PI * 2)
+			this->angle = 0;
+		float xNext, yNext;
+		xNext = this->frontSibling->GetBound()->GetMiddleXOffset() + (cos(angle) * this->radius) - this->objectBound->w / 2;
+		yNext = this->frontSibling->GetBound()->GetMiddleYOffset() + (sin(angle) * this->radius) - this->objectBound->h / 2;
+		this->objectBound->x = xNext;
+		this->objectBound->y = yNext;
+		if (this->frontSibling->isDead) {
+			this->isDead = true;
+		}
+	}
 }
 
 void ArmJoint::Render() {

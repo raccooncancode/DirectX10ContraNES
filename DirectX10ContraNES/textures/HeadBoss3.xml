@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Animations>
+     <Animation name="HeadBoss3Default" duration="200" totalFrame="3" loop="true">
+        <Frame x="6" y="96" w="96" h="62"></Frame>
+        <Frame x="112" y="96" w="96" h="62"></Frame>
+        <Frame x="219" y="96" w="96" h="62"></Frame>
+    </Animation>
+    <Animation name="HeadBoss3Shooting" duration="200" totalFrame="5" loop="true">
+        <Frame x="6" y="5" w="96" h="72"></Frame>
+        <Frame x="112" y="5" w="96" h="72"></Frame>
+        <Frame x="218" y="5" w="96" h="81"></Frame>
+        <Frame x="324" y="5" w="96" h="81"></Frame>
+        <Frame x="430" y="5" w="96" h="81"></Frame>
+    </Animation>
+</Animations>

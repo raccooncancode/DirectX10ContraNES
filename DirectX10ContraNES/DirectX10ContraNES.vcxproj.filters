@@ -130,6 +130,12 @@
     <Filter Include="FrameWork Files\GameObject\Flatform\DynamicPlatform">
       <UniqueIdentifier>{7668402f-91b5-4236-8d90-4932c232c188}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss3\Body">
+      <UniqueIdentifier>{6cc26284-95db-42e8-9b74-0f801fda9514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork Files\GameObject\Enemy\Boss3\Head">
+      <UniqueIdentifier>{3374a6f7-8674-4152-95d0-2cbf15191587}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -383,6 +389,24 @@
     </ClCompile>
     <ClCompile Include="ScubaState.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Scuba</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss3.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss3State.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyBoss3Animation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadBoss3.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadBoss3Animation.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadBoss3State.cpp">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -646,6 +670,24 @@
     </ClInclude>
     <ClInclude Include="ScubaBullet.h">
       <Filter>FrameWork Files\GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss3.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss3Animation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyBoss3State.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadBoss3.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadBoss3Animation.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadBoss3State.h">
+      <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
