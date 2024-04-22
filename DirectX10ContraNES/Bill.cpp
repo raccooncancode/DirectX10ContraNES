@@ -38,17 +38,34 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 			this->isDead = false;
 			this->ax = 1;
 			this->ny = -1;
-			float cx, cy;
-			cx = Camera::GetInstance()->GetCameraBound()->x;
-			cy = Camera::GetInstance()->GetCameraBound()->y;
-
-			this->objectBound->UpdateBoundLocation(cx + 50, cy + 200);
+			int stage = Camera::GetInstance()->currentStage;
+			float resX = Camera::GetInstance()->GetCameraBound()->x + 30;
+			float resY = Camera::GetInstance()->GetCameraBound()->y + 30;
+			if (stage == 1) {
+				this->objectBound->UpdateBoundLocation(resX,200);
+			}
+			else {
+				this->objectBound->UpdateBoundLocation(80,resY);
+			}
 			SetState("Falling0", Helper::aXToString(ax) + "Falling0");
 		}
 		else
 		{
 			//this is the place to switch to ending scene
 			return;
+		}
+	}
+	if (Camera::GetInstance()->GetTarget() == NULL) {
+		Bound camBound = Camera::GetInstance()->GetCameraBound();
+		if (Camera::GetInstance()->currentStage == 1) {
+			if (this->objectBound->x >= camBound->x + camBound->w / 2 - 20) {
+				Camera::GetInstance()->SetFollowTarget(this);
+			}
+		}
+		else {
+			if (this->objectBound->y >= camBound->y + camBound->h / 2 - 30) {
+				Camera::GetInstance()->SetFollowTarget(this);
+			}
 		}
 	}
 	isOnGround = false;
@@ -64,7 +81,7 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 	if (this->boss == NULL) {
 
 		for (GameObject* o : this->objects) {
-			if (o->GetName() == "BodyBoss3" || o->GetName() == "BodyBoss1") {
+			if (o->GetName() == "BodyBoss3" || o->GetName() == "GunBoss1") {
 				this->boss = o;
 				DebugOut(L"\nPlayer found boss");
 				Camera::GetInstance()->SetFollowTarget(o);
@@ -118,12 +135,14 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 	if (dynamic_cast<Enemy*>(e->dest)) {
 		if(e->dest->GetName()!="BodyBoss1")
 			SetState("Dead", Helper::aXToString(ax) + "Dead");
+			Camera::GetInstance()->SetFollowTarget(NULL);
 	}
 	if (dynamic_cast<Bullet*>(e->dest)) {
 		if (e->dest->GetType() == "EnemyBullet")
 		{
 			e->dest->isDeleted = true;
 			SetState("Dead", Helper::aXToString(ax) + "Dead");
+			Camera::GetInstance()->SetFollowTarget(NULL);
 		}
 	}
 	if (e->dest->GetType() == "Item") {

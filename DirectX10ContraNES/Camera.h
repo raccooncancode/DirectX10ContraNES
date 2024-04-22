@@ -13,9 +13,11 @@ private:
 	GameObject* target;
 	Camera();
 public:
+	int currentStage;
 	static Camera* GetInstance();
 	Bound GetCameraBound();
 	void ResetCamera();
+	GameObject* GetTarget() { return this->target; }
 	bool IsReachedBossArea();
 	void UpdateCameraSize(float w, float h);
 	void Update(float dt, float stage=1);

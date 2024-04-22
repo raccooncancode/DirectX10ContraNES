@@ -53,6 +53,7 @@ void CapsuleDead::Enter() {
 		itemId = 12;
 		itemName = "ItemR";
 	}
+	this->capsule->SetSpeed(0, 0);
 	auto item = new Item(itemId, itemName, "Item");
 	item->LoadAssets();
 	item->GetBound()->UpdateBoundLocation(this->capsule->GetBound()->x, this->capsule->GetBound()->y);

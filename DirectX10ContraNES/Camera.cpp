@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "Camera.h"
+#include "Bill.h"
 Camera* Camera::__instance = nullptr;
 
 Camera::Camera() {
@@ -14,6 +15,13 @@ Camera* Camera::GetInstance() {
 	return __instance;
 }
 
+void Camera::ResetCamera() {
+	this->target = NULL;
+	this->cameraBound->x = 0;
+	this->cameraBound->y = 0;
+	this->isReachBossArea = false;
+}
+
 Bound Camera::GetCameraBound() { return this->cameraBound; }
 
 void Camera::UpdateCameraSize(float w, float h) {
@@ -21,22 +29,27 @@ void Camera::UpdateCameraSize(float w, float h) {
 }
 
 void Camera::Update(float dt, float stage) {
+	this->currentStage = stage;
 	if (this->target != NULL) {
 		float cx, cy,destX,destY;
 		if (this->target->GetType() == "Player") {
-
 			cx = this->target->GetBound()->x;
 			cy = this->target->GetBound()->y;
 
 
 			cx -= this->GetCameraBound()->w / 2 - 30;
-			cy -= this->GetCameraBound()->h / 2 - 40;
+			cy -= this->GetCameraBound()->h / 2 - 30;
 
 			if (cx < 0) cx = 0;
 			if (cy < 0)	cy = 0;
+
+			if (stage == 1)
+				this->cameraBound->UpdateBoundLocation(cx, 15);
+			else
+				this->cameraBound->UpdateBoundLocation(0, cy);
 		}
 		else {
-			destX = this->target->GetBound()->x;
+			destX = this->target->GetBound()->x - 170;
 			destY = this->target->GetBound()->y-20;
 
 			if (stage == 1) {
@@ -61,10 +74,7 @@ void Camera::Update(float dt, float stage) {
 			}
 		}
 
-		if(stage==1)
-			this->cameraBound->UpdateBoundLocation(cx, 15);
-		else
-			this->cameraBound->UpdateBoundLocation(0, cy);
+		//DebugOut(L"\n camera X: %f , camera Y: %f", this->cameraBound->x, this->cameraBound->y);
 	}
 }
 
