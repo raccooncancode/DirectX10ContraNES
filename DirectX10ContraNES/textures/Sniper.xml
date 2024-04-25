@@ -24,10 +24,5 @@
 	<Animation name="RightHidingShooting0" duration="200" totalFrame="1" loop="false">
 		<Frame x="18" y="68" w="24" h="16"></Frame>
 	</Animation>
-	<Animation name="RightDead" duration="200" totalFrame="1" loop="false">
-		<Frame x="117" y="52" w="24" h="32"></Frame>
-	</Animation>
-	<Animation name="LeftDead" duration="200" totalFrame="1" loop="false">
-		<Frame x="0" y="7" w="24" h="32"></Frame>
-	</Animation>
+	
 </Animations>

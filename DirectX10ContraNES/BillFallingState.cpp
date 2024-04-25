@@ -1,7 +1,8 @@
 #include "Bill.h"
 #include "BillState.h"
-
+#include "SceneManager.h"
 void BillFalling0::Enter() {
+	
 }
 void BillFalling0::Exit() {
 

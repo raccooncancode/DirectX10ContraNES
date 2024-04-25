@@ -408,6 +408,18 @@
     <ClCompile Include="HeadBoss3State.cpp">
       <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
     </ClCompile>
+    <ClCompile Include="PreStage1Scene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PreStage3Scene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RectF.h">
@@ -688,6 +700,18 @@
     </ClInclude>
     <ClInclude Include="HeadBoss3State.h">
       <Filter>FrameWork Files\GameObject\Enemy\Boss3\Head</Filter>
+    </ClInclude>
+    <ClInclude Include="PreStage1Scene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PreStage3Scene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>FrameWork Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

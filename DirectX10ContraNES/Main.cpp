@@ -79,7 +79,7 @@ void LoadResources()
 
 void Update(DWORD dt)
 {
-	SceneManager::GetInstance()->GetCurrentScene()->Update(dt);
+	SceneManager::GetInstance()->Update(dt);
 	//gMap->Update(dt);
 	//bill->Update(dt);
 	//bill->Update(dt);
@@ -105,24 +105,14 @@ void Render()
 	IDXGISwapChain* pSwapChain = g->GetSwapChain();
 	ID3D10RenderTargetView* pRenderTargetView = g->GetRenderTargetView();
 	ID3DX10Sprite* spriteHandler = g->GetSpriteHandler();
+	ID3DX10Sprite* fontHandler = g->GetFontSprite();
 
 	pD3DDevice->ClearRenderTargetView(pRenderTargetView, BACKGROUND_COLOR);
 
 	spriteHandler->Begin(D3DX10_SPRITE_SORT_TEXTURE);
-
 	FLOAT NewBlendFactor[4] = { 0,0,0,0 };
 	pD3DDevice->OMSetBlendState(g->GetAlphaBlending(), NewBlendFactor, 0xffffffff);
-
-	//o1->Render();
-	/*for (int i = 0; i < (int)objects.size(); i++)
-	{
-		objects[i]->Render();
-	}*/
-	//bg->Draw(3326, 240);
-	//SceneManager::GetInstance()->Render();
-	//gMap->Render();
 	SceneManager::GetInstance()->GetCurrentScene()->Render();
-	//bill->Render();
 	spriteHandler->Flush();
 	spriteHandler->End();
 	pSwapChain->Present(0, 0);

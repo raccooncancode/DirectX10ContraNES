@@ -181,7 +181,9 @@
     <ClCompile Include="DynamicPlatform.cpp" />
     <ClCompile Include="DynamicPlatformAnimation.cpp" />
     <ClCompile Include="DynamicPlatformState.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GunBoss1.cpp" />
     <ClCompile Include="GunBoss1Animation.cpp" />
     <ClCompile Include="GunBoss1State.cpp" />
@@ -195,6 +197,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="PreStage1Scene.cpp" />
+    <ClCompile Include="PreStage3Scene.cpp" />
     <ClCompile Include="RectF.cpp" />
     <ClCompile Include="RotatingGun.cpp" />
     <ClCompile Include="RotatingGunAnimation.cpp" />
@@ -274,6 +278,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameAnimation.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GunBoss1.h" />
     <ClInclude Include="GunBoss1Animation.h" />
     <ClInclude Include="GunBoss1State.h" />
@@ -285,6 +290,8 @@
     <ClInclude Include="ItemAnimation.h" />
     <ClInclude Include="ItemState.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="PreStage3Scene.h" />
+    <ClInclude Include="PreStage1Scene.h" />
     <ClInclude Include="RotatingGun.h" />
     <ClInclude Include="RotatingGunAnimation.h" />
     <ClInclude Include="RotatingGunState.h" />
@@ -318,6 +325,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />

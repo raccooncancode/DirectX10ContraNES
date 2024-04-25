@@ -9,7 +9,9 @@ class IntroScene :public Scene {
 private:
 	LPTEXTURE introTexture;
 	LPSPRITE introBackGround;
+	float x;
 public:
+	bool isDoneAnimation;
 	IntroScene();
 	void Update(float dt) override;
 	void Render() override;

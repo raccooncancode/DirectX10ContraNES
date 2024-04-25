@@ -41,10 +41,4 @@
 	<Animation name="RightLaying" duration="200" totalFrame="1" loop="false">
 		<Frame x="18" y="51" w="32" h="14"></Frame>
 	</Animation>
-	<Animation name="LeftDead" duration="200" totalFrame="1" loop="false">
-		<Frame x="108" y="4" w="16" h="28"></Frame>
-	</Animation>
-	<Animation name="RightDead" duration="200" totalFrame="1" loop="false">
-		<Frame x="104" y="37" w="16" h="28"></Frame>
-	</Animation>
-</Animations>
+	</Animations>

@@ -91,6 +91,32 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 		return;
 	}
 
+	hr = D3DX10CreateFont(pD3DDevice,
+		15, // the font height
+		0, // the font width
+		FW_BOLD, // the weight of the font
+		1, // number of mip levels
+		FALSE, // this is not an italic font
+		DEFAULT_CHARSET, // default character set
+		OUT_DEFAULT_PRECIS, // default size mapping
+		DEFAULT_QUALITY, // default quality mapping
+		DEFAULT_PITCH | FF_DONTCARE, // default pitch
+		L"Cambria", // use Cambria as the basis for this font
+		&fontObject); // the output
+
+	if (hr != S_OK)
+	{
+		DebugOut((wchar_t*)L"[ERROR] D3DX10CreateFont has failed %s %d", _W(__FILE__), __LINE__);
+		return;
+	}
+
+	hr = D3DX10CreateSprite(pD3DDevice, 512, &fontSprite);
+
+	if (hr != S_OK)
+	{
+		DebugOut((wchar_t*)L"[ERROR] FontSprite has failed %s %d", _W(__FILE__), __LINE__);
+		return;
+	}
 
 	D3DXMatrixOrthoOffCenterLH(&this->projectionMatrix,
 		(float)viewPort->TopLeftX,
@@ -357,6 +383,8 @@ CGame::~CGame()
 	pRenderTargetView->Release();
 	pSwapChain->Release();
 	pD3DDevice->Release();
+	fontObject->Release();
+	fontSprite->Release();
 }
 
 CGame* CGame::GetInstance()

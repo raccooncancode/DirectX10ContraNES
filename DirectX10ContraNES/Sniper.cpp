@@ -1,6 +1,7 @@
 #include "Sniper.h"
 #include "Bullet.h"
 #include "SceneManager.h"
+#include "AnimationAddOnManager.h"
 void Sniper::SetState(std::string stateName, std::string animationName) {
 	if (this->sniperAnimation->GetAnimation() != animationName)
 	{
@@ -125,6 +126,7 @@ void Sniper::LoadAssets() {
 		}
 		this->sniperAnimation->AddAnimation(name, ani);
 	}
+	this->sniperAnimation->AddAnimation("Dead", AnimationAddOnManager::GetInstance()->GetAnimation("Explosion0"));
 	ani = new CAnimation(0, 0, false);//temp
 	this->sniperAnimation->Update(0, this, this->isDead);
 	//InitStateVariable();

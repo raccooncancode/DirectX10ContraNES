@@ -38,7 +38,7 @@ public:
 		isLaying = false;
 		isJumping = false;
 		isSwimming = false;
-		respawnTimes = 100;
+		respawnTimes = 300;
 		timeBulletType = 0;
 		this->ax = 1;
 		this->bulletType = 0;

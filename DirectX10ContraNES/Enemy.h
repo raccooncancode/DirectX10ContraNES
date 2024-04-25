@@ -20,7 +20,7 @@ public:
 		DebugOut(L"\nDecrease HP");
 		if (this->hp <= 0) {
 			this->hp = 0;
-			SetState("Dead", Helper::aXToString(GetAx()) + "Dead");
+			SetState("Dead", "Dead");
 		}
 	}
 	virtual void SetTarget(GameObject* o) { this->target = o; }

@@ -399,7 +399,8 @@ void Map::AddStaticObject(GameObject* o) {
 }
 
 void Map::Render() {
-	this->tile->Render();
+	if(this->tile!=NULL)
+		this->tile->Render();
 	for (GameObject* gO : this->allObjects) {
 		if (!gO->isDeleted && (gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3"))
 		{
@@ -416,7 +417,8 @@ void Map::Render() {
 	}
 }
 void Map::Update(float dt) {
-	this->tile->Update(dt);
+	if(this->tile != NULL)
+		this->tile->Update(dt);
 	Camera::GetInstance()->Update(dt,this->mapStage);
 	//DebugOut(L"\nBtree Root Size, W: %f , H: %f", this->btree->root->bound->w, this->btree->root->bound->h);
 	for (auto i = allObjects.begin(); i != allObjects.end(); ++i) {

@@ -19,9 +19,6 @@ void Bill::SetState(std::string stateName, std::string animationName)
 
 void Bill::OnKeyDown(int keyCode)
 {
-	if (keyCode == DIK_O) {
-		SceneManager::GetInstance()->ChangeMap(3);
-	}
 	this->currentBillState->OnKeyDown(keyCode);
 }
 
@@ -51,18 +48,17 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 		}
 		else
 		{
-			//this is the place to switch to ending scene
 			return;
 		}
 	}
 	if (Camera::GetInstance()->GetTarget() == NULL) {
 		Bound camBound = Camera::GetInstance()->GetCameraBound();
-		if (Camera::GetInstance()->currentStage == 1) {
+		if (Camera::GetInstance()->currentStage == 1 && !Camera::GetInstance()->IsReachedBossArea()) {
 			if (this->objectBound->x >= camBound->x + camBound->w / 2 - 20) {
 				Camera::GetInstance()->SetFollowTarget(this);
 			}
 		}
-		else {
+		else if(Camera::GetInstance()->currentStage == 3) {
 			if (this->objectBound->y >= camBound->y + camBound->h / 2 - 30) {
 				Camera::GetInstance()->SetFollowTarget(this);
 			}

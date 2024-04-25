@@ -10,6 +10,7 @@
 #include <dinput.h>
 #include "debug.h"
 #include "Texture.h"
+#include "Font.h"
 #include "InputManager.h"
 #include "TextureManager.h"
 #include "RectF.h"
@@ -38,6 +39,9 @@ class CGame
 	D3D10_VIEWPORT* viewPort;
 
 	LPD3DX10SPRITE spriteObject;
+	LPD3DX10SPRITE fontSprite;
+	LPD3DX10FONT fontObject;
+
 
 	LPDIRECTINPUT8       di;
 	LPDIRECTINPUTDEVICE8 didv;
@@ -72,6 +76,8 @@ public:
 	ID3D10RenderTargetView* GetRenderTargetView() { return this->pRenderTargetView; }
 	D3D10_VIEWPORT* GetViewPort() { return this->viewPort; }
 	ID3DX10Sprite* GetSpriteHandler() { return this->spriteObject; }
+	ID3DX10Sprite* GetFontSprite() { return this->fontSprite; }
+	ID3DX10Font* GetFontHandler() { return this->fontObject; }
 
 	ID3D10BlendState* GetAlphaBlending() { return pBlendStateAlpha; };
 

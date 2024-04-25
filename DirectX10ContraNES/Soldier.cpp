@@ -1,5 +1,6 @@
 #include "Soldier.h"
 #include "Bullet.h"
+#include "AnimationAddOnManager.h"
 void Soldier::SetState(std::string stateName, std::string animationName) {
 	if (this->soldierAnimation->GetAnimation() != animationName)
 	{
@@ -117,6 +118,7 @@ void Soldier::LoadAssets(){
 		}
 		this->soldierAnimation->AddAnimation(name, ani);
 	}
+	this->soldierAnimation->AddAnimation("Dead", AnimationAddOnManager::GetInstance()->GetAnimation("Explosion0"));
 	ani = new CAnimation(0, 0, false);//temp
 	this->soldierAnimation->Update(0, this, this->isDead);
 	//InitStateVariable();
