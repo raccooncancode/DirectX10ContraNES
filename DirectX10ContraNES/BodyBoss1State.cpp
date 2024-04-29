@@ -1,6 +1,7 @@
 #include "BodyBoss1.h"
 #include "BodyBoss1State.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 void BodyBoss1Default::Enter() {
 }
 void BodyBoss1Default::Exit() {
@@ -33,6 +34,7 @@ string BodyBoss1Ruin::GetStateName() {
 
 void BodyBoss1Dead::Enter() {
 	this->bodyBoss1->isDead = true;
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->bodyBoss1->isCollidable = 0;
 	BodyBoss1* bodyRuined = new BodyBoss1(13, "BodyBoss1", "Enemy", 1000, true);
 	bodyRuined->LoadAssets();

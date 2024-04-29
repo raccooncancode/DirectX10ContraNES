@@ -280,6 +280,7 @@ string RotatingGun315::GetStateName() {
 }
 
 void RotatingGunDead::Enter() {
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->rotatingGun->isDead = true;
 }
 void RotatingGunDead::Exit() {

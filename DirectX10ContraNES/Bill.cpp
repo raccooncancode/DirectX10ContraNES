@@ -6,6 +6,7 @@
 #include <cmath>
 #include <algorithm>
 #include "Camera.h"
+#include "SoundManager.h"
 void Bill::SetState(std::string stateName, std::string animationName)
 {
 	if (this->billAnimation->GetAnimation() != animationName)
@@ -79,7 +80,9 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 		for (GameObject* o : this->objects) {
 			if (o->GetName() == "BodyBoss3" || o->GetName() == "GunBoss1") {
 				this->boss = o;
-				DebugOut(L"\nPlayer found boss");
+				if (o->GetName() == "GunBoss1") {
+					SoundManager::GetInstance()->Play("boss1_entry", false, 1);
+				}
 				Camera::GetInstance()->SetFollowTarget(o);
 			}
 		}
@@ -147,11 +150,7 @@ void Bill::OnCollisionWith(CollisionEvent* e, float dt) {
 }
 
 void Bill::OnCollisionWithItem(CollisionEvent* e, float dt) {
-	/*string s = e->dest->GetName();
-	wstring temp = wstring(s.begin(), s.end());
-	LPCWSTR wideString = temp.c_str();
-	DebugOut(L"\n");
-	DebugOut(wideString);*/
+	SoundManager::GetInstance()->Play("eat_item", false, 1);
 	e->dest->isDeleted = true;
 	this->timeBulletType = 0;
 	if (e->dest->GetName() == "ItemM") {
@@ -188,9 +187,12 @@ void Bill::CreateBullet(float x,float y) {
 	{
 	case 0: //regular
 		currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "PlayerBullet", bX, bY, speed, this->angle));
+		SoundManager::GetInstance()->Play("base_bullet", false, 1);
+		SoundManager::GetInstance()->Play("base_bullet", false, 1);
 		break;
 	case 1: //get M - bigger bullet
 		currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, this->angle));
+		SoundManager::GetInstance()->Play("mbullet", false, 1);
 		break;
 	case 2: //get S - 5 bullets
 		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, this->angle));
@@ -198,9 +200,11 @@ void Bill::CreateBullet(float x,float y) {
 		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport2));
 		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport3));
 		 currentMap->AddMovingObject(new Bullet(-98, "BulletBig", "PlayerBullet", bX, bY, speed, angleSupport4));
+		SoundManager::GetInstance()->Play("sbullet", false, 1);
 		break;
 	case 3: //get R - sped up bullet
 		currentMap->AddMovingObject(new Bullet(-99, "BulletSmall", "PlayerBullet", bX, bY, speed, this->angle));
+		SoundManager::GetInstance()->Play("base_bullet", false, 1);
 		break;
 	default:
 		break;

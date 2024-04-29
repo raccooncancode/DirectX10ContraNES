@@ -2,6 +2,7 @@
 #include "CapsuleState.h"
 #include "SceneManager.h"
 #include "Item.h"
+#include "SoundManager.h"
 void CapsuleDefault::Enter() {
 }
 void CapsuleDefault::Exit() {
@@ -53,6 +54,7 @@ void CapsuleDead::Enter() {
 		itemId = 12;
 		itemName = "ItemR";
 	}
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->capsule->SetSpeed(0, 0);
 	auto item = new Item(itemId, itemName, "Item");
 	item->LoadAssets();

@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
+#include "SoundManager.h"
 void RotatingGun::SetState(std::string stateName, std::string animationName) {
 	if (this->rotatingGunAnimation->GetAnimation() != animationName)
 	{
@@ -137,7 +138,7 @@ void RotatingGun::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void RotatingGun::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nRotatingGun touch player bullet");
+		SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

@@ -1,6 +1,6 @@
 #include "Soldier.h"
 #include "SoldierState.h"
-
+#include "SoundManager.h"
 void SoldierDead::Enter() {
 	this->soldier->isOnGround = false;
 	this->soldier->isJumping = true;

@@ -1,6 +1,7 @@
 #include "ArmJoint.h"
 #include "ArmJointState.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 void ArmJointDefault::Enter() {
 	this->holdTime = 0;
 }
@@ -48,12 +49,9 @@ string ArmJointRuin::GetStateName() {
 
 void ArmJointDead::Enter() {
 	this->armJoint->isDead = true;
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->armJoint->isCollidable = 0;
-	/*ArmJoint* gunRuined = new ArmJoint(13, "ArmJoint", "Enemy", 1000, true);
-	gunRuined->LoadAssets();
-	gunRuined->GetBound()->UpdateBoundLocation(this->ArmJoint->GetBound()->x, this->ArmJoint->GetBound()->y);
-	auto currentMap = SceneManager::GetInstance()->GetCurrentScene();
-	currentMap->AddMovingObject(gunRuined);*/
+	
 }
 void ArmJointDead::Exit() {
 }

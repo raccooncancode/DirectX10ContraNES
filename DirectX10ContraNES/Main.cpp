@@ -5,6 +5,7 @@
 #include "TextureManager.h"
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
+#include "SoundManager.h"
 //#include "Soldier.h"
 #include "Bill.h"
 #include "TestObject.h"
@@ -42,6 +43,8 @@ void LoadResources()
 	TextureManager* textures = TextureManager::GetInstance();
 	AnimationAddOnManager* aniAddOn = AnimationAddOnManager::GetInstance();
 
+
+	//Textures
 	textures->Add(-100, L"Textures\\Bound.png");
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
@@ -72,10 +75,27 @@ void LoadResources()
 
 	aniAddOn->AddAnimation("Explosion0", "Textures\\Explosion0.xml", -200);
 	aniAddOn->AddAnimation("Explosion1", "Textures\\Explosion1.xml", -199);
-	//gMap = new Map(1,true);
+
+
+	//Audio
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Intro.wav", "intro");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Stage1.wav", "stage1");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Stage3.wav", "stage3");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Bullet_Collision.wav", "bullet_collision");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Base_Bullet.wav", "base_bullet");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Blazer.wav", "blazer");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Eat_Item.wav", "eat_item");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Dead.wav", "Dead");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Enemy.wav", "destroy_enemy");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Boss.wav", "destroy_boss");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Boss1_Entry.wav", "boss1_entry");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Bridge.wav", "destroy_bridge");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\MBullet.wav", "mbullet");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\SBullet.wav", "sbullet");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Game_Over.wav", "gameover");
+
+	
 }
-
-
 
 void Update(DWORD dt)
 {
@@ -246,7 +266,7 @@ int WINAPI WinMain(
 	hWnd = CreateGameWindow(hInstance, nCmdShow, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	SetDebugWindow(hWnd);
-	
+	SoundManager::Create(hWnd);
 	CGame* game = CGame::GetInstance();
 	game->Init(hWnd, hInstance);
 	game->InitKeyboard();

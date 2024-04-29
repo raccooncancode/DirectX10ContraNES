@@ -1,6 +1,7 @@
 #include "Stone.h"
 #include "StoneState.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 void StoneDefault::Enter() {
 }
 void StoneDefault::Exit() {
@@ -33,6 +34,7 @@ string StoneRuin::GetStateName() {
 }
 
 void StoneDead::Enter() {
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->stone->isDead = true;
 	this->stone->isCollidable = 0;
 	this->stone->SetSpeed(0, 0);

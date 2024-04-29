@@ -2,6 +2,7 @@
 #include "StaticWeaponState.h"
 #include "Item.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 void StaticWeaponDefault::Enter() {
 }
 void StaticWeaponDefault::Exit() {
@@ -35,6 +36,7 @@ void StaticWeaponDead::Enter() {
 		itemName = "ItemR";
 	}
 	auto item = new Item(itemId, itemName, "Item");
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	item->LoadAssets();
 	item->GetBound()->UpdateBoundLocation(this->staticWeapon->GetBound()->x, this->staticWeapon->GetBound()->y);
 	item->InitItem();

@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
+#include "SoundManager.h"
 void Cannon::SetState(std::string stateName, std::string animationName) {
 	if (this->cannonAnimation->GetAnimation() != animationName && this->currentCannonState->GetStateName()!=stateName)
 	{
@@ -91,7 +92,7 @@ void Cannon::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Cannon::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nCannon touch player bullet");
+		SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

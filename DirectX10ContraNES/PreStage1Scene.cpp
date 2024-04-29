@@ -1,5 +1,6 @@
 #include "PreStage1Scene.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 PreStage1Scene::PreStage1Scene() {
 	this->LoadResource();
 	this->w = this->preStageTexture->getWidth();

@@ -1,6 +1,6 @@
 #include "BridgeBody.h"
 #include "BridgeBodyState.h"
-
+#include "SoundManager.h"
 void BridgeBodyDefault::Enter() {
 }
 void BridgeBodyDefault::Exit() {
@@ -17,6 +17,7 @@ string BridgeBodyDefault::GetStateName() {
 }
 
 void BridgeBodyDead::Enter() {
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->bridgeBody->isDead = true;
 }
 void BridgeBodyDead::Exit() {

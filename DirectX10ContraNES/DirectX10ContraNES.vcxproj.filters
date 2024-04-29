@@ -420,6 +420,9 @@
     <ClCompile Include="GameOverScene.cpp">
       <Filter>FrameWork Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>FrameWork Files\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RectF.h">
@@ -712,6 +715,9 @@
     </ClInclude>
     <ClInclude Include="GameOverScene.h">
       <Filter>FrameWork Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>FrameWork Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

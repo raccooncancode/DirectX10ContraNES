@@ -1,6 +1,9 @@
 #include "SceneManager.h"
 #include "Camera.h"
+#include "SoundManager.h"
 SceneManager::SceneManager() {
+	isOpenIntro = false;
+	isDoneIntro = false;
 	scores = 0;
 	bill = new Bill(0, "Bill", "Player");
 	bill->LoadAssets();
@@ -71,22 +74,29 @@ void SceneManager::SwitchScene(std::string sceneName) {
 			if (sceneName == "stage1") {
 				Camera::GetInstance()->GetCameraBound()->UpdateBoundLocation(0, 15);
 				this->bill->GetBound()->UpdateBoundLocation(70, 200);
+				SoundManager::GetInstance()->Play("stage1", true, 1);
 			}
 			else {
 				this->bill->GetBound()->UpdateBoundLocation(70, 70);
+				SoundManager::GetInstance()->Play("stage3", true, 1);
 			}
 		}
 		if (sceneName == "ready1") {
+			SoundManager::GetInstance()->Stop();
 			PreStage1Scene* ready1 = (PreStage1Scene*)this->scenes["ready1"];
 			ready1->SetStatus(this->scores, bill->respawnTimes);
 		}
 		if (sceneName == "ready3") {
+			SoundManager::GetInstance()->Stop();
 			PreStage3Scene* ready3 = (PreStage3Scene*)this->scenes["ready3"];
 			ready3->SetStatus(this->scores, bill->respawnTimes);
 		}
 		if (sceneName == "gameover") {
+			SoundManager::GetInstance()->Stop();
 			GameOverScene* gameover = (GameOverScene*)this->scenes["gameover"];
 			gameover->SetStatus(this->scores, 0);
+			SoundManager::GetInstance()->Play("gameover",true,1);
+
 		}
 		this->currentSceneName = sceneName;
 		this->currentScene = scenes[sceneName];
@@ -104,7 +114,11 @@ void SceneManager::Render() {
 	this->currentScene->Render();
 }
 void SceneManager::Update(float dt) {
-	this->currentScene->Update(dt);
+	if (!isOpenIntro && isDoneIntro) {
+		SoundManager::GetInstance()->Play("intro", false, 1);
+		this->isOpenIntro = true;
+	}
+	currentScene->Update(dt);
 	if (this->bill->respawnTimes <= 0 && this->bill->isDeleted) {
 		SwitchScene("gameover");
 	}

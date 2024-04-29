@@ -76,6 +76,7 @@ string CannonShooting::GetStateName() {
 }
 
 void CannonDead::Enter() {
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->cannon->isDead = true;
 }
 void CannonDead::Exit() {

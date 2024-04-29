@@ -17,9 +17,11 @@ private:
 	std::unordered_map<std::string, Scene*> scenes;
 	Scene* currentScene;
 	SceneManager();
+	bool isOpenIntro;
 public:
 	Bill* bill;
 	int scores;
+	bool isDoneIntro;
 	std::string currentSceneName;
 	static SceneManager* GetInstance();
 	Scene* GetCurrentScene();

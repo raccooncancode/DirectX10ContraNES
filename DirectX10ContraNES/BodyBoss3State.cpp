@@ -1,6 +1,7 @@
 #include "BodyBoss3.h"
 #include "BodyBoss3State.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 void BodyBoss3Default::Enter() {
 }
 void BodyBoss3Default::Exit() {
@@ -33,6 +34,7 @@ string BodyBoss3Ruin::GetStateName() {
 }
 
 void BodyBoss3Dead::Enter() {
+	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->bodyBoss3->isDead = true;
 	this->bodyBoss3->isCollidable = 0;
 	this->bodyBoss3->SetSpeed(0, 0);

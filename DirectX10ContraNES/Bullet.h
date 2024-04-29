@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "Enemy.h"
 #include "Sprite.h"
+#include "SoundManager.h"
 class Bullet: public GameObject {
 protected:
 	LPTEXTURE BulletTex;
@@ -37,13 +38,8 @@ public:
 	virtual void OnCollisionWithEnemy(CollisionEvent* e, float dt) {
 		if (e->src->GetType() == "PlayerBullet") {
 			auto enemy = (Enemy*)e->dest;
-			DebugOut(L"\nnx: %d, ny: %d ", e->nx, e->ny);
-			string s = enemy->GetName();
-			wstring temp = wstring(s.begin(), s.end());
-			LPCWSTR wideString = temp.c_str();
-			DebugOut(L"\n");
-			DebugOut(wideString);
 			enemy->DecreaseHP(1);
+			SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 			this->isDeleted = true;
 		}
 		else if (e->src->GetType() == "EnemyBullet") {

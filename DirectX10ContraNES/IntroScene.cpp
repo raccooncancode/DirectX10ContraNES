@@ -1,5 +1,6 @@
 #include "IntroScene.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 IntroScene::IntroScene() {
 	this->LoadResource();
 	this->x = this->introTexture->getWidth();
@@ -9,8 +10,8 @@ IntroScene::IntroScene() {
 void IntroScene::Update(float dt) {
 	if (this->introTexture != NULL && this->introBackGround != NULL) {
 		this->x -= 0.05 * dt;
-		if (this->x < this->introTexture->getWidth() / 2) {
-			this->x = this->introTexture->getWidth() / 2;
+		if (this->x < (float)this->introTexture->getWidth() / 2) {
+			this->x = (float)this->introTexture->getWidth() / 2;
 			this->isDoneAnimation = true;
 		}
 	}
@@ -27,6 +28,7 @@ void IntroScene::Render() {
 			if(CGame::GetInstance()->IsKeyDown(DIK_RETURN)) {
 				SceneManager::GetInstance()->SwitchScene("ready1");
 			}
+			SceneManager::GetInstance()->isDoneIntro = true;
 		}
 	}
 }

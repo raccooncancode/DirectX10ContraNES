@@ -19,7 +19,7 @@ void Soldier::Update(float dt, vector<GameObject*>* objects){
 	if (this->target == NULL)
 	{
 		for (GameObject* gO : this->objects) {
-			if (gO->GetType() == "Player") {
+			if (gO->GetType() == "Player" && !this->isDead) {
 				//DebugOut(L"\nSoldier Found Player");
 				SetTarget(gO);
 				this->nx = gO->GetBound()->x < this->objectBound->x ? -1 : 1;
@@ -78,6 +78,7 @@ void Soldier::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Soldier::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
+		SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

@@ -91,6 +91,7 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 		return;
 	}
 
+
 	hr = D3DX10CreateFont(pD3DDevice,
 		15, // the font height
 		0, // the font width

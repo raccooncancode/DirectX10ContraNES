@@ -3,6 +3,7 @@
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
 #include "ScubaBullet.h"
+#include "SoundManager.h"
 void Scuba::SetState(std::string stateName, std::string animationName) {
 	if (this->scubaAnimation->GetAnimation() != animationName && this->currentScubaState->GetStateName() != stateName)
 	{
@@ -94,7 +95,7 @@ void Scuba::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Scuba::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nScuba touch player bullet");
+		SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

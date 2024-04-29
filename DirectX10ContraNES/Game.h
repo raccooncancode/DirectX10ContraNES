@@ -5,9 +5,11 @@
 #include <Windows.h>
 #include <D3D10.h>
 #include <D3DX10.h>
+#include <X3DAudio.h>
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
+#include <dsound.h>
 #include "debug.h"
 #include "Texture.h"
 #include "Font.h"
@@ -47,6 +49,10 @@ class CGame
 	LPDIRECTINPUTDEVICE8 didv;
 	BYTE  keyStates[KEYBOARD_STATE_SIZE];			// DirectInput keyboard state buffer 
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE];		// Buffered keyboard data
+
+	LPDIRECTSOUND8 directSoundDevice;
+	LPDIRECTSOUNDBUFFER directSoundBuffer;
+
 
 	D3DXMATRIX projectionMatrix;
 	D3DXMATRIX viewMatrix;

@@ -1,12 +1,13 @@
 #include "Bill.h"
 #include "BillState.h"
-
+#include "SoundManager.h"
 void BillDead::Enter() {
 	this->bill->isDead = true;
 	this->bill->isJumping = true;
 	this->bill->isOnGround = false;
 	this->bill->SetNy(1);
 	this->maxYCanReach = this->bill->GetBound()->y + 35;
+	SoundManager::GetInstance()->Play("Dead", false, 1);
 	this->bill->DecreaseHP();
 }
 void BillDead::Exit() {

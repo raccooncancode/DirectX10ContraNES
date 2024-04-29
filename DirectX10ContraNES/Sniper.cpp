@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "SceneManager.h"
 #include "AnimationAddOnManager.h"
+#include "SoundManager.h"
 void Sniper::SetState(std::string stateName, std::string animationName) {
 	if (this->sniperAnimation->GetAnimation() != animationName)
 	{
@@ -85,7 +86,7 @@ void Sniper::OnCollisionWithPlayer(CollisionEvent* e, float dt) {
 void Sniper::OnCollisionWithBullet(CollisionEvent* e, float dt) {
 	if (e->dest->GetType() == "PlayerBullet")
 	{
-		DebugOut(L"\nSniper touch player bullet");
+		SoundManager::GetInstance()->Play("bullet_collision", false, 1);
 		e->dest->isDeleted = true;
 		DecreaseHP(1);
 	}

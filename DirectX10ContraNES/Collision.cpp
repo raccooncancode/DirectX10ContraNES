@@ -288,6 +288,9 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 				if (objects->at(i)->GetType() == "Bridge") {
 					isAllowCollision = false;
 				}
+				if (objects->at(i)->GetName() == "Blazer") {
+					isAllowCollision = false;
+				}
 			}
 			if (isAllowCollision) {
 				if (objects->at(i)->isCollidable == 1) {
