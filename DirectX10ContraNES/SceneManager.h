@@ -7,6 +7,7 @@
 #include "PreStage3Scene.h"
 #include "GameOverScene.h"
 #include "EndingScene.h"
+#include "CreditScene.h"
 #include "Map.h"
 #include "Bill.h"
 #include <unordered_map>

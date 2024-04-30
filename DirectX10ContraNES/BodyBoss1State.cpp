@@ -34,7 +34,9 @@ string BodyBoss1Ruin::GetStateName() {
 
 void BodyBoss1Dead::Enter() {
 	this->bodyBoss1->isDead = true;
+	SoundManager::GetInstance()->Stop();
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
+	SoundManager::GetInstance()->Play("finish_stage", false, 1);
 	this->bodyBoss1->isCollidable = 0;
 	BodyBoss1* bodyRuined = new BodyBoss1(13, "BodyBoss1", "Enemy", 1000, true);
 	bodyRuined->LoadAssets();

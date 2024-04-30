@@ -18,6 +18,7 @@ SceneManager::SceneManager() {
 	this->scenes["stage3"] = new Map(3,false);
 	this->scenes["gameover"] = new GameOverScene();
 	this->scenes["ending"] = new EndingScene();
+	this->scenes["credit"] = new CreditScene();
 	
 	this->currentScene = this->scenes["intro"];
 }
@@ -94,12 +95,18 @@ void SceneManager::SwitchScene(std::string sceneName) {
 			SoundManager::GetInstance()->Stop();
 			SoundManager::GetInstance()->Play("destroy_boss", true, 1);
 		}
+		if (sceneName == "ending") {
+			SoundManager::GetInstance()->Stop();
+			SoundManager::GetInstance()->Play("credit", true, 1);
+
+		}
 		this->currentSceneName = sceneName;
 		this->currentScene = scenes[sceneName];
 		if (this->currentSceneName != "ready1" ||
 			this->currentSceneName != "ready3" ||
 			this->currentSceneName != "gameover" ||
-			this->currentSceneName != "ending"
+			this->currentSceneName != "ending" ||
+			this->currentSceneName != "credit"
 			) {
 		this->currentScene->AddMovingObject(this->bill);
 
@@ -121,7 +128,8 @@ void SceneManager::Update(float dt) {
 	}
 	if (this->currentSceneName == "stage1") {
 		if (this->bill->GetBound()->x >= 3300) {
-			SwitchScene("ending");
+			bill->boss = NULL;
+			SwitchScene("ready3");
 		}
 	}
 	if (this->currentSceneName == "stage3") {

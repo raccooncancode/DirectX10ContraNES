@@ -86,7 +86,13 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 				Camera::GetInstance()->SetFollowTarget(o);
 			}
 		}
+		for (GameObject* o : this->objects) {
+			if (o->GetName() == "BodyBoss1") {
+				this->boss = o;
+			}
+		}
 	}
+
 	this->billAnimation->Update(dt,this,this->isDead);
 	this->currentBillState->Update(dt);
 	ResetBulletType(dt);

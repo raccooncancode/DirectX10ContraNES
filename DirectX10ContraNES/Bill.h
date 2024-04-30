@@ -18,6 +18,7 @@ class Map;
 using namespace std;
 class Bill:public GameObject, public IControlable {
 public:
+	bool isClearStage;
 	int ax;
 	bool isLaying;
 	bool isOnGround;
@@ -35,6 +36,7 @@ private:
 public:
 	Bill(int id, string name, string type) :GameObject(id, name, type) {
 		isOnGround = false;
+		isClearStage = false;
 		isLaying = false;
 		isJumping = false;
 		isSwimming = false;

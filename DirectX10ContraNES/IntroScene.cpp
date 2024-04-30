@@ -26,7 +26,7 @@ void IntroScene::Render() {
 			auto x = f;
 			f->Render();
 			if(CGame::GetInstance()->IsKeyDown(DIK_RETURN)) {
-				SceneManager::GetInstance()->SwitchScene("ending");
+				SceneManager::GetInstance()->SwitchScene("ready1");
 			}
 			SceneManager::GetInstance()->isDoneIntro = true;
 		}

@@ -19,7 +19,7 @@ void EndingScene::Render() {
 		auto test = endingAnimation->GetCurrentSprite();
 		this->endingAnimation->Render(150,(float)225/2);
 		if (this->endingAnimation->IsDone()) {
-			SceneManager::GetInstance()->SwitchScene("intro");
+			SceneManager::GetInstance()->SwitchScene("credit");
 		}
 	}
 }

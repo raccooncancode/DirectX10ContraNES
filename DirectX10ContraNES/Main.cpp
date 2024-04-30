@@ -19,7 +19,7 @@
 
 #define SCREEN_WIDTH 270
 #define SCREEN_HEIGHT 240 
-#define SCREEN_SCALING 2
+#define SCREEN_SCALING 3
 
 #define MS_PER_UPDATE 1000.0f/60
 
@@ -93,6 +93,8 @@ void LoadResources()
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Enemy.wav", "destroy_enemy");
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Boss.wav", "destroy_boss");
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\Boss1_Entry.wav", "boss1_entry");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Finish_Stage.wav", "finish_stage");
+	SoundManager::GetInstance()->LoadSound((char*)"audio\\Credit.wav", "credit");
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\Destroy_Bridge.wav", "destroy_bridge");
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\MBullet.wav", "mbullet");
 	SoundManager::GetInstance()->LoadSound((char*)"audio\\SBullet.wav", "sbullet");

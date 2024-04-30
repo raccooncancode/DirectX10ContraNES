@@ -82,7 +82,9 @@ string HeadBoss3Ruin::GetStateName() {
 }
 
 void HeadBoss3Dead::Enter() {
+	SoundManager::GetInstance()->Stop();
 	SoundManager::GetInstance()->Play("destroy_boss", false, 1);
+	SoundManager::GetInstance()->Play("finish_stage", false, 1);
 	this->headBoss3->isDead = true;
 	this->headBoss3->GetParent()->isDead = true;
 	this->headBoss3->isCollidable = 0;
