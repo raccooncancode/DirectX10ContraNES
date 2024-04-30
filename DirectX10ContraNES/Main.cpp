@@ -45,14 +45,17 @@ void LoadResources()
 
 
 	//Textures
+	textures->Add(-999, L"Textures\\EndingScene.jpg");
+
+	textures->Add(-200, L"Textures\\Explosion0.png");
+	textures->Add(-199, L"Textures\\Explosion1.png");
+
 	textures->Add(-100, L"Textures\\Bound.png");
 	textures->Add(-99, L"Textures\\BulletSmall.png");
 	textures->Add(-98, L"Textures\\BulletBig.png");
 	textures->Add(-97, L"Textures\\FireBall.png");
 	textures->Add(-96, L"Textures\\EnergyBall.png");
 
-	textures->Add(-200, L"Textures\\Explosion0.png");
-	textures->Add(-199, L"Textures\\Explosion1.png"); //for bridge
 	
 	textures->Add(0, L"Textures\\Bill.png");
 	textures->Add(1, L"Textures\\Soldier.png");
@@ -73,6 +76,7 @@ void LoadResources()
 	textures->Add(16, L"Textures\\Scuba.png");
 	textures->Add(17, L"Textures\\Boss3.png");
 
+	//Animations
 	aniAddOn->AddAnimation("Explosion0", "Textures\\Explosion0.xml", -200);
 	aniAddOn->AddAnimation("Explosion1", "Textures\\Explosion1.xml", -199);
 

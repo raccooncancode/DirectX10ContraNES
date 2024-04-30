@@ -177,10 +177,12 @@
     <ClCompile Include="CapsuleAnimation.cpp" />
     <ClCompile Include="CapsuleState.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="CreditScene.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="DynamicPlatform.cpp" />
     <ClCompile Include="DynamicPlatformAnimation.cpp" />
     <ClCompile Include="DynamicPlatformState.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
@@ -270,10 +272,12 @@
     <ClInclude Include="CapsuleAnimation.h" />
     <ClInclude Include="CapsuleState.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="CreditScene.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="DynamicPlatform.h" />
     <ClInclude Include="DynamicPlatformAnimation.h" />
     <ClInclude Include="DynamicPlatformState.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FBullet.h" />
     <ClInclude Include="Game.h" />

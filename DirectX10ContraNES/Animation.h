@@ -8,6 +8,7 @@
 class CAnimation
 {
 private:
+	bool isDone;
 	float pAnimationDuration;
 	int pCurrentFrameIndex;
 	int pTotalFrame;
@@ -21,6 +22,7 @@ public:
 		this->pCurrentFrameIndex = 0;
 		this->pTotalFrame = totalFrame;
 		this->pTime = 0;
+		this->isDone = false;
 		this->pAnimationDuration = animationDuration;
 		this->isLoop = isLoop;
 	}
@@ -47,6 +49,9 @@ public:
 					DebugOut(L"\nDone Dead Ani");
 					o->isDeleted = true;
 				}
+				if (pCurrentFrameIndex == pTotalFrame) {
+					this->isDone = true;
+				}
 				pCurrentFrameIndex %= (pTotalFrame);
 			}
 			else if(!isLoop && isDead) {
@@ -56,9 +61,15 @@ public:
 			pTime -= pAnimationDuration;
 		}
 	}
+	bool IsDone() {
+		return this->isDone;
+	}
 	void Render(float x, float y)
 	{
 		pFrames[pCurrentFrameIndex]->Draw(x, y);
+	}
+	LPSPRITE GetCurrentSprite() {
+		return pFrames[pCurrentFrameIndex];
 	}
 	D3DX10_SPRITE getSpriteStruct() { return this->pFrames[pCurrentFrameIndex]->getSpriteStruct(); }
 };

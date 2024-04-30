@@ -423,6 +423,12 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>FrameWork Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditScene.cpp">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RectF.h">
@@ -718,6 +724,12 @@
     </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>FrameWork Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditScene.h">
+      <Filter>FrameWork Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

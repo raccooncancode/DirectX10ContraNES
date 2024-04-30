@@ -5,9 +5,9 @@ SceneManager::SceneManager() {
 	isOpenIntro = false;
 	isDoneIntro = false;
 	scores = 0;
+	holdTime = 0;
 	bill = new Bill(0, "Bill", "Player");
 	bill->LoadAssets();
-	//bill->GetBound()->UpdateBoundLocation(3000, 200);
 	Camera::GetInstance()->SetFollowTarget(bill);
 	this->currentSceneName = "intro";
 
@@ -17,17 +17,9 @@ SceneManager::SceneManager() {
 	this->scenes["stage1"] = new Map(1);
 	this->scenes["stage3"] = new Map(3,false);
 	this->scenes["gameover"] = new GameOverScene();
-	
-
-	//auto map1 = new Map(1);
-	//map1->AddMovingObject(bill);
-	//this->scenes["playscene"] = map1;
-	//auto map3 = new Map(3,false);
-	//map3->AddMovingObject(bill);
-	//this->scenes["playscene"] = map3;
+	this->scenes["ending"] = new EndingScene();
 	
 	this->currentScene = this->scenes["intro"];
-	//SwitchScene("ready3");
 }
 
 
@@ -73,7 +65,7 @@ void SceneManager::SwitchScene(std::string sceneName) {
 		if (sceneName.find("stage") != std::string::npos) {
 			if (sceneName == "stage1") {
 				Camera::GetInstance()->GetCameraBound()->UpdateBoundLocation(0, 15);
-				this->bill->GetBound()->UpdateBoundLocation(70, 200);
+				this->bill->GetBound()->UpdateBoundLocation(3000, 200);
 				SoundManager::GetInstance()->Play("stage1", true, 1);
 			}
 			else {
@@ -98,11 +90,16 @@ void SceneManager::SwitchScene(std::string sceneName) {
 			SoundManager::GetInstance()->Play("gameover",true,1);
 
 		}
+		if (sceneName == "ending") {
+			SoundManager::GetInstance()->Stop();
+			SoundManager::GetInstance()->Play("destroy_boss", true, 1);
+		}
 		this->currentSceneName = sceneName;
 		this->currentScene = scenes[sceneName];
 		if (this->currentSceneName != "ready1" ||
 			this->currentSceneName != "ready3" ||
-			this->currentSceneName != "gameover"
+			this->currentSceneName != "gameover" ||
+			this->currentSceneName != "ending"
 			) {
 		this->currentScene->AddMovingObject(this->bill);
 
@@ -124,14 +121,19 @@ void SceneManager::Update(float dt) {
 	}
 	if (this->currentSceneName == "stage1") {
 		if (this->bill->GetBound()->x >= 3300) {
-			SwitchScene("ready3");
+			SwitchScene("ending");
 		}
 	}
 	if (this->currentSceneName == "stage3") {
 		if (this->bill->boss != NULL) {
 			if (this->bill->boss->GetName() == "BodyBoss3") {
 				if (this->bill->boss->isDeleted) {
-					SceneManager::GetInstance()->SwitchScene("gameover");
+					if (this->holdTime <= 5000) {
+						this->holdTime += dt;
+					}
+					else {
+						SceneManager::GetInstance()->SwitchScene("ending");
+					}
 				}
 			}
 		}

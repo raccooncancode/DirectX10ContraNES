@@ -6,6 +6,7 @@
 #include "PreStage1Scene.h"
 #include "PreStage3Scene.h"
 #include "GameOverScene.h"
+#include "EndingScene.h"
 #include "Map.h"
 #include "Bill.h"
 #include <unordered_map>
@@ -18,6 +19,7 @@ private:
 	Scene* currentScene;
 	SceneManager();
 	bool isOpenIntro;
+	float holdTime;
 public:
 	Bill* bill;
 	int scores;
