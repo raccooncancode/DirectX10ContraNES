@@ -19,7 +19,7 @@
 
 #define SCREEN_WIDTH 270
 #define SCREEN_HEIGHT 240 
-#define SCREEN_SCALING 3
+#define SCREEN_SCALING 2
 
 #define MS_PER_UPDATE 1000.0f/60
 

@@ -95,7 +95,7 @@ void SceneManager::SwitchScene(std::string sceneName) {
 			SoundManager::GetInstance()->Stop();
 			SoundManager::GetInstance()->Play("destroy_boss", true, 1);
 		}
-		if (sceneName == "ending") {
+		if (sceneName == "credit") {
 			SoundManager::GetInstance()->Stop();
 			SoundManager::GetInstance()->Play("credit", true, 1);
 

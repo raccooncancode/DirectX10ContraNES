@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-up" width="208" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="180">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-up" width="208" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="181">
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="132" columns="11">
   <image source="stage1.jpg" width="176" height="192"/>
   <tile id="119">
@@ -3226,6 +3226,7 @@
   <object id="157" type="water" x="353.5" y="220" width="255" height="13"/>
   <object id="158" type="water" x="1506.5" y="220" width="220" height="13"/>
   <object id="179" type="&quot;&quot;" x="3228.33" y="87.3333" width="30" height="10"/>
+  <object id="180" type="throughable" x="3251.17" y="193" width="96.6667" height="13.3333"/>
  </objectgroup>
  <objectgroup id="3" name="ObjectLayer">
   <object id="37" name="Bridge" type="object" x="767.67" y="118" width="128" height="32"/>

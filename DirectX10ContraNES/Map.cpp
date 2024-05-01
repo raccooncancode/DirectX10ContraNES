@@ -402,16 +402,16 @@ void Map::Render() {
 	if(this->tile!=NULL)
 		this->tile->Render();
 	for (GameObject* gO : this->allObjects) {
-		if (!gO->isDeleted && (gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3"))
+		if (!gO->isDeleted)
 		{
-			if(gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3")
+			if(gO->GetName() == "BodyBoss3" || gO->GetName() == "HeadBoss3" || gO->GetName() == "BodyBoss1Ruined")
 				gO->Render();
 		}
 	}
 	for (GameObject* gO: this->allObjects) {
-		if (!gO->isDeleted)
+		if (!gO->isDeleted && gO->GetName()!="Platform")
 		{
-			if (gO->GetName() != "BodyBoss3" && gO->GetName() != "HeadBoss3")
+			if (gO->GetName() != "BodyBoss3" && gO->GetName() != "HeadBoss3" && gO->GetName()!="BodyBoss1Ruined")
 				gO->Render();
 		}
 	}
