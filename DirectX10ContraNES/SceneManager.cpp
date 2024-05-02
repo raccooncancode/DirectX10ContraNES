@@ -66,7 +66,7 @@ void SceneManager::SwitchScene(std::string sceneName) {
 		if (sceneName.find("stage") != std::string::npos) {
 			if (sceneName == "stage1") {
 				Camera::GetInstance()->GetCameraBound()->UpdateBoundLocation(0, 15);
-				this->bill->GetBound()->UpdateBoundLocation(3000, 200);
+				this->bill->GetBound()->UpdateBoundLocation(70, 200);
 				SoundManager::GetInstance()->Play("stage1", true, 1);
 			}
 			else {

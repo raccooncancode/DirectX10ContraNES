@@ -9,6 +9,7 @@ void BillDead::Enter() {
 	this->maxYCanReach = this->bill->GetBound()->y + 35;
 	SoundManager::GetInstance()->Play("Dead", false, 1);
 	this->bill->DecreaseHP();
+
 }
 void BillDead::Exit() {
 

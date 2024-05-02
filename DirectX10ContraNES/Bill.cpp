@@ -38,7 +38,7 @@ void Bill::Update(float dt,vector<GameObject*>* objects)
 			this->ny = -1;
 			int stage = Camera::GetInstance()->currentStage;
 			float resX = Camera::GetInstance()->GetCameraBound()->x + 30;
-			float resY = Camera::GetInstance()->GetCameraBound()->y + 30;
+			float resY = Camera::GetInstance()->GetCameraBound()->y + 40;
 			if (stage == 1) {
 				this->objectBound->UpdateBoundLocation(resX,200);
 			}
@@ -173,6 +173,13 @@ void Bill::OnCollisionWithItem(CollisionEvent* e, float dt) {
 void Bill::Render()
 {
 	billAnimation->Render(this->objectBound->x +this->objectBound->w/2, this->objectBound->y+this->objectBound->h/2);
+	float cx, cy ,ch;
+	cx = Camera::GetInstance()->GetCameraBound()->x;
+	cy = Camera::GetInstance()->GetCameraBound()->y;
+	ch = Camera::GetInstance()->GetCameraBound()->h;
+	for (int i = 0; i < lifeSprites.size(); i++) {
+		lifeSprites[i]->Draw(cx + 8 + 16 * i, cy + 190);
+	}
 	
 	//RenderBoundingBox();
 }
@@ -219,6 +226,8 @@ void Bill::CreateBullet(float x,float y) {
 
 void Bill::DecreaseHP() {
 	this->respawnTimes--;
+	if(!this->lifeSprites.empty())
+		this->lifeSprites.pop_back();
 }
 
 void Bill::ResetBulletType(float dt) {

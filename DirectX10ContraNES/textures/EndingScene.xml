@@ -1,5 +1,5 @@
 <Animations>
-    <Animation name="EndingScene" duration="200" totalFrame="45" loop="true">
+    <Animation name="EndingScene" duration="100" totalFrame="45" loop="true">
         <Frame x="0" y="0" w="300" h="225"/>
         <Frame x="300" y="0" w="300" h="225"/>
         <Frame x="600" y="0" w="300" h="225"/>

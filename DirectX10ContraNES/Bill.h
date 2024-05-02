@@ -33,6 +33,8 @@ private:
 	unordered_map<string, BillState*> stateDict;
 	BillState* currentBillState;
 	BillAnimation* billAnimation;
+	LPTEXTURE lifeTex;
+	vector<LPSPRITE> lifeSprites;
 public:
 	Bill(int id, string name, string type) :GameObject(id, name, type) {
 		isOnGround = false;
@@ -40,7 +42,7 @@ public:
 		isLaying = false;
 		isJumping = false;
 		isSwimming = false;
-		respawnTimes = 300;
+		respawnTimes = 5;
 		timeBulletType = 0;
 		this->ax = 1;
 		this->bulletType = 0;
@@ -65,6 +67,11 @@ public:
 		SetNx(0);
 		SetAngle(0);
 		SetState("Falling0", Helper::aXToString(ax) + "Falling0");
+		this->lifeTex = TextureManager::GetInstance()->Get(18);
+		for (int i = 0; i < respawnTimes; i++) {
+			auto lifeSprite = new CSprite(0, 0,12,16, lifeTex);
+			lifeSprites.push_back(lifeSprite);
+		}
 		InputManager::GetInstance()->RegisterListener(this);
 	}
 	float GetNx() { return this->nx; }
