@@ -85,6 +85,7 @@ void HeadBoss3Dead::Enter() {
 	SoundManager::GetInstance()->Stop();
 	SoundManager::GetInstance()->Play("destroy_boss", false, 1);
 	SoundManager::GetInstance()->Play("finish_stage", false, 1);
+	SceneManager::GetInstance()->scores += this->headBoss3->GetScore();
 	this->headBoss3->isDead = true;
 	this->headBoss3->GetParent()->isDead = true;
 	this->headBoss3->isCollidable = 0;

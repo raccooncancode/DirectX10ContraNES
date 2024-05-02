@@ -1,6 +1,6 @@
 #include "Cannon.h"
 #include "CannonState.h"
-
+#include "SceneManager.h"
 
 void CannonHiding::Enter() {
 }
@@ -76,6 +76,7 @@ string CannonShooting::GetStateName() {
 }
 
 void CannonDead::Enter() {
+	SceneManager::GetInstance()->scores += this->cannon->GetScore();
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->cannon->isDead = true;
 }

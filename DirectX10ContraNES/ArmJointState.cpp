@@ -50,6 +50,7 @@ string ArmJointRuin::GetStateName() {
 void ArmJointDead::Enter() {
 	this->armJoint->isDead = true;
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
+	SceneManager::GetInstance()->scores += this->armJoint->GetScore();
 	this->armJoint->isCollidable = 0;
 	
 }

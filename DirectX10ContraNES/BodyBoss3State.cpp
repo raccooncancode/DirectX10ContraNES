@@ -34,6 +34,7 @@ string BodyBoss3Ruin::GetStateName() {
 }
 
 void BodyBoss3Dead::Enter() {
+	SceneManager::GetInstance()->scores += this->bodyBoss3->GetScore();
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->bodyBoss3->isDead = true;
 	this->bodyBoss3->isCollidable = 0;

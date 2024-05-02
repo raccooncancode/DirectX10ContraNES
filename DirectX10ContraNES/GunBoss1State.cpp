@@ -50,6 +50,7 @@ string GunBoss1Ruin::GetStateName() {
 void GunBoss1Dead::Enter() {
 	this->gunBoss1->isDead = true;
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
+	SceneManager::GetInstance()->scores += this->gunBoss1->GetScore();
 	this->gunBoss1->isCollidable = 0;
 	GunBoss1* gunRuined = new GunBoss1(13, "GunBoss1", "Enemy", 1000, true);
 	gunRuined->LoadAssets();

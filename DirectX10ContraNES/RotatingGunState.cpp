@@ -1,6 +1,6 @@
 #include "RotatingGun.h"
 #include "RotatingGunState.h"
-
+#include "SceneManager.h"
 void RotatingGunOpen::Enter() {
 	this->rotatingGun->isInShootRange = true;
 }
@@ -280,6 +280,7 @@ string RotatingGun315::GetStateName() {
 }
 
 void RotatingGunDead::Enter() {
+	SceneManager::GetInstance()->scores += this->rotatingGun->GetScore();
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	this->rotatingGun->isDead = true;
 }

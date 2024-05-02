@@ -7,6 +7,7 @@
 class Enemy :public GameObject {
 protected:
 	int hp;
+	int score;
 	bool toDead;
 	GameObject* target;
 public:
@@ -14,6 +15,7 @@ public:
 		this->hp = hp;
 		toDead = false;
 		this->target = NULL;
+		this->score = hp;
 	}
 	void DecreaseHP(float hp) {
 		this->hp -= hp;
@@ -27,6 +29,7 @@ public:
 	virtual GameObject* GetTarget() { return this->target; }
 	virtual void SetState(std::string stateName, std::string animationName) {
 	}
+	int GetScore() { return this->score; }
 	virtual int GetAx() { return -1; }
 	virtual void Update(float dt, vector<GameObject*>* objects=NULL){}
 	virtual void Render(){}

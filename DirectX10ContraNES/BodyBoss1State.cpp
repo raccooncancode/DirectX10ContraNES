@@ -38,6 +38,7 @@ void BodyBoss1Dead::Enter() {
 	SoundManager::GetInstance()->Play("destroy_bridge", false, 1);
 	SoundManager::GetInstance()->Play("finish_stage", false, 1);
 	this->bodyBoss1->isCollidable = 0;
+	SceneManager::GetInstance()->scores += this->bodyBoss1->GetScore();
 	BodyBoss1* bodyRuined = new BodyBoss1(13, "BodyBoss1Ruined", "Enemy", 1000, true);
 	bodyRuined->LoadAssets();
 	bodyRuined->GetBound()->UpdateBoundLocation(this->bodyBoss1->GetBound()->x-6, 9);

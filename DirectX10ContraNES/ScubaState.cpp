@@ -1,7 +1,7 @@
 #include "Scuba.h"
 #include "ScubaState.h"
-
-
+#include "SceneManager.h"
+#include "SoundManager.h"
 void ScubaHiding::Enter() {
 }
 void ScubaHiding::Exit() {
@@ -76,6 +76,7 @@ string ScubaShooting::GetStateName() {
 }
 
 void ScubaDead::Enter() {
+	SceneManager::GetInstance()->scores += this->scuba->GetScore();
 	this->scuba->isDead = true;
 }
 void ScubaDead::Exit() {
