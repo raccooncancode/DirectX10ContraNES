@@ -10,14 +10,14 @@ private:
 	LPTEXTURE preStageTexture;
 	LPSPRITE preStageBackground;
 	float w,h;
-	int score, life;
+	int score, life, highestScore;
 	float time;
 	float flashingTime;
 	bool isFlashed;
 public:
 	bool isDoneAnimation;
 	PreStage1Scene();
-	void SetStatus(float score, float life);
+	void SetStatus(int score,int highestScore, int life);
 	void Update(float dt) override;
 	void Render() override;
 	void LoadResource();

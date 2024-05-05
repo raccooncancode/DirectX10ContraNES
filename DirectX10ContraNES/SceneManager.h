@@ -24,6 +24,7 @@ private:
 public:
 	Bill* bill;
 	int scores;
+	int highestScore;
 	bool isDoneIntro;
 	std::string currentSceneName;
 	static SceneManager* GetInstance();

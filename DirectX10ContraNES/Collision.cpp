@@ -325,7 +325,8 @@ void Collision::Proccess(GameObject* src, vector<GameObject*>* objects, float dt
 			src->GetName()=="GunBoss1"||
 			src->GetName()=="BodyBoss1"||
 			src->GetName()=="Scuba"||
-			src->GetName().find("Arm") != std::string::npos
+			src->GetName().find("Arm") != std::string::npos ||
+			src->GetName().find("Ruined") != std::string::npos
 			) {
 			vy = 0;
 			vx = 0;

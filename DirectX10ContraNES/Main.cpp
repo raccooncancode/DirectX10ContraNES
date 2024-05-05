@@ -1,5 +1,6 @@
 #include <windows.h>
-
+#include <iostream>
+#include <fstream>
 #include "debug.h"
 #include "Game.h"
 #include "TextureManager.h"
@@ -36,6 +37,21 @@ LRESULT CALLBACK WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 
 	return 0;
+}
+
+void LoadHighestScore() {
+	ifstream ScoreFile("score\\Scores.txt");
+	int HighestScore=0;
+	string text;
+	while (getline(ScoreFile, text)) {
+		auto scoreString = text.substr(0, text.find(' '));
+		int score = stoi(scoreString);
+		if (score > HighestScore) {
+			HighestScore = score;
+		}
+	}
+	SceneManager::GetInstance()->highestScore = HighestScore;
+	ScoreFile.close();
 }
 
 void LoadResources()
@@ -107,20 +123,6 @@ void LoadResources()
 void Update(DWORD dt)
 {
 	SceneManager::GetInstance()->Update(dt);
-	//gMap->Update(dt);
-	//bill->Update(dt);
-	//bill->Update(dt);
-	//soldier->Update(dt);
-	//Camera::GetInstance()->Update(bill);
-	//if (bill->GetBillData()->GetX() >= soldier->GetSoldierData()->GetX()-10
-	//	&&
-	//	bill->GetBillData()->GetX() <= soldier->GetSoldierData()->GetX()+10
-	//	)
-	//{
-	//	timeIntersect++;
-	//	DebugOut(L"\nIntersect: %d",timeIntersect);
-	//}
-
 }
 void Render()
 {
@@ -283,7 +285,7 @@ int WINAPI WinMain(
 	Camera::GetInstance()->UpdateCameraSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	LoadResources();
-
+	LoadHighestScore();
 	Run();
 
 	return 0;

@@ -13,7 +13,7 @@ PreStage1Scene::PreStage1Scene() {
 
 void PreStage1Scene::Update(float dt) {
 	if (this->preStageTexture != NULL && this->preStageBackground != NULL) {
-		if (this->time <= 2000) {
+		if (this->time <= 4000) {
 			this->time += dt;
 		}
 		else {
@@ -30,9 +30,10 @@ void PreStage1Scene::Update(float dt) {
 	}
 }
 
-void PreStage1Scene::SetStatus(float score, float life) {
+void PreStage1Scene::SetStatus(int score, int highestScore, int life) {
 	this->score = score;
 	this->life = life;
+	this->highestScore = highestScore;
 }
 
 void PreStage1Scene::Render() {
@@ -40,17 +41,21 @@ void PreStage1Scene::Render() {
 		
 		this->preStageBackground->Draw(w/2,h/2);
 		wchar_t scores[256];
+		wchar_t highestScore[256];
 		wchar_t lifes[256];
 		wsprintfW(scores, L"%d", score);
 		wsprintfW(lifes, L"%d", life);
+		wsprintfW(highestScore, L"%d", this->highestScore);
 		Font* f2 = new Font(lifes, 40, 13, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-		Font* f1 = new Font(scores, 110, 35, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+		Font* f1 = new Font(highestScore, 110, 35, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+		Font* f5 = new Font(scores, 40, 0, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		Font* f3 = new Font(L"STAGE 1", 100, 100, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		Font* f4 = new Font(L"JUNGLE", 100, 120, DT_LEFT, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		if (isFlashed) {
 			f1->Render();
-			f2->Render();
+			f5->Render();
 		}
+		f2->Render();
 		f3->Render();
 		f4->Render();
 	}

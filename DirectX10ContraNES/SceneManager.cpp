@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "Camera.h"
 #include "SoundManager.h"
+#include <fstream>
 SceneManager::SceneManager() {
 	isOpenIntro = false;
 	isDoneIntro = false;
@@ -77,12 +78,12 @@ void SceneManager::SwitchScene(std::string sceneName) {
 		if (sceneName == "ready1") {
 			SoundManager::GetInstance()->Stop();
 			PreStage1Scene* ready1 = (PreStage1Scene*)this->scenes["ready1"];
-			ready1->SetStatus(this->scores, bill->respawnTimes);
+			ready1->SetStatus(this->scores,this->highestScore, bill->respawnTimes);
 		}
 		if (sceneName == "ready3") {
 			SoundManager::GetInstance()->Stop();
 			PreStage3Scene* ready3 = (PreStage3Scene*)this->scenes["ready3"];
-			ready3->SetStatus(this->scores, bill->respawnTimes);
+			ready3->SetStatus(this->scores,this->highestScore, bill->respawnTimes);
 		}
 		if (sceneName == "gameover") {
 			SoundManager::GetInstance()->Stop();
@@ -98,6 +99,10 @@ void SceneManager::SwitchScene(std::string sceneName) {
 		if (sceneName == "credit") {
 			SoundManager::GetInstance()->Stop();
 			SoundManager::GetInstance()->Play("credit", true, 1);
+			std::ofstream log("score\\Scores.txt", std::ios_base::app | std::ios_base::out);
+			int score = SceneManager::GetInstance()->scores;
+			log << score << "\n";
+			log.close();
 
 		}
 		this->currentSceneName = sceneName;
