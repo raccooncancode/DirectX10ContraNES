@@ -20,13 +20,11 @@ void Soldier::Update(float dt, vector<GameObject*>* objects){
 	{
 		for (GameObject* gO : this->objects) {
 			if (gO->GetType() == "Player" && !this->isDead) {
-				//DebugOut(L"\nSoldier Found Player");
 				SetTarget(gO);
 				this->nx = gO->GetBound()->x < this->objectBound->x ? -1 : 1;
 				this->ax = this->nx;
 				SetState("Running", Helper::aXToString(ax) + "Running");
 				this->isInShootRange = false;
-				//this->isInShootRange = true;
 			}
 		}
 	}

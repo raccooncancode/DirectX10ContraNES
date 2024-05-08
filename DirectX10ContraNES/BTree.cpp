@@ -47,7 +47,7 @@ bool BTree::Split(Nodeptr root) {
 	float cameraHeight = Camera::GetInstance()->GetCameraBound()->h;
 	if (isVerticalSplit) {
 		//just the camera is so small so i change the limit is camera w not cam w /2
-		if (root->bound->w >= cameraWidth) {
+		if (root->bound->w >= cameraWidth/2) {
 			root->left = MakeNode(root->level + 1, root->bound->x, root->bound->y, root->bound->w / 2, root->bound->h);
 			root->right = MakeNode(root->level + 1, root->bound->x + root->bound->w / 2, root->bound->y, root->bound->w / 2, root->bound->h);
 			return true;

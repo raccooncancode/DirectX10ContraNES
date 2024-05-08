@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-up" width="208" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="181">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="left-up" width="208" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="183">
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="132" columns="11">
   <image source="stage1.jpg" width="176" height="192"/>
   <tile id="119">
@@ -3230,18 +3230,18 @@
  </objectgroup>
  <objectgroup id="3" name="ObjectLayer">
   <object id="37" name="Bridge" type="object" x="767.67" y="118" width="128" height="32"/>
-  <object id="38" name="Soldier" type="enemy" x="154.167" y="79.3333" width="17" height="32"/>
+  <object id="38" name="Soldier" type="enemy" x="184.167" y="77.3333" width="17" height="32"/>
   <object id="42" name="Bridge" type="object" x="1057" y="118" width="128" height="32"/>
-  <object id="43" name="Soldier" type="enemy" x="179" y="80" width="37.5" height="32"/>
+  <object id="43" name="Soldier" type="enemy" x="206.333" y="78" width="21.5" height="32"/>
   <object id="47" name="Soldier" type="enemy" x="947.833" y="78.6667" width="16.333" height="33"/>
   <object id="48" name="Soldier" type="enemy" x="1355.33" y="76.6667" width="16.333" height="33"/>
-  <object id="49" name="Soldier" type="enemy" x="1521.67" y="124" width="16.333" height="33"/>
+  <object id="49" name="Soldier" type="enemy" x="1443.67" y="172.667" width="16.333" height="33"/>
   <object id="50" name="Soldier" type="enemy" x="1249.33" y="78.5" width="16.333" height="33"/>
-  <object id="51" name="Soldier" type="enemy" x="2217.67" y="110.5" width="16.333" height="33"/>
-  <object id="52" name="Soldier" type="enemy" x="2285" y="75.3333" width="16.333" height="33"/>
-  <object id="53" name="Soldier" type="enemy" x="3037.67" y="75.5" width="16.333" height="33"/>
-  <object id="54" name="Soldier" type="enemy" x="3068.33" y="75.6667" width="16.333" height="33"/>
-  <object id="55" name="Soldier" type="enemy" x="3096.67" y="77.3333" width="16.333" height="33"/>
+  <object id="51" name="Soldier" type="enemy" x="2264.34" y="76.5" width="16.333" height="33"/>
+  <object id="52" name="Soldier" type="enemy" x="2286.33" y="78" width="16.333" height="33"/>
+  <object id="53" name="Soldier" type="enemy" x="2939" y="108.833" width="16.333" height="33"/>
+  <object id="54" name="Soldier" type="enemy" x="2962.33" y="107.667" width="16.333" height="33"/>
+  <object id="55" name="Soldier" type="enemy" x="2986.67" y="106.667" width="16.333" height="33"/>
   <object id="95" name="StaticWeaponM" type="object" x="317" y="144" width="32" height="32"/>
   <object id="96" name="StaticWeaponS" type="object" x="1469.67" y="162.667" width="32" height="32"/>
   <object id="97" name="StaticWeaponS" type="object" x="2428.67" y="116" width="32" height="32"/>
@@ -3260,8 +3260,8 @@
   <object id="123" name="Cannon" type="enemy" x="2176" y="48" width="32" height="32"/>
   <object id="129" name="Cannon" type="enemy" x="2752" y="112" width="32" height="32"/>
   <object id="137" name="CameraTranslatePoint" type="&quot;&quot;" x="3204" y="0" width="12" height="240"/>
-  <object id="141" name="Soldier" type="enemy" x="478.832" y="76.5" width="23.5" height="33"/>
-  <object id="142" name="Soldier" type="enemy" x="504.997" y="78.3334" width="16.333" height="33"/>
+  <object id="141" name="Soldier" type="enemy" x="389.499" y="76.5" width="23.5" height="33"/>
+  <object id="142" name="Soldier" type="enemy" x="406.33" y="77.0001" width="16.333" height="33"/>
   <object id="145" name="Soldier" type="enemy" x="984.497" y="78.5" width="16.333" height="33"/>
   <object id="146" name="Soldier" type="enemy" x="1018.83" y="78.6667" width="16.333" height="33"/>
   <object id="141" name="Sniper" type="enemy" x="295.333" y="172.333" width="18" height="39"/>
